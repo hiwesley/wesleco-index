@@ -64,7 +64,7 @@
         .feature-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; font-weight: 600; }
         .feature-card p { color: var(--text-gray); font-size: 0.95rem; }
 
-        /* Customization Section (New High-End Addition) */
+        /* Customization Section */
         .customization { padding: 5rem 2rem; background: #fff; }
         .custom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center; }
         .custom-content h3 { font-size: 2rem; margin-bottom: 1rem; color: var(--text-dark); }
@@ -113,7 +113,7 @@
         .btn-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 1rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 1rem; }
         .btn-submit:hover { background: var(--primary-dark); }
 
-        /* Footer 升级版 (加入Logo、口号、社媒) */
+        /* Footer */
         footer { background: #1a252f; color: #fff; padding: 5rem 2rem 2.5rem 2rem; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 3rem; }
         .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 3rem; }
@@ -213,7 +213,7 @@
         </div>
     </section>
 
-    <!-- Customization Highlight Section (新增加的高端定制展示区) -->
+    <!-- Customization Highlight Section -->
     <section class="customization">
         <div class="container">
             <div class="custom-grid">
@@ -350,7 +350,7 @@
         </div>
     </section>
 
-    <!-- Footer (按要求包含Logo、精选口号、社媒及规范网址) -->
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-top">
@@ -396,9 +396,14 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- JavaScript: 单页面平滑滚动与 Hash 路由控制 -->
+    <!-- JavaScript: 适配 GitHub Pages 的单页面平滑滚动与 Hash 路由 -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 自动清理多余的 pathname 路径，防止 GitHub Pages 刷出 404 页面
+            if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+                history.replaceState(null, '', '/' + window.location.hash);
+            }
+
             document.querySelectorAll('[data-target]').forEach(element => {
                 element.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -409,17 +414,19 @@
                             top: 0,
                             behavior: 'smooth'
                         });
-                        history.pushState('', document.title, window.location.pathname);
+                        history.pushState(null, '', '/');
                     } else {
                         const targetElement = document.getElementById(targetId);
                         if (targetElement) {
                             targetElement.scrollIntoView({ behavior: 'smooth' });
-                            window.location.hash = targetId;
+                            // 安全追加 #section，绝对不会叠加生成 /about#about，也不触发 404
+                            history.pushState(null, '', '/#' + targetId);
                         }
                     }
                 });
             });
 
+            // 当带 # 标签打开页面或刷新时，平滑定位到对应区块
             if (window.location.hash) {
                 const targetId = window.location.hash.substring(1);
                 const targetElement = document.getElementById(targetId);
