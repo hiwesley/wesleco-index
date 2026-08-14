@@ -396,29 +396,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- JavaScript: 无 # 号的动态 URL 路由与平滑滚动控制 -->
-    <script>
-        document.querySelectorAll('[data-target]').forEach(element => {
-            element.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('data-target');
-                
-                if (targetId === 'home') {
-                    history.pushState(null, '', '/');
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    history.pushState(null, '', '/' + targetId);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
-        });
-    </script>
+    <!-- JavaScript: 单页面平滑滚动与 Hash 路由控制 -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('[data-target]').forEach(element => {
@@ -431,7 +409,7 @@
                             top: 0,
                             behavior: 'smooth'
                         });
-                        history.pushState(null, '', window.location.pathname);
+                        history.pushState('', document.title, window.location.pathname);
                     } else {
                         const targetElement = document.getElementById(targetId);
                         if (targetElement) {
