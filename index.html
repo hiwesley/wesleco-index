@@ -1,34 +1,424 @@
-document.querySelectorAll('[data-target]').forEach(element => {
-    element.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('data-target');
-        
-        if (targetId === 'home') {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-            history.pushState(null, '', window.location.pathname);
-        } else {
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-                // 使用 hash 替代 pushState，防止静态部署刷新 404
-                window.location.hash = targetId;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WESLECO | Eco-Friendly Bamboo & Wooden Tableware Manufacturer</title>
+    <!-- Favicon 浏览器标签图标 -->
+    <link rel="icon" href="Wesleco-LOGO.ico" type="image/x-icon">
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --accent: #81c784;
+            --bg-light: #f4f7f4;
+            --text-dark: #2c3e50;
+            --text-gray: #666;
+            --border-color: #e2e8f0;
         }
-    });
-});
 
-// 页面加载时如果带有 hash，自动平滑滚动到对应位置
-window.addEventListener('load', () => {
-    if (window.location.hash) {
-        const targetId = window.location.hash.substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            setTimeout(() => {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
         }
-    }
-});
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { color: var(--text-dark); background-color: #fff; line-height: 1.7; }
+        
+        /* Navigation */
+        header { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 15px rgba(0,0,0,0.05); z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        .logo img { height: 42px; width: auto; display: block; }
+        .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.3s; cursor: pointer; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn-header { background: var(--primary); color: #fff; padding: 0.6rem 1.4rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: 0.3s; cursor: pointer; font-size: 0.9rem; }
+        .btn-header:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+        /* Hero Section */
+        .hero { margin-top: 74px; background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('hero-bg.jpg') center/cover; height: 85vh; display: flex; align-items: center; text-align: center; color: #fff; padding: 0 1rem; }
+        .hero-content { max-width: 850px; margin: 0 auto; }
+        .hero-badge { display: inline-block; background: rgba(46, 125, 50, 0.85); color: #fff; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.2rem; letter-spacing: 1px; text-transform: uppercase; }
+        .hero h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 1.2rem; line-height: 1.2; }
+        .hero p { font-size: 1.15rem; margin-bottom: 2.5rem; opacity: 0.92; max-width: 750px; margin-left: auto; margin-right: auto; }
+        .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: var(--primary); color: #fff; padding: 0.9rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-whatsapp { background: #25D366; color: #fff; padding: 0.9rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.6rem; transition: 0.3s; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
+        .btn-whatsapp:hover { background: #20ba5a; transform: translateY(-2px); }
+
+        /* Trust / Highlights Bar */
+        .features { background: var(--bg-light); padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem auto; }
+        .section-header span { color: var(--primary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.5rem; }
+        .section-header h2 { font-size: 2.4rem; color: var(--text-dark); font-weight: 700; }
+        
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .feature-card { background: #fff; padding: 2.5rem 2rem; border-radius: 12px; text-align: left; box-shadow: 0 5px 20px rgba(0,0,0,0.03); border: 1px solid var(--border-color); transition: 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: var(--accent); }
+        .feature-card i { font-size: 2.2rem; color: var(--primary); margin-bottom: 1.2rem; background: var(--bg-light); padding: 15px; border-radius: 10px; display: inline-block; }
+        .feature-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; font-weight: 600; }
+        .feature-card p { color: var(--text-gray); font-size: 0.95rem; }
+
+        /* Customization Section (New High-End Addition) */
+        .customization { padding: 5rem 2rem; background: #fff; }
+        .custom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center; }
+        .custom-content h3 { font-size: 2rem; margin-bottom: 1rem; color: var(--text-dark); }
+        .custom-content p { color: var(--text-gray); margin-bottom: 1.5rem; }
+        .custom-list { list-style: none; margin-bottom: 2rem; }
+        .custom-list li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; font-weight: 500; }
+        .custom-list li i { color: var(--primary); }
+        .custom-img-box { background: var(--bg-light); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); padding: 2rem; text-align: center; }
+        .custom-img-box img { width: 100%; height: 280px; object-fit: cover; border-radius: 8px; }
+
+        /* Products Section */
+        .products { padding: 5rem 2rem; background: var(--bg-light); }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
+        .product-card { background: #fff; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .product-card img { width: 100%; height: 240px; object-fit: cover; }
+        .product-info { padding: 2rem; }
+        .product-info h3 { margin-bottom: 0.8rem; font-size: 1.35rem; font-weight: 600; }
+        .product-info p { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .product-link { color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; transition: 0.3s; }
+        .product-link:hover { color: var(--primary-dark); gap: 0.7rem; }
+
+        /* About Us Section */
+        .about-section { padding: 6rem 2rem; background: #fff; }
+        .about-container { max-width: 900px; margin: 0 auto; text-align: center; }
+        .about-text { margin: 1.5rem 0; color: var(--text-gray); line-height: 1.9; font-size: 1.1rem; }
+        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--border-color); }
+        .stat-item h4 { font-size: 2.5rem; color: var(--primary); font-weight: 700; margin-bottom: 0.3rem; }
+        .stat-item p { color: var(--text-gray); font-size: 0.95rem; font-weight: 500; }
+
+        /* Contact Section */
+        .contact { background: var(--bg-light); padding: 6rem 2rem; }
+        .contact-flex { display: flex; flex-wrap: wrap; gap: 3.5rem; justify-content: space-between; align-items: flex-start; }
+        .contact-info { flex: 1; min-width: 320px; }
+        .contact-info h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .contact-detail-box { background: #fff; padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; font-size: 1rem; }
+        .contact-item:last-child { margin-bottom: 0; }
+        .contact-item i { width: 40px; height: 40px; background: var(--bg-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+        
+        .contact-form { flex: 1; min-width: 320px; background: #fff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
+        .contact-form h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 1.3rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1rem; transition: 0.3s; outline: none; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15); }
+        .btn-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 1rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-submit:hover { background: var(--primary-dark); }
+
+        /* Footer 升级版 (加入Logo、口号、社媒) */
+        footer { background: #1a252f; color: #fff; padding: 5rem 2rem 2.5rem 2rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 3rem; }
+        .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 3rem; }
+        .footer-brand { max-width: 450px; }
+        .footer-brand img { height: 45px; margin-bottom: 1.2rem; filter: brightness(0) invert(1); }
+        .footer-brand p { color: #aaa; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        
+        .footer-socials { display: flex; gap: 1rem; }
+        .footer-socials a { width: 40px; height: 40px; background: rgba(255,255,255,0.08); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; font-size: 1.1rem; }
+        .footer-socials a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        .footer-links-group h4 { font-size: 1.1rem; margin-bottom: 1.2rem; color: #fff; letter-spacing: 0.5px; }
+        .footer-links-group ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+        .footer-links-group a { color: #aaa; text-decoration: none; transition: 0.3s; font-size: 0.95rem; cursor: pointer; }
+        .footer-links-group a:hover { color: #fff; padding-left: 5px; }
+
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: #777; font-size: 0.9rem; }
+
+        /* Floating WhatsApp Button */
+        .float-whatsapp {
+            position: fixed; bottom: 25px; right: 25px; background: #25D366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 999; text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); animation: whatsapp-pulse 2s infinite;
+        }
+        .float-whatsapp:hover { transform: scale(1.15) rotate(10deg); background: #20ba5a; }
+        @keyframes whatsapp-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.3rem; }
+            .nav-links { display: none; }
+            .about-stats { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo" data-target="home">
+                <img src="Wesleco-LOGO.png" alt="Wesleco Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a data-target="home">Home</a></li>
+                <li><a data-target="products">Products</a></li>
+                <li><a data-target="about">About Us</a></li>
+                <li><a data-target="contact">Contact</a></li>
+            </ul>
+            <a data-target="contact" class="btn-header">Inquire Now</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-badge">Global B2B Direct Manufacturer</span>
+            <h1>100% Eco-Friendly Bamboo & Wooden Products</h1>
+            <p>Direct manufacturer for premium bamboo & wooden tableware, coffee stirrers, custom-shaped rods, and sustainable kitchenware. FSC, FDA & LFGB certified for heavy-volume partners.</p>
+            <div class="btn-group">
+                <a data-target="contact" class="btn-primary">Get Free Samples</a>
+                <a href="https://wa.me/8615621351993" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights / Core Competencies -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <span>Why Global Distributors Choose Us</span>
+                <h2>Excellence in Every Wooden & Bamboo Detail</h2>
+            </div>
+            <div class="grid-4">
+                <div class="feature-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Robust Material Reserves</h3>
+                    <p>Abundant raw material supplies ensuring stable, year-round pricing and uninterrupted large-scale production schedules.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Splinter-Free Precision</h3>
+                    <p>Advanced multi-stage polishing technology delivers ultra-smooth textures, absolute food safety, and zero splinter risks.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Global Certifications</h3>
+                    <p>Fully compliant with international standards, holding FDA, LFGB, and FSC certifications for seamless import clearance.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Flexible Customization</h3>
+                    <p>Tailored sizing, specialized custom-shaped rods, and double-ended branding to match your exact brand identity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization Highlight Section (新增加的高端定制展示区) -->
+    <section class="customization">
+        <div class="container">
+            <div class="custom-grid">
+                <div class="custom-content">
+                    <span style="color:var(--primary); font-weight:600; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.5rem;">OEM / ODM Capability</span>
+                    <h3>Advanced Customization for Global Brands</h3>
+                    <p>We empower food service wholesalers and major retail brands with bespoke manufacturing options that elevate your market presence.</p>
+                    <ul class="custom-list">
+                        <li><i class="fas fa-check-circle"></i> Custom-shaped rods and specialty geometric designs</li>
+                        <li><i class="fas fa-check-circle"></i> Precision double-ended hot-stamped branding / logo printing</li>
+                        <li><i class="fas fa-check-circle"></i> Eco-friendly retail paper box & bulk carton packaging</li>
+                    </ul>
+                    <a data-target="contact" class="btn-primary" style="display:inline-block; width:auto;">Discuss Your Custom Project</a>
+                </div>
+                <div class="custom-img-box">
+                    <img src="w-cutlery.jpg" alt="Wesleco Custom Wooden Tableware">
+                    <p style="margin-top: 1rem; color: var(--text-gray); font-size: 0.9rem;">Precision crafted and branded for international bulk orders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <span>Our Product Line</span>
+                <h2>Eco-Friendly Tableware & Supplies</h2>
+            </div>
+            <div class="grid-3">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="b-steamer.jpg" alt="Bamboo Steamer Sets">
+                    <div class="product-info">
+                        <h3>Bamboo Steamer Sets</h3>
+                        <p>Traditional woven bamboo steamers built for authentic Asian culinary prep, professional kitchens, and retail distribution.</p>
+                        <a data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="w-cutlery.jpg" alt="Premium Wooden Cutlery">
+                    <div class="product-info">
+                        <h3>Premium Wooden Cutlery</h3>
+                        <p>Sleek, heat-resistant knives, forks, and spoons made from premium birchwood. 100% biodegradable and sturdy.</p>
+                        <a data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="m-whisk.jpg" alt="Bamboo Matcha Whisk">
+                    <div class="product-info">
+                        <h3>Bamboo Matcha Whisk (Chasen)</h3>
+                        <p>Handcrafted natural bamboo whisks featuring fine tines designed for specialty cafes and international tea wholesalers.</p>
+                        <a data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <span style="color:var(--primary); font-weight:600; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.5rem;">Corporate Profile</span>
+            <h2 style="font-size: 2.4rem; font-weight: 700; margin-bottom: 1.5rem;">About WESLECO</h2>
+            <p class="about-text">
+                Founded by seasoned supply chain professionals with hands-on manufacturing and sourcing expertise since 2017, Taian Wesleco Trading Center (WESLECO) stands as your reliable direct partner in eco-friendly bamboo and wooden tableware.
+            </p>
+            <p class="about-text">
+                We specialize in high-demand disposable items—including high-volume ice cream sticks, custom wooden cutlery, and coffee stirrers—engineered specifically for global food service distributors and large-scale wholesalers.
+            </p>
+            
+            <div class="about-stats">
+                <div class="stat-item">
+                    <h4>2017</h4>
+                    <p>Established Year</p>
+                </div>
+                <div class="stat-item">
+                    <h4>100%</h4>
+                    <p>Biodegradable & Eco-Friendly</p>
+                </div>
+                <div class="stat-item">
+                    <h4>Global</h4>
+                    <p>Wholesale & Distribution</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span>Direct Connection</span>
+                <h2>Contact Our Sourcing Team</h2>
+            </div>
+            <div class="contact-flex">
+                <div class="contact-info">
+                    <h3>Let's Discuss Your Supply Needs</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Have questions about factory pricing, custom packaging, or free sample arrangements? Reach out to Wesley directly.</p>
+                    
+                    <div class="contact-detail-box">
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div><strong>WhatsApp:</strong><br><a href="https://wa.me/8615621351993" target="_blank" style="color:var(--primary); text-decoration:none;">+86 15621351993</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div><strong>Direct Email:</strong><br><a href="mailto:wesley@wesleco.com" style="color:var(--primary); text-decoration:none;">wesley@wesleco.com</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <div><strong>Official Web:</strong><br><span style="color:var(--text-dark);">wesleco.com</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Us an Inquiry</h3>
+                    <div style="background: var(--bg-light); border-left: 4px solid var(--primary); padding: 10px 12px; margin-bottom: 15px; border-radius: 4px; font-size: 0.85rem; color: #555;">
+                        <i class="fas fa-info-circle" style="color: var(--primary); margin-right: 5px;"></i>
+                        <strong>Free Sample Policy:</strong> We offer <strong>FREE physical samples</strong>. Buyers cover express shipping or provide a courier account (DHL/FedEx/UPS).
+                    </div>
+                    
+                    <form action="https://formsubmit.co/wesley@wesleco.com" method="POST">
+                        <div class="form-group"><input type="text" name="Name" placeholder="Your Full Name" required></div>
+                        <div class="form-group"><input type="email" name="Email" placeholder="Your Business Email (e.g. name@company.com)" required></div>
+                        <div class="form-group"><textarea name="Message" rows="4" placeholder="Product Requirements / Order Quantity / Customization Details" required></textarea></div>
+                        <button type="submit" class="btn-submit">Submit Inquiry Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (按要求包含Logo、精选口号、社媒及规范网址) -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="Wesleco-LOGO.png" alt="Wesleco Logo" style="filter: brightness(0) invert(1);">
+                    <p>With robust raw material reserves and flexible customization capabilities (including custom shaped rods and double ended branding), Wesleco adheres to the core philosophy of "Integrity First, Quality Paramount." We are fully committed to delivering reliable, premium, and sustainable solutions to our global heavy-volume partners.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/profile.php?id=61578540002153" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/wesley-n-36a8493a1/zh" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-group">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a data-target="home">Home</a></li>
+                        <li><a data-target="products">Products</a></li>
+                        <li><a data-target="about">About Us</a></li>
+                        <li><a data-target="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-group">
+                    <h4>Product Categories</h4>
+                    <ul>
+                        <li><a data-target="products">Wooden Cutlery</a></li>
+                        <li><a data-target="products">Bamboo Steamers</a></li>
+                        <li><a data-target="products">Matcha Whisks</a></li>
+                        <li><a data-target="products">Custom Shaped Rods</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Taian Wesleco Trading Center. All Rights Reserved. | wesleco.com</p>
+                <p>Direct B2B Manufacturer & Exporter</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/8615621351993" class="float-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript: 无 # 号的动态 URL 路由与平滑滚动控制 -->
+    <script>
+        document.querySelectorAll('[data-target]').forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                
+                if (targetId === 'home') {
+                    history.pushState(null, '', '/');
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    history.pushState(null, '', '/' + targetId);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
