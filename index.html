@@ -155,16 +155,16 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <a href="/" class="logo" data-target="home">
+            <a href="javascript:void(0);" class="logo" data-target="home">
                 <img src="Wesleco-LOGO.png" alt="Wesleco Logo">
             </a>
             <ul class="nav-links">
-                <li><a data-target="home">Home</a></li>
-                <li><a data-target="products">Products</a></li>
-                <li><a data-target="about">About Us</a></li>
-                <li><a data-target="contact">Contact</a></li>
+                <li><a href="javascript:void(0);" data-target="home">Home</a></li>
+                <li><a href="javascript:void(0);" data-target="products">Products</a></li>
+                <li><a href="javascript:void(0);" data-target="about">About Us</a></li>
+                <li><a href="javascript:void(0);" data-target="contact">Contact</a></li>
             </ul>
-            <a data-target="contact" class="btn-header">Inquire Now</a>
+            <a href="javascript:void(0);" data-target="contact" class="btn-header">Inquire Now</a>
         </div>
     </header>
 
@@ -175,7 +175,7 @@
             <h1>100% Eco-Friendly Bamboo & Wooden Products</h1>
             <p>Direct manufacturer for premium bamboo & wooden tableware, coffee stirrers, custom-shaped rods, and sustainable kitchenware. FSC, FDA & LFGB certified for heavy-volume partners.</p>
             <div class="btn-group">
-                <a data-target="contact" class="btn-primary">Get Free Samples</a>
+                <a href="javascript:void(0);" data-target="contact" class="btn-primary">Get Free Samples</a>
                 <a href="https://wa.me/8615621351993" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
             </div>
         </div>
@@ -226,7 +226,7 @@
                         <li><i class="fas fa-check-circle"></i> Precision double-ended hot-stamped branding / logo printing</li>
                         <li><i class="fas fa-check-circle"></i> Eco-friendly retail paper box & bulk carton packaging</li>
                     </ul>
-                    <a data-target="contact" class="btn-primary" style="display:inline-block; width:auto;">Discuss Your Custom Project</a>
+                    <a href="javascript:void(0);" data-target="contact" class="btn-primary" style="display:inline-block; width:auto;">Discuss Your Custom Project</a>
                 </div>
                 <div class="custom-img-box">
                     <img src="w-cutlery.jpg" alt="Wesleco Custom Wooden Tableware">
@@ -250,7 +250,7 @@
                     <div class="product-info">
                         <h3>Bamboo Steamer Sets</h3>
                         <p>Traditional woven bamboo steamers built for authentic Asian culinary prep, professional kitchens, and retail distribution.</p>
-                        <a data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
+                        <a href="javascript:void(0);" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
                     </div>
                 </div>
                 <!-- Product 2 -->
@@ -259,7 +259,7 @@
                     <div class="product-info">
                         <h3>Premium Wooden Cutlery</h3>
                         <p>Sleek, heat-resistant knives, forks, and spoons made from premium birchwood. 100% biodegradable and sturdy.</p>
-                        <a data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
+                        <a href="javascript:void(0);" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
                     </div>
                 </div>
                 <!-- Product 3 -->
@@ -268,7 +268,7 @@
                     <div class="product-info">
                         <h3>Bamboo Matcha Whisk (Chasen)</h3>
                         <p>Handcrafted natural bamboo whisks featuring fine tines designed for specialty cafes and international tea wholesalers.</p>
-                        <a data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
+                        <a href="javascript:void(0);" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -366,20 +366,20 @@
                 <div class="footer-links-group">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a data-target="home">Home</a></li>
-                        <li><a data-target="products">Products</a></li>
-                        <li><a data-target="about">About Us</a></li>
-                        <li><a data-target="contact">Contact Us</a></li>
+                        <li><a href="javascript:void(0);" data-target="home">Home</a></li>
+                        <li><a href="javascript:void(0);" data-target="products">Products</a></li>
+                        <li><a href="javascript:void(0);" data-target="about">About Us</a></li>
+                        <li><a href="javascript:void(0);" data-target="contact">Contact Us</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-links-group">
                     <h4>Product Categories</h4>
                     <ul>
-                        <li><a data-target="products">Wooden Cutlery</a></li>
-                        <li><a data-target="products">Bamboo Steamers</a></li>
-                        <li><a data-target="products">Matcha Whisks</a></li>
-                        <li><a data-target="products">Custom Shaped Rods</a></li>
+                        <li><a href="javascript:void(0);" data-target="products">Wooden Cutlery</a></li>
+                        <li><a href="javascript:void(0);" data-target="products">Bamboo Steamers</a></li>
+                        <li><a href="javascript:void(0);" data-target="products">Matcha Whisks</a></li>
+                        <li><a href="javascript:void(0);" data-target="products">Custom Shaped Rods</a></li>
                     </ul>
                 </div>
             </div>
@@ -396,15 +396,15 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- JavaScript: 平滑滚动且保持地址栏为干净的网址（不带有 # 号） -->
+    <!-- JavaScript: 双重洗网，彻底杜绝 # 号 -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 如果打开页面时网址带有 #，自动把 # 号从地址栏抹平
-            if (window.location.hash) {
-                history.replaceState(null, '', window.location.pathname);
-            }
+        // 防线 1：页面一载入，若检测到 URL 中带有 #，立刻强制清空 # 及其后续字符
+        if (window.location.hash) {
+            history.replaceState(null, document.title, window.location.pathname + window.location.search);
+        }
 
-            // 给所有带 data-target 的按钮绑定点击事件
+        document.addEventListener('DOMContentLoaded', () => {
+            // 防线 2：拦截所有带 data-target 的点击，平滑滚动同时保持网址纯净
             document.querySelectorAll('[data-target]').forEach(element => {
                 element.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -422,8 +422,8 @@
                         }
                     }
                     
-                    // 保持地址栏始终是干净的主域名/路径，不追加 #
-                    history.replaceState(null, '', window.location.pathname);
+                    // 强行刷新地址栏状态，坚决不写入 # 符号
+                    history.replaceState(null, document.title, window.location.pathname + window.location.search);
                 });
             });
         });
