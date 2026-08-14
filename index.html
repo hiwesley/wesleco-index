@@ -396,14 +396,15 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- JavaScript: 适配 GitHub Pages 的单页面平滑滚动与 Hash 路由 -->
+    <!-- JavaScript: 平滑滚动且保持地址栏为干净的网址（不带有 # 号） -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 自动清理多余的 pathname 路径，防止 GitHub Pages 刷出 404 页面
-            if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
-                history.replaceState(null, '', '/' + window.location.hash);
+            // 如果打开页面时网址带有 #，自动把 # 号从地址栏抹平
+            if (window.location.hash) {
+                history.replaceState(null, '', window.location.pathname);
             }
 
+            // 给所有带 data-target 的按钮绑定点击事件
             document.querySelectorAll('[data-target]').forEach(element => {
                 element.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -414,28 +415,17 @@
                             top: 0,
                             behavior: 'smooth'
                         });
-                        history.pushState(null, '', '/');
                     } else {
                         const targetElement = document.getElementById(targetId);
                         if (targetElement) {
                             targetElement.scrollIntoView({ behavior: 'smooth' });
-                            // 安全追加 #section，绝对不会叠加生成 /about#about，也不触发 404
-                            history.pushState(null, '', '/#' + targetId);
                         }
                     }
+                    
+                    // 保持地址栏始终是干净的主域名/路径，不追加 #
+                    history.replaceState(null, '', window.location.pathname);
                 });
             });
-
-            // 当带 # 标签打开页面或刷新时，平滑定位到对应区块
-            if (window.location.hash) {
-                const targetId = window.location.hash.substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    setTimeout(() => {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                }
-            }
         });
     </script>
 </body>
