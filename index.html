@@ -142,20 +142,50 @@
             padding: 0.5rem;
         }
 
-        /* ================= Hero Section ================= */
+        /* ================= Hero Section (优化：GPU 慢速平滑动效) ================= */
         .hero { 
+            position: relative;
             margin-top: var(--nav-height); 
-            background: linear-gradient(rgba(0,0,0,0.58), rgba(0,0,0,0.58)), url('hero-bg.jpg') center/cover no-repeat; 
             min-height: calc(100vh - var(--nav-height));
+            min-height: calc(100dvh - var(--nav-height));
             display: flex; 
             align-items: center; 
             justify-content: center;
             text-align: center; 
             color: #fff; 
             padding: 4rem 1.25rem; 
+            overflow: hidden; /* 确保放大的背景不溢出 */
         }
 
-        .hero-content { max-width: 850px; margin: 0 auto; }
+        /* 背景平移图层：28s 电影感渐进过渡 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -5%;
+            left: -10%;
+            width: 120%;
+            height: 110%;
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('hero-bg.jpg') center/cover no-repeat;
+            will-change: transform;
+            animation: heroCinematicPan 28s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes heroCinematicPan {
+            0% {
+                transform: scale3d(1.05, 1.05, 1) translate3d(-3%, 0, 0);
+            }
+            100% {
+                transform: scale3d(1.05, 1.05, 1) translate3d(3%, 0, 0);
+            }
+        }
+
+        .hero-content { 
+            position: relative;
+            z-index: 1;
+            max-width: 850px; 
+            margin: 0 auto; 
+        }
 
         .hero-badge { 
             display: inline-block; 
@@ -168,6 +198,7 @@
             margin-bottom: 1.2rem; 
             letter-spacing: 1px; 
             text-transform: uppercase; 
+            backdrop-filter: blur(4px);
         }
 
         .hero h1 { 
@@ -175,15 +206,17 @@
             font-weight: 700; 
             margin-bottom: 1.2rem; 
             line-height: 1.25; 
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6); /* 增强文字在动效下的清晰度 */
         }
 
         .hero p { 
             font-size: clamp(0.95rem, 2vw, 1.15rem); 
             margin-bottom: 2.2rem; 
-            opacity: 0.92; 
+            opacity: 0.95; 
             max-width: 750px; 
             margin-left: auto; 
             margin-right: auto; 
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         }
 
         .btn-group { 
@@ -206,6 +239,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            min-height: 48px;
         }
 
         .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
@@ -223,6 +257,7 @@
             gap: 0.6rem; 
             transition: 0.3s; 
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); 
+            min-height: 48px;
         }
 
         .btn-whatsapp:hover { background: #20ba5a; transform: translateY(-2px); }
@@ -480,12 +515,12 @@
             .btn-header { display: none; }
 
             .hero { padding: 3rem 1rem; }
-            .btn-group { flex-direction: column; width: 100%; }
+            /* 手机端按钮调整为全宽堆叠，大拇指操控更轻松 */
+            .btn-group { flex-direction: column; width: 100%; gap: 0.8rem; }
             .btn-primary, .btn-whatsapp { width: 100%; }
 
             .about-stats { grid-template-columns: 1fr; gap: 1.5rem; }
             
-            /* 手机端保持两列链接排版，避免垂直堆叠过长 */
             .footer-top { 
                 grid-template-columns: 1fr 1fr; 
                 gap: 1.8rem; 
@@ -510,6 +545,14 @@
                 font-size: 25px;
                 bottom: 15px;
                 right: 15px;
+            }
+        }
+
+        /* 系统开启减少动态效果时的兼容处理 */
+        @media (prefers-reduced-motion: reduce) {
+            .hero::before {
+                animation: none;
+                transform: scale(1.05);
             }
         }
     </style>
