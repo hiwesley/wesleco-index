@@ -19,7 +19,7 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 90px; /* 防止固定导航栏遮挡锚点标题 */
+            scroll-padding-top: 90px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -42,7 +42,8 @@
         .hero p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; }
         .btn-group { display: flex; gap: 1rem; justify-content: center; }
         .btn-primary { background: var(--primary); color: #fff; padding: 0.8rem 1.8rem; border-radius: 5px; text-decoration: none; font-weight: 600; }
-        .btn-whatsapp { background: #25D366; color: #fff; padding: 0.8rem 1.8rem; border-radius: 5px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        .btn-whatsapp { background: #25D366; color: #fff; padding: 0.8rem 1.8rem; border-radius: 5px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; transition: 0.3s; }
+        .btn-whatsapp:hover { background: #20ba5a; transform: translateY(-2px); }
 
         /* Highlights */
         .features { background: var(--bg-light); padding: 4rem 2rem; }
@@ -69,13 +70,48 @@
         .contact-form { flex: 1; min-width: 300px; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .form-group { margin-bottom: 1.2rem; }
         .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
-        .btn-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 1rem; border-radius: 4px; font-weight: 600; cursor: pointer; }
+        .btn-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 1rem; border-radius: 4px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background: var(--primary-dark); }
 
         /* Footer */
         footer { background: #1a252f; color: #fff; text-align: center; padding: 2rem; font-size: 0.9rem; }
         
-        /* Floating WhatsApp Button */
-        .float-whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 999; text-decoration: none; }
+        /* Floating WhatsApp Button - 动态特效按钮 */
+        .float-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: whatsapp-pulse 2s infinite;
+        }
+
+        .float-whatsapp:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.7);
+            background: #20ba5a;
+        }
+
+        .float-whatsapp:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes whatsapp-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
     </style>
 </head>
 <body>
@@ -230,10 +266,23 @@
         <p>&copy; 2026 Taian Wesleco Trading Center. All Rights Reserved. | www.wesleco.com</p>
     </footer>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/8615621351993" class="float-whatsapp" target="_blank">
+    <!-- Floating WhatsApp - 动态特效按钮 -->
+    <a href="https://wa.me/8615621351993" class="float-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- JavaScript: 消除点击 Home 或 Logo 时的 #home 后缀并平滑回到顶部 -->
+    <script>
+        document.querySelectorAll('a[href="#home"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // 阻止默认的带锚点跳转行为
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
