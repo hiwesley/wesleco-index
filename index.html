@@ -30,9 +30,9 @@
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
         .logo img { height: 40px; width: auto; display: block; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.3s; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.3s; cursor: pointer; }
         .nav-links a:hover { color: var(--primary); }
-        .btn-header { background: var(--primary); color: #fff; padding: 0.6rem 1.2rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .btn-header { background: var(--primary); color: #fff; padding: 0.6rem 1.2rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: 0.3s; cursor: pointer; }
         .btn-header:hover { background: var(--primary-dark); }
 
         /* Hero Section */
@@ -41,7 +41,7 @@
         .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
         .hero p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; }
         .btn-group { display: flex; gap: 1rem; justify-content: center; }
-        .btn-primary { background: var(--primary); color: #fff; padding: 0.8rem 1.8rem; border-radius: 5px; text-decoration: none; font-weight: 600; }
+        .btn-primary { background: var(--primary); color: #fff; padding: 0.8rem 1.8rem; border-radius: 5px; text-decoration: none; font-weight: 600; cursor: pointer; }
         .btn-whatsapp { background: #25D366; color: #fff; padding: 0.8rem 1.8rem; border-radius: 5px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; transition: 0.3s; }
         .btn-whatsapp:hover { background: #20ba5a; transform: translateY(-2px); }
 
@@ -63,12 +63,12 @@
         .product-info h3 { margin-bottom: 0.5rem; font-size: 1.3rem; }
         .product-info p { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 1rem; }
 
-        /* About Us Section (独立板块) */
+        /* About Us Section */
         .about-section { padding: 5rem 2rem; background: #fff; }
         .about-container { max-width: 800px; margin: 0 auto; text-align: center; }
         .about-text { margin: 1.5rem 0; color: var(--text-gray); line-height: 1.8; font-size: 1.05rem; }
 
-        /* Contact Section (独立板块) */
+        /* Contact Section */
         .contact { background: var(--bg-light); padding: 5rem 2rem; }
         .contact-flex { display: flex; flex-wrap: wrap; gap: 3rem; justify-content: space-between; align-items: flex-start; }
         .contact-info { flex: 1; min-width: 300px; }
@@ -81,7 +81,7 @@
         /* Footer */
         footer { background: #1a252f; color: #fff; text-align: center; padding: 2rem; font-size: 0.9rem; }
         
-        /* Floating WhatsApp Button - 动态特效按钮 */
+        /* Floating WhatsApp Button */
         .float-whatsapp {
             position: fixed;
             bottom: 25px;
@@ -124,16 +124,16 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <a href="#home" class="logo">
+            <a href="/" class="logo" data-target="home">
                 <img src="Wesleco-LOGO.png" alt="Wesleco Logo">
             </a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a data-target="home">Home</a></li>
+                <li><a data-target="products">Products</a></li>
+                <li><a data-target="about">About Us</a></li>
+                <li><a data-target="contact">Contact</a></li>
             </ul>
-            <a href="#contact" class="btn-header">Inquire Now</a>
+            <a data-target="contact" class="btn-header">Inquire Now</a>
         </div>
     </header>
 
@@ -143,7 +143,7 @@
             <h1>100% Eco-Friendly Bamboo & Wooden Products</h1>
             <p>Direct manufacturer for premium bamboo & wooden tableware, coffee stirrers, skewers, and eco-friendly kitchenware. FSC & Food-Grade certified.</p>
             <div class="btn-group">
-                <a href="#contact" class="btn-primary">Get Free Samples</a>
+                <a data-target="contact" class="btn-primary">Get Free Samples</a>
                 <a href="https://wa.me/8615621351993" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
             </div>
         </div>
@@ -189,7 +189,7 @@
                     <div class="product-info">
                         <h3>Bamboo Steamer Sets</h3>
                         <p>Traditional woven bamboo steamers for authentic Asian cooking, sushi prep, and versatile steaming. Durable and eco-friendly.</p>
-                        <a href="#contact" style="color:var(--primary); font-weight:600; text-decoration:none;">Request Quote &rarr;</a>
+                        <a data-target="contact" style="color:var(--primary); font-weight:600; text-decoration:none; cursor:pointer;">Request Quote &rarr;</a>
                     </div>
                 </div>
 
@@ -199,7 +199,7 @@
                     <div class="product-info">
                         <h3>Premium Wooden Cutlery</h3>
                         <p>Elegant and high-quality knives, forks, and spoons made from premium birchwood. Perfectly smooth and heat-resistant.</p>
-                        <a href="#contact" style="color:var(--primary); font-weight:600; text-decoration:none;">Request Quote &rarr;</a>
+                        <a data-target="contact" style="color:var(--primary); font-weight:600; text-decoration:none; cursor:pointer;">Request Quote &rarr;</a>
                     </div>
                 </div>
 
@@ -209,7 +209,7 @@
                     <div class="product-info">
                         <h3>Bamboo Matcha Whisk (Chasen)</h3>
                         <p>Handcrafted from natural, eco-friendly bamboo for authentic matcha preparation. Designed with fine tines to create rich, creamy foam effortlessly. Ideal for cafes and tea wholesalers.</p>
-                        <a href="#contact" style="color:var(--primary); font-weight:600; text-decoration:none;">Request Quote &rarr;</a>
+                        <a data-target="contact" style="color:var(--primary); font-weight:600; text-decoration:none; cursor:pointer;">Request Quote &rarr;</a>
                     </div>
                 </div>
 
@@ -217,7 +217,7 @@
         </div>
     </section>
 
-    <!-- About Us Section (独立板块) -->
+    <!-- About Us Section -->
     <section class="about-section" id="about">
         <div class="about-container">
             <h2 class="section-title">About WESLECO</h2>
@@ -241,7 +241,7 @@
         </div>
     </section>
 
-    <!-- Contact Section (独立板块) -->
+    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
@@ -286,15 +286,28 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- JavaScript: 消除点击 Home 或 Logo 时的 #home 后缀并平滑回到顶部 -->
+    <!-- JavaScript: 无 # 号的动态 URL 路由与平滑滚动控制 -->
     <script>
-        document.querySelectorAll('a[href="#home"]').forEach(link => {
-            link.addEventListener('click', function(e) {
+        document.querySelectorAll('[data-target]').forEach(element => {
+            element.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('data-target');
+                
+                if (targetId === 'home') {
+                    // 点击 Home 或 Logo -> 变成主域名
+                    history.pushState(null, '', '/');
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // 点击其他板块 (如 about, products, contact) -> 变成 /about 等
+                    history.pushState(null, '', '/' + targetId);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
             });
         });
     </script>
