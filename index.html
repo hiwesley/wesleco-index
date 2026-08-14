@@ -110,31 +110,9 @@
             transition: 0.3s; 
             cursor: pointer; 
             font-size: 0.95rem; 
-            position: relative;
-            padding: 4px 0;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active-link { 
-            color: var(--primary); 
-        }
-
-        /* 新增：导航高亮下划线效果 */
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a.active-link::after,
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links a:hover { color: var(--primary); }
 
         .btn-header { 
             background: var(--primary); 
@@ -342,12 +320,6 @@
             height: 280px; 
             object-fit: cover; 
             border-radius: 8px; 
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .custom-img-box img:hover {
-            transform: scale(1.02);
         }
 
         /* ================= Products Section ================= */
@@ -371,8 +343,7 @@
         }
 
         .product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
-        .product-card img { width: 100%; height: 220px; object-fit: cover; cursor: pointer; transition: transform 0.3s ease; }
-        .product-card img:hover { transform: scale(1.03); }
+        .product-card img { width: 100%; height: 220px; object-fit: cover; }
         .product-info { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; }
         .product-info h3 { margin-bottom: 0.6rem; font-size: 1.25rem; font-weight: 600; }
         .product-info p { color: var(--text-gray); font-size: 0.92rem; margin-bottom: 1.5rem; flex-grow: 1; }
@@ -423,23 +394,13 @@
         .contact-item:last-child { margin-bottom: 0; }
         .contact-item i { width: 38px; height: 38px; background: var(--bg-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
         
-        /* 新增：可点击复制样式 */
-        .copyable {
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        .copyable:hover {
-            opacity: 0.8;
-        }
-
         .contact-form { flex: 1; min-width: 300px; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
         .contact-form h3 { font-size: 1.4rem; margin-bottom: 1rem; }
         .form-group { margin-bottom: 1.2rem; }
         .form-group input, .form-group textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.95rem; transition: 0.3s; outline: none; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15); }
-        .btn-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 0.95rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .btn-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 0.95rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.95rem; }
         .btn-submit:hover { background: var(--primary-dark); }
-        .btn-submit:disabled { background: #9e9e9e; cursor: not-allowed; }
 
         /* ================= Footer ================= */
         footer { background: #1a252f; color: #fff; padding: 4rem 0 2rem 0; }
@@ -516,113 +477,6 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* 新增：Back to Top 悬浮按钮 */
-        .back-to-top {
-            position: fixed;
-            bottom: 85px;
-            right: 22px;
-            background: rgba(44, 62, 80, 0.85);
-            color: #fff;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            z-index: 998;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        /* 新增：Toast 提示气泡 */
-        .toast-notification {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: #2c3e50;
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 2000;
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .toast-notification.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* 新增：Lightbox 图片大图预览弹窗 */
-        .lightbox-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2001;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .lightbox-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .lightbox-modal img {
-            max-width: 90%;
-            max-height: 85vh;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        .lightbox-modal.active img {
-            transform: scale(1);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            color: #fff;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .lightbox-close:hover {
-            color: var(--accent);
-        }
-
         /* 📱 响应式适配（针对平板竖屏与手机屏优化） */
         @media (max-width: 992px) {
             .custom-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -691,14 +545,6 @@
                 font-size: 25px;
                 bottom: 15px;
                 right: 15px;
-            }
-
-            .back-to-top {
-                bottom: 75px;
-                right: 17px;
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
             }
         }
 
@@ -796,7 +642,7 @@
                     <a href="/contact" data-target="contact" class="btn-primary">Discuss Your Custom Project</a>
                 </div>
                 <div class="custom-img-box">
-                    <img src="w-cutlery.jpg" alt="Wesleco Custom Wooden Tableware" class="lightbox-trigger">
+                    <img src="w-cutlery.jpg" alt="Wesleco Custom Wooden Tableware">
                     <p style="margin-top: 0.8rem; color: var(--text-gray); font-size: 0.85rem;">Precision crafted and branded for international bulk orders.</p>
                 </div>
             </div>
@@ -812,27 +658,27 @@
             </div>
             <div class="grid-3">
                 <div class="product-card">
-                    <img src="b-steamer.jpg" alt="Bamboo Steamer Sets" class="lightbox-trigger">
+                    <img src="b-steamer.jpg" alt="Bamboo Steamer Sets">
                     <div class="product-info">
                         <h3>Bamboo Steamer Sets</h3>
                         <p>Traditional woven bamboo steamers built for authentic Asian culinary prep, professional kitchens, and retail distribution.</p>
-                        <a href="/contact" data-target="contact" data-product="Bamboo Steamer Sets" class="product-link product-quote-btn">Request Bulk Quote &rarr;</a>
+                        <a href="/contact" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="w-cutlery.jpg" alt="Premium Wooden Cutlery" class="lightbox-trigger">
+                    <img src="w-cutlery.jpg" alt="Premium Wooden Cutlery">
                     <div class="product-info">
                         <h3>Premium Wooden Cutlery</h3>
                         <p>Sleek, heat-resistant knives, forks, and spoons made from premium birchwood. 100% biodegradable and sturdy.</p>
-                        <a href="/contact" data-target="contact" data-product="Premium Wooden Cutlery" class="product-link product-quote-btn">Request Bulk Quote &rarr;</a>
+                        <a href="/contact" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="m-whisk.jpg" alt="Bamboo Matcha Whisk" class="lightbox-trigger">
+                    <img src="m-whisk.jpg" alt="Bamboo Matcha Whisk">
                     <div class="product-info">
                         <h3>Bamboo Matcha Whisk (Chasen)</h3>
                         <p>Handcrafted natural bamboo whisks featuring fine tines designed for specialty cafes and international tea wholesalers.</p>
-                        <a href="/contact" data-target="contact" data-product="Bamboo Matcha Whisk (Chasen)" class="product-link product-quote-btn">Request Bulk Quote &rarr;</a>
+                        <a href="/contact" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -885,21 +731,11 @@
                     <div class="contact-detail-box">
                         <div class="contact-item">
                             <i class="fab fa-whatsapp"></i>
-                            <div>
-                                <strong>WhatsApp:</strong><br>
-                                <a href="https://wa.me/8615621351993" target="_blank" class="copyable" data-copy="+8615621351993" style="color:var(--primary); text-decoration:none;">
-                                    +86 15621351993 <i class="far fa-copy" style="font-size: 0.8rem; margin-left: 4px;"></i>
-                                </a>
-                            </div>
+                            <div><strong>WhatsApp:</strong><br><a href="https://wa.me/8615621351993" target="_blank" style="color:var(--primary); text-decoration:none;">+86 15621351993</a></div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <div>
-                                <strong>Direct Email:</strong><br>
-                                <a href="mailto:wesley@wesleco.com" class="copyable" data-copy="wesley@wesleco.com" style="color:var(--primary); text-decoration:none;">
-                                    wesley@wesleco.com <i class="far fa-copy" style="font-size: 0.8rem; margin-left: 4px;"></i>
-                                </a>
-                            </div>
+                            <div><strong>Direct Email:</strong><br><a href="mailto:wesley@wesleco.com" style="color:var(--primary); text-decoration:none;">wesley@wesleco.com</a></div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-globe"></i>
@@ -915,13 +751,11 @@
                         <strong>Free Sample Policy:</strong> We offer <strong>FREE physical samples</strong>. Buyers cover express shipping or provide a courier account (DHL/FedEx/UPS).
                     </div>
                     
-                    <form id="inquiry-form" action="https://formsubmit.co/wesley@wesleco.com" method="POST">
+                    <form action="https://formsubmit.co/wesley@wesleco.com" method="POST">
                         <div class="form-group"><input type="text" name="Name" placeholder="Your Full Name" required></div>
                         <div class="form-group"><input type="email" name="Email" placeholder="Your Business Email (e.g. name@company.com)" required></div>
-                        <div class="form-group"><textarea id="form-message" name="Message" rows="4" placeholder="Product Requirements / Order Quantity / Customization Details" required></textarea></div>
-                        <button type="submit" class="btn-submit" id="submit-btn">
-                            <span class="btn-text">Submit Inquiry Now</span>
-                        </button>
+                        <div class="form-group"><textarea name="Message" rows="4" placeholder="Product Requirements / Order Quantity / Customization Details" required></textarea></div>
+                        <button type="submit" class="btn-submit">Submit Inquiry Now</button>
                     </form>
                 </div>
             </div>
@@ -954,16 +788,16 @@
                 <div class="footer-links-group">
                     <h4>Product Categories</h4>
                     <ul>
-                        <li><a href="/products" data-target="products" data-product="Wooden Cutlery" class="product-quote-btn">Wooden Cutlery</a></li>
-                        <li><a href="/products" data-target="products" data-product="Bamboo Steamers" class="product-quote-btn">Bamboo Steamers</a></li>
-                        <li><a href="/products" data-target="products" data-product="Matcha Whisks" class="product-quote-btn">Matcha Whisks</a></li>
-                        <li><a href="/products" data-target="products" data-product="Custom Shaped Rods" class="product-quote-btn">Custom Shaped Rods</a></li>
+                        <li><a href="/products" data-target="products">Wooden Cutlery</a></li>
+                        <li><a href="/products" data-target="products">Bamboo Steamers</a></li>
+                        <li><a href="/products" data-target="products">Matcha Whisks</a></li>
+                        <li><a href="/products" data-target="products">Custom Shaped Rods</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year">2026</span> Taian Wesleco Trading Center. All Rights Reserved. | wesleco.com</p>
+                <p>&copy; 2026 Taian Wesleco Trading Center. All Rights Reserved. | wesleco.com</p>
                 <p>Direct B2B Manufacturer & Exporter</p>
             </div>
         </div>
@@ -974,24 +808,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTopBtn" aria-label="Back to Top">
-        <i class="fas fa-chevron-up"></i>
-    </div>
-
-    <!-- Toast Notification Element -->
-    <div class="toast-notification" id="toast">
-        <i class="fas fa-check-circle" style="color: #81c784;"></i>
-        <span id="toast-message">Copied to clipboard!</span>
-    </div>
-
-    <!-- Lightbox Modal Container -->
-    <div class="lightbox-modal" id="lightbox">
-        <span class="lightbox-close" id="lightbox-close">&times;</span>
-        <img id="lightbox-img" src="" alt="Enlarged View">
-    </div>
-
-    <!-- JavaScript 响应式菜单 + 单页伪静态路由 + 互动增强功能 -->
+    <!-- JavaScript 响应式菜单 + 单页伪静态路由 -->
     <script>
         const routeMap = {
             '': 'home',
@@ -1023,29 +840,11 @@
             }
         }
 
-        // 显示 Toast 气泡
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-message');
-            toastMsg.textContent = msg;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2500);
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             const navMenu = document.getElementById('nav-menu');
             const menuToggle = document.getElementById('mobile-menu-toggle');
-            const backToTopBtn = document.getElementById('backToTopBtn');
-            const currentYearSpan = document.getElementById('current-year');
 
-            // 1. 动态填充年份
-            if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
-            }
-
-            // 2. 移动端菜单切换控制
+            // 移动端菜单切换控制
             menuToggle.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
                 const icon = menuToggle.querySelector('i');
@@ -1058,7 +857,7 @@
                 }
             });
 
-            // 3. 绑定链接点击与路由处理
+            // 绑定链接点击事件
             document.querySelectorAll('[data-target]').forEach(element => {
                 element.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1074,115 +873,7 @@
                 });
             });
 
-            // 4. 产品一键询价自动预填 Form Message
-            document.querySelectorAll('.product-quote-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const productName = this.getAttribute('data-product');
-                    if (productName) {
-                        const messageBox = document.getElementById('form-message');
-                        if (messageBox) {
-                            messageBox.value = `Hello, I would like to request a bulk quote and details for [${productName}]. Our estimated volume is: `;
-                            messageBox.focus();
-                        }
-                    }
-                });
-            });
-
-            // 5. 点击一键复制 Email / Phone
-            document.querySelectorAll('.copyable').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    const textToCopy = this.getAttribute('data-copy');
-                    if (textToCopy) {
-                        navigator.clipboard.writeText(textToCopy).then(() => {
-                            showToast(`Copied "${textToCopy}" to clipboard!`);
-                        }).catch(() => {
-                            showToast('Failed to copy. Please copy manually.');
-                        });
-                    }
-                });
-            });
-
-            // 6. Lightbox 图片全屏放大预览
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxClose = document.getElementById('lightbox-close');
-
-            document.querySelectorAll('.lightbox-trigger').forEach(img => {
-                img.addEventListener('click', function() {
-                    lightboxImg.src = this.src;
-                    lightboxImg.alt = this.alt;
-                    lightbox.classList.add('active');
-                });
-            });
-
-            if (lightboxClose) {
-                lightboxClose.addEventListener('click', () => {
-                    lightbox.classList.remove('active');
-                });
-            }
-
-            if (lightbox) {
-                lightbox.addEventListener('click', (e) => {
-                    if (e.target === lightbox) {
-                        lightbox.classList.remove('active');
-                    }
-                });
-            }
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                    lightbox.classList.remove('active');
-                }
-            });
-
-            // 7. 表单提交 Loading 状态控制
-            const inquiryForm = document.getElementById('inquiry-form');
-            const submitBtn = document.getElementById('submit-btn');
-            if (inquiryForm && submitBtn) {
-                inquiryForm.addEventListener('submit', function() {
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Inquiry...';
-                });
-            }
-
-            // 8. 滚动感知：Back to Top 按钮控制 + ScrollSpy 导航高亮
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a');
-
-            window.addEventListener('scroll', () => {
-                const scrollY = window.pageYOffset;
-
-                // 显示 / 隐藏返回顶部按钮
-                if (scrollY > 400) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-
-                // ScrollSpy 高亮导航条当前区块
-                let currentSectionId = 'home';
-                sections.forEach(section => {
-                    const sectionHeight = section.offsetHeight;
-                    const sectionTop = section.offsetTop - 120;
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        currentSectionId = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active-link');
-                    if (link.getAttribute('data-target') === currentSectionId) {
-                        link.classList.add('active-link');
-                    }
-                });
-            });
-
-            // 返回顶部功能
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // 监听浏览器前进/后退
+            // 监听前进/后退
             window.addEventListener('popstate', () => {
                 const currentPath = window.location.pathname;
                 navigateTo(currentPath, false);
