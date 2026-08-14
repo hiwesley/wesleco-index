@@ -1,95 +1,162 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wesleco | Sustainable Bamboo & Wooden Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>WESLECO | Eco-Friendly Bamboo & Wooden Tableware Manufacturer</title>
+
+    <!-- 404 跳转路由检测（解决静态部署刷新报 404 问题） -->
+    <script>
+        (function(){
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
+
+    <!-- Favicon 浏览器标签图标 -->
+    <link rel="icon" href="Wesleco-LOGO.ico" type="image/x-icon">
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* ================= 基础样式重置 ================= */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --accent: #81c784;
+            --bg-light: #f4f7f4;
+            --text-dark: #2c3e50;
+            --text-gray: #666;
+            --border-color: #e2e8f0;
+            --nav-height: 74px;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: #2c3e50;
-            background-color: #f8f9fa;
-            line-height: 1.6;
-            overflow-x: hidden;
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
         }
 
-        /* ================= 导航栏样式 ================= */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Poppins', sans-serif; 
+        }
+
+        body { 
+            color: var(--text-dark); 
+            background-color: #fff; 
+            line-height: 1.7; 
+            overflow-x: hidden; /* 防止手机端横向滚动条 */
             width: 100%;
-            display: flex;
-            justify-content: space-between;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container { 
+            width: 100%;
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 1.5rem;
+        }
+        
+        /* ================= Header & Mobile Nav ================= */
+        header { 
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            width: 100%; 
+            height: var(--nav-height);
+            background: rgba(255, 255, 255, 0.98); 
+            backdrop-filter: blur(10px); 
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05); 
+            z-index: 1000; 
+        }
+
+        .nav-container { 
+            max-width: 1200px; 
+            height: 100%;
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0 1.5rem; 
+        }
+
+        .logo img { 
+            height: 38px; 
+            width: auto; 
+            display: block; 
+        }
+
+        .nav-links { 
+            display: flex; 
+            gap: 2rem; 
+            list-style: none; 
             align-items: center;
-            padding: 1.2rem 8%;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #1e3a2b;
-            letter-spacing: 1px;
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-dark); 
+            font-weight: 500; 
+            transition: 0.3s; 
+            cursor: pointer; 
+            font-size: 0.95rem; 
         }
 
-        .logo span {
-            color: #38bdf8;
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-header { 
+            background: var(--primary); 
+            color: #fff; 
+            padding: 0.55rem 1.3rem; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: 0.3s; 
+            cursor: pointer; 
+            font-size: 0.9rem; 
+            white-space: nowrap;
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
+        .btn-header:hover { 
+            background: var(--primary-dark); 
+            transform: translateY(-1px); 
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #4a5568;
-            font-weight: 500;
-            transition: color 0.3s;
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
-        .nav-links a:hover {
-            color: #1e3a2b;
-        }
-
-        .cta-btn {
-            background-color: #1e3a2b;
-            color: #fff;
-            padding: 0.6rem 1.4rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .cta-btn:hover {
-            background-color: #2d5a43;
-            transform: translateY(-2px);
-        }
-
-        /* ================= Hero 主区块 (带拖拽移动背景) ================= */
-        .hero {
+        /* ================= Hero Section (优化：JS 驱动拖拽与缓动) ================= */
+        .hero { 
             position: relative;
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            align-items: center;
+            margin-top: var(--nav-height); 
+            min-height: calc(100vh - var(--nav-height));
+            min-height: calc(100dvh - var(--nav-height));
+            display: flex; 
+            align-items: center; 
             justify-content: center;
-            overflow: hidden;
+            text-align: center; 
+            color: #fff; 
+            padding: 4rem 1.25rem; 
+            overflow: hidden; /* 确保放大的背景不溢出 */
             cursor: grab;
-            user-select: none; /* 防止拖拽过程中选中文本 */
+            user-select: none;
             touch-action: none; /* 阻止移动端默认下拉刷新的干扰 */
         }
 
@@ -100,222 +167,656 @@
         /* 动态背景图层 */
         .hero-bg {
             position: absolute;
-            top: -20%;
-            left: -20%;
-            width: 140%;
-            height: 140%;
-            /* 采用高质量竹木/环保质感背景图 */
-            background: url('https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=2000&auto=format&fit=crop') center/cover repeat;
-            filter: brightness(0.45);
+            top: -15%;
+            left: -15%;
+            width: 130%;
+            height: 130%;
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('hero-bg.jpg') center/cover no-repeat;
             will-change: transform;
-            pointer-events: none; /* 让鼠标事件穿透到父容器 */
-        }
-
-        /* 蒙版装饰（增加层次感） */
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 0;
             pointer-events: none;
         }
 
-        /* Hero 内容 */
-        .hero-content {
+        .hero-content { 
             position: relative;
-            z-index: 10;
-            text-align: center;
-            color: #ffffff;
-            max-width: 850px;
-            padding: 0 20px;
-            pointer-events: auto; /* 保证文字和按钮可正常交互/点击 */
+            z-index: 1;
+            max-width: 850px; 
+            margin: 0 auto; 
         }
 
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.2rem;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        .hero-badge { 
+            display: inline-block; 
+            background: rgba(46, 125, 50, 0.9); 
+            color: #fff; 
+            padding: 0.35rem 1rem; 
+            border-radius: 20px; 
+            font-size: clamp(0.75rem, 2vw, 0.85rem); 
+            font-weight: 600; 
+            margin-bottom: 1.2rem; 
+            letter-spacing: 1px; 
+            text-transform: uppercase; 
+            backdrop-filter: blur(4px);
         }
 
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: #e2e8f0;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            line-height: 1.8;
+        .hero h1 { 
+            font-size: clamp(1.8rem, 4.5vw, 3.2rem); 
+            font-weight: 700; 
+            margin-bottom: 1.2rem; 
+            line-height: 1.25; 
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6); /* 增强文字在动效下的清晰度 */
         }
 
-        .btn-group {
-            display: flex;
-            gap: 1.2rem;
-            justify-content: center;
+        .hero p { 
+            font-size: clamp(0.95rem, 2vw, 1.15rem); 
+            margin-bottom: 2.2rem; 
+            opacity: 0.95; 
+            max-width: 750px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         }
 
-        .primary-btn {
-            background-color: #22c55e;
-            color: #fff;
-            padding: 0.9rem 2.2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+        .btn-group { 
+            display: flex; 
+            gap: 1rem; 
+            justify-content: center; 
+            flex-wrap: wrap; 
         }
 
-        .primary-btn:hover {
-            background-color: #16a34a;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6);
-        }
-
-        .secondary-btn {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            padding: 0.9rem 2.2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
-        }
-
-        .secondary-btn:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px);
-        }
-
-        /* 提示小标 */
-        .drag-hint {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255,255,255,0.6);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            display: flex;
+        .btn-primary { 
+            background: var(--primary); 
+            color: #fff; 
+            padding: 0.85rem 1.8rem; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3); 
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            pointer-events: none;
-            z-index: 10;
+            justify-content: center;
+            min-height: 48px;
         }
 
-        /* ================= 业务展示区 ================= */
-        .section {
-            padding: 6rem 8%;
-            max-width: 1200px;
-            margin: 0 auto;
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        .btn-whatsapp { 
+            background: #25D366; 
+            color: #fff; 
+            padding: 0.85rem 1.8rem; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 0.6rem; 
+            transition: 0.3s; 
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); 
+            min-height: 48px;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: #1e293b;
-            margin-bottom: 3rem;
+        .btn-whatsapp:hover { background: #20ba5a; transform: translateY(-2px); }
+
+        /* ================= Core Highlights ================= */
+        .features { background: var(--bg-light); padding: 4.5rem 0; }
+
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3rem auto; }
+        .section-header span { color: var(--primary); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.4rem; }
+        .section-header h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--text-dark); font-weight: 700; line-height: 1.3; }
+
+        .grid-4 { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 1.8rem; 
         }
 
-        .cards-grid {
+        .feature-card { 
+            background: #fff; 
+            padding: 2.2rem 1.8rem; 
+            border-radius: 12px; 
+            text-align: left; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03); 
+            border: 1px solid var(--border-color); 
+            transition: 0.3s; 
+        }
+
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: var(--accent); }
+        .feature-card i { font-size: 2rem; color: var(--primary); margin-bottom: 1.2rem; background: var(--bg-light); padding: 14px; border-radius: 10px; display: inline-block; }
+        .feature-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; font-weight: 600; }
+        .feature-card p { color: var(--text-gray); font-size: 0.92rem; }
+
+        /* ================= Customization Section ================= */
+        .customization { padding: 4.5rem 0; background: #fff; }
+        
+        .custom-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 3rem; 
+            align-items: center; 
+        }
+
+        .custom-content h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; color: var(--text-dark); }
+        .custom-content p { color: var(--text-gray); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .custom-list { list-style: none; margin-bottom: 2rem; }
+        .custom-list li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; font-weight: 500; font-size: 0.95rem; }
+        .custom-list li i { color: var(--primary); }
+        
+        .custom-img-box { 
+            background: var(--bg-light); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            border: 1px solid var(--border-color); 
+            padding: 1.5rem; 
+            text-align: center; 
+        }
+
+        .custom-img-box img { 
+            width: 100%; 
+            height: 280px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+        }
+
+        /* ================= Products Section ================= */
+        .products { padding: 4.5rem 0; background: var(--bg-light); }
+
+        .grid-3 { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2rem; 
+        }
+
+        .product-card { 
+            background: #fff; 
+            border: 1px solid var(--border-color); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            transition: 0.3s; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02); 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .product-card img { width: 100%; height: 220px; object-fit: cover; }
+        .product-info { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-info h3 { margin-bottom: 0.6rem; font-size: 1.25rem; font-weight: 600; }
+        .product-info p { color: var(--text-gray); font-size: 0.92rem; margin-bottom: 1.5rem; flex-grow: 1; }
+        .product-link { color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; transition: 0.3s; font-size: 0.95rem; }
+        .product-link:hover { color: var(--primary-dark); gap: 0.7rem; }
+
+        /* ================= About Us Section ================= */
+        .about-section { padding: 5rem 0; background: #fff; }
+        .about-container { max-width: 900px; margin: 0 auto; text-align: center; }
+        .about-text { margin: 1.2rem 0; color: var(--text-gray); line-height: 1.8; font-size: clamp(0.95rem, 2vw, 1.05rem); }
+
+        .about-stats { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 2rem; 
+            margin-top: 2.5rem; 
+            padding-top: 2.5rem; 
+            border-top: 1px solid var(--border-color); 
+        }
+
+        .stat-item h4 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--primary); font-weight: 700; margin-bottom: 0.2rem; }
+        .stat-item p { color: var(--text-gray); font-size: 0.9rem; font-weight: 500; }
+
+        /* ================= Contact Section ================= */
+        .contact { background: var(--bg-light); padding: 5rem 0; }
+
+        .contact-flex { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 2.5rem; 
+            justify-content: space-between; 
+            align-items: stretch; 
+        }
+
+        .contact-info { flex: 1; min-width: 300px; }
+        .contact-info h3 { font-size: 1.6rem; margin-bottom: 0.8rem; }
+        
+        .contact-detail-box { 
+            background: #fff; 
+            padding: 1.8rem; 
+            border-radius: 12px; 
+            margin-top: 1.8rem; 
+            border: 1px solid var(--border-color); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02); 
+        }
+
+        .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; font-size: 0.95rem; word-break: break-word; }
+        .contact-item:last-child { margin-bottom: 0; }
+        .contact-item i { width: 38px; height: 38px; background: var(--bg-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+        
+        .contact-form { flex: 1; min-width: 300px; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
+        .contact-form h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.95rem; transition: 0.3s; outline: none; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15); }
+        .btn-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 0.95rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.95rem; }
+        .btn-submit:hover { background: var(--primary-dark); }
+
+        /* ================= Footer ================= */
+        footer { background: #1a252f; color: #fff; padding: 4rem 0 2rem 0; }
+        .footer-container { display: flex; flex-direction: column; gap: 2.5rem; }
+        
+        .footer-top { 
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2.5rem; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            padding-bottom: 2.5rem; 
         }
 
-        .card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+        .footer-brand img {
+            height: 42px;
+            max-width: 100%;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 0.6rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 6px 14px;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
-        .card:hover {
-            transform: translateY(-8px);
+        .footer-slogan {
+            color: var(--accent);
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            display: block;
         }
 
-        .card h3 {
-            font-size: 1.3rem;
-            color: #1e3a2b;
-            margin-bottom: 0.8rem;
+        .footer-socials { display: flex; gap: 0.8rem; }
+        .footer-socials a { width: 38px; height: 38px; background: rgba(255,255,255,0.08); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; font-size: 1rem; }
+        .footer-socials a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        .footer-links-group h4 { font-size: 1.05rem; margin-bottom: 1rem; color: #fff; letter-spacing: 0.5px; }
+        .footer-links-group ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+        .footer-links-group a { color: #aaa; text-decoration: none; transition: 0.3s; font-size: 0.9rem; cursor: pointer; }
+        .footer-links-group a:hover { color: #fff; padding-left: 4px; }
+
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: #777; font-size: 0.85rem; }
+
+        /* Floating WhatsApp */
+        .float-whatsapp {
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            background: #25D366; 
+            color: #fff; 
+            width: 55px; 
+            height: 55px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 28px; 
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); 
+            z-index: 999; 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            animation: whatsapp-pulse 2s infinite;
         }
 
-        .card p {
-            color: #64748b;
-            font-size: 0.95rem;
+        .float-whatsapp:hover { transform: scale(1.1) rotate(8deg); background: #20ba5a; }
+
+        @keyframes whatsapp-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* 📱 响应式适配（针对平板竖屏与手机屏优化） */
+        @media (max-width: 992px) {
+            .custom-grid { grid-template-columns: 1fr; gap: 2rem; }
+            
+            /* 平板竖屏：Logo 独占整行，链接组分为 2 列 */
+            .footer-top { 
+                grid-template-columns: 1fr 1fr; 
+                gap: 2rem;
+            }
+            .footer-brand { 
+                grid-column: 1 / -1; 
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+                gap: 1.2rem;
+                display: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .btn-header { display: none; }
+
+            .hero { padding: 3rem 1rem; }
+            /* 手机端按钮调整为全宽堆叠，大拇指操控更轻松 */
+            .btn-group { flex-direction: column; width: 100%; gap: 0.8rem; }
+            .btn-primary, .btn-whatsapp { width: 100%; }
+
+            .about-stats { grid-template-columns: 1fr; gap: 1.5rem; }
+            
+            .footer-top { 
+                grid-template-columns: 1fr 1fr; 
+                gap: 1.8rem; 
+            }
+            .footer-brand { 
+                grid-column: 1 / -1; 
+            }
+
+            .footer-brand img {
+                height: 38px;
+                padding: 5px 12px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .float-whatsapp {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* 系统开启减少动态效果时的兼容处理 */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-bg {
+                transform: scale(1.05);
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="logo">WESLECO<span>.</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#sustainability">Sustainability</a></li>
-            <li><a href="#about">About Us</a></li>
-        </ul>
-        <a href="#contact" class="cta-btn">Get In Touch</a>
-    </nav>
+    <!-- Header 导航栏 -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo" data-target="">
+                <img src="Wesleco-LOGO.png" alt="Wesleco Logo">
+            </a>
 
-    <!-- Hero 动效展示区 -->
+            <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="/home" data-target="home">Home</a></li>
+                <li><a href="/products" data-target="products">Products</a></li>
+                <li><a href="/about" data-target="about">About Us</a></li>
+                <li><a href="/contact" data-target="contact">Contact</a></li>
+            </ul>
+
+            <a href="/contact" data-target="contact" class="btn-header">Inquire Now</a>
+        </div>
+    </header>
+
+    <!-- Hero 区块 -->
     <section class="hero" id="home">
-        <!-- 动态背景 -->
+        <!-- 动态背景图层 -->
         <div class="hero-bg" id="heroBg"></div>
-        <div class="hero-overlay"></div>
 
-        <!-- 内容区域 -->
         <div class="hero-content">
-            <h1 class="hero-title">Premium Bamboo & Wooden Packaging Solutions</h1>
-            <p class="hero-subtitle">100% Biodegradable Cutlery, Ice Cream Sticks & Coffee Stirrers for Global Foodservice Distributors.</p>
+            <span class="hero-badge">Global B2B Direct Manufacturer</span>
+            <h1>100% Eco-Friendly Bamboo & Wooden Products</h1>
+            <p>Direct manufacturer for premium bamboo & wooden tableware, coffee stirrers, custom-shaped rods, and sustainable kitchenware. FSC, FDA & LFGB certified for heavy-volume partners.</p>
             <div class="btn-group">
-                <a href="#products" class="primary-btn">Explore Products</a>
-                <a href="#contact" class="secondary-btn">Request Catalog</a>
-            </div>
-        </div>
-
-        <div class="drag-hint">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13A.5.5 0 0 1 8 1zm7 7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1 0-1h13a.5.5 0 0 1 .5.5z"/>
-            </svg>
-            可按住鼠标或按压屏幕随意拖移背景
-        </div>
-    </section>
-
-    <!-- 产品板块示例 -->
-    <section class="section" id="products">
-        <h2 class="section-title">Our Sustainable Categories</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <h3>Wooden Cutlery</h3>
-                <p>Smooth, splinter-free Birchwood knives, forks, and spoons. 100% compostable alternative to single-use plastics.</p>
-            </div>
-            <div class="card">
-                <h3>Ice Cream Sticks</h3>
-                <p>High-precision grade wooden sticks designed for automated ice cream production and artisan popsicle makers.</p>
-            </div>
-            <div class="card">
-                <h3>Coffee Stirrers</h3>
-                <p>Eco-conscious bamboo and birch stirrers in various lengths, rounded edges, ideal for cafes and hospitality chains.</p>
+                <a href="/contact" data-target="contact" class="btn-primary">Get Free Samples</a>
+                <a href="https://wa.me/8615621351993" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
             </div>
         </div>
     </section>
 
-    <!-- 交互动画核心脚本 -->
+    <!-- Core Competencies -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <span>Why Global Distributors Choose Us</span>
+                <h2>Excellence in Every Wooden & Bamboo Detail</h2>
+            </div>
+            <div class="grid-4">
+                <div class="feature-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Robust Material Reserves</h3>
+                    <p>Abundant raw material supplies ensuring stable, year-round pricing and uninterrupted large-scale production schedules.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Splinter-Free Precision</h3>
+                    <p>Advanced multi-stage polishing technology delivers ultra-smooth textures, absolute food safety, and zero splinter risks.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Global Certifications</h3>
+                    <p>Fully compliant with international standards, holding FDA, LFGB, and FSC certifications for seamless import clearance.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Flexible Customization</h3>
+                    <p>Tailored sizing, specialized custom-shaped rods, and double-ended branding to match your exact brand identity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization Highlight Section -->
+    <section class="customization">
+        <div class="container">
+            <div class="custom-grid">
+                <div class="custom-content">
+                    <span style="color:var(--primary); font-weight:600; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.4rem; font-size:0.85rem;">OEM / ODM Capability</span>
+                    <h3>Advanced Customization for Global Brands</h3>
+                    <p>We empower food service wholesalers and major retail brands with bespoke manufacturing options that elevate your market presence.</p>
+                    <ul class="custom-list">
+                        <li><i class="fas fa-check-circle"></i> Custom-shaped rods and specialty geometric designs</li>
+                        <li><i class="fas fa-check-circle"></i> Precision double-ended hot-stamped branding / logo printing</li>
+                        <li><i class="fas fa-check-circle"></i> Eco-friendly retail paper box & bulk carton packaging</li>
+                    </ul>
+                    <a href="/contact" data-target="contact" class="btn-primary">Discuss Your Custom Project</a>
+                </div>
+                <div class="custom-img-box">
+                    <img src="w-cutlery.jpg" alt="Wesleco Custom Wooden Tableware">
+                    <p style="margin-top: 0.8rem; color: var(--text-gray); font-size: 0.85rem;">Precision crafted and branded for international bulk orders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <span>Our Product Line</span>
+                <h2>Eco-Friendly Tableware & Supplies</h2>
+            </div>
+            <div class="grid-3">
+                <div class="product-card">
+                    <img src="b-steamer.jpg" alt="Bamboo Steamer Sets">
+                    <div class="product-info">
+                        <h3>Bamboo Steamer Sets</h3>
+                        <p>Traditional woven bamboo steamers built for authentic Asian culinary prep, professional kitchens, and retail distribution.</p>
+                        <a href="/contact" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="w-cutlery.jpg" alt="Premium Wooden Cutlery">
+                    <div class="product-info">
+                        <h3>Premium Wooden Cutlery</h3>
+                        <p>Sleek, heat-resistant knives, forks, and spoons made from premium birchwood. 100% biodegradable and sturdy.</p>
+                        <a href="/contact" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="m-whisk.jpg" alt="Bamboo Matcha Whisk">
+                    <div class="product-info">
+                        <h3>Bamboo Matcha Whisk (Chasen)</h3>
+                        <p>Handcrafted natural bamboo whisks featuring fine tines designed for specialty cafes and international tea wholesalers.</p>
+                        <a href="/contact" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-container">
+                <span style="color:var(--primary); font-weight:600; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.4rem; font-size:0.85rem;">Corporate Profile</span>
+                <h2 style="font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin-bottom: 1.2rem;">About WESLECO</h2>
+                <p class="about-text">
+                    Founded by seasoned supply chain professionals with hands-on manufacturing and sourcing expertise since 2017, Taian Wesleco Trading Center (WESLECO) stands as your reliable direct partner in eco-friendly bamboo and wooden tableware.
+                </p>
+                <p class="about-text">
+                    We specialize in high-demand disposable items—including high-volume ice cream sticks, custom wooden cutlery, and coffee stirrers—engineered specifically for global food service distributors and large-scale wholesalers.
+                </p>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h4>2017</h4>
+                        <p>Established Year</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>100%</h4>
+                        <p>Biodegradable & Eco-Friendly</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Global</h4>
+                        <p>Wholesale & Distribution</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span>Direct Connection</span>
+                <h2>Contact Our Sourcing Team</h2>
+            </div>
+            <div class="contact-flex">
+                <div class="contact-info">
+                    <h3>Let's Discuss Your Supply Needs</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.2rem; font-size: 0.95rem;">Have questions about factory pricing, custom packaging, or free sample arrangements? Reach out to Wesley directly.</p>
+                    
+                    <div class="contact-detail-box">
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div><strong>WhatsApp:</strong><br><a href="https://wa.me/8615621351993" target="_blank" style="color:var(--primary); text-decoration:none;">+86 15621351993</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div><strong>Direct Email:</strong><br><a href="mailto:wesley@wesleco.com" style="color:var(--primary); text-decoration:none;">wesley@wesleco.com</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <div><strong>Official Web:</strong><br><span style="color:var(--text-dark);">wesleco.com</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Us an Inquiry</h3>
+                    <div style="background: var(--bg-light); border-left: 4px solid var(--primary); padding: 10px 12px; margin-bottom: 15px; border-radius: 4px; font-size: 0.85rem; color: #555;">
+                        <i class="fas fa-info-circle" style="color: var(--primary); margin-right: 5px;"></i>
+                        <strong>Free Sample Policy:</strong> We offer <strong>FREE physical samples</strong>. Buyers cover express shipping or provide a courier account (DHL/FedEx/UPS).
+                    </div>
+                    
+                    <form action="https://formsubmit.co/wesley@wesleco.com" method="POST">
+                        <div class="form-group"><input type="text" name="Name" placeholder="Your Full Name" required></div>
+                        <div class="form-group"><input type="email" name="Email" placeholder="Your Business Email (e.g. name@company.com)" required></div>
+                        <div class="form-group"><textarea name="Message" rows="4" placeholder="Product Requirements / Order Quantity / Customization Details" required></textarea></div>
+                        <button type="submit" class="btn-submit">Submit Inquiry Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="Wesleco-LOGO.png" alt="Wesleco Logo">
+                    <span class="footer-slogan">Integrity First, Quality Paramount.</span>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/profile.php?id=61578540002153" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/wesley-n-36a8493a1/zh" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-group">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/home" data-target="home">Home</a></li>
+                        <li><a href="/products" data-target="products">Products</a></li>
+                        <li><a href="/about" data-target="about">About Us</a></li>
+                        <li><a href="/contact" data-target="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-group">
+                    <h4>Product Categories</h4>
+                    <ul>
+                        <li><a href="/products" data-target="products">Wooden Cutlery</a></li>
+                        <li><a href="/products" data-target="products">Bamboo Steamers</a></li>
+                        <li><a href="/products" data-target="products">Matcha Whisks</a></li>
+                        <li><a href="/products" data-target="products">Custom Shaped Rods</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Taian Wesleco Trading Center. All Rights Reserved. | wesleco.com</p>
+                <p>Direct B2B Manufacturer & Exporter</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/8615621351993" class="float-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript 核心动效 + 响应式菜单 + 单页伪静态路由 -->
     <script>
-        // ================= 参数配置区域 =================
-        const CONFIG = {
-            targetSpeed: 1.6,       // 恢复后的常态移动速度 (值越大越快)
-            pauseDuration: 4000,    // 松手后拖拽静止等待时间 (毫秒, 当前为4秒)
-            acceleration: 0.012,    // 恢复运行时的缓动启动加速度
-            angle: Math.PI / 6      // 自动漫游移动的方向角度 (Rad)
+        // ================= 1. HERO 背景交互与漫游引擎 =================
+        const HERO_CONFIG = {
+            targetSpeed: 1.5,       // 恢复平移后的漫游速度（比原来更快）
+            pauseDuration: 4000,    // 释放拖拽后的静止等待时间 (4秒)
+            acceleration: 0.012,    // 缓动加速率
+            angle: Math.PI / 6      // 漫游方向角度
         };
 
-        // ================= 状态变量 =================
         const heroSection = document.getElementById('home');
         const heroBg = document.getElementById('heroBg');
 
@@ -325,87 +826,160 @@
         let startX = 0;
         let startY = 0;
         let lastInteractionTime = Date.now();
-        let currentSpeed = CONFIG.targetSpeed; // 初始按正常速度移动
+        let currentSpeed = HERO_CONFIG.targetSpeed;
 
-        // 计算平移动力学方向分量
-        const dirX = -Math.cos(CONFIG.angle);
-        const dirY = -Math.sin(CONFIG.angle);
+        const dirX = -Math.cos(HERO_CONFIG.angle);
+        const dirY = -Math.sin(HERO_CONFIG.angle);
 
-        // ================= 指针/鼠标事件监听 =================
+        // 指针拖拽绑定 (完美兼容鼠标和触摸屏)
         heroSection.addEventListener('pointerdown', (e) => {
-            // 只响应左键或触控
-            if (e.button && e.button !== 0) return;
+            // 如果用户点击的是按钮或链接，不触发背景拖动
+            if (e.target.closest('a') || e.target.closest('button')) return;
+            if (e.button && e.button !== 0) return; // 仅限左键
             
             isDragging = true;
             startX = e.clientX - posX;
             startY = e.clientY - posY;
             
             lastInteractionTime = Date.now();
-            currentSpeed = 0; // 交互时刻立即停止自动平移
+            currentSpeed = 0; // 点击时立即停止自动漫游
         });
 
         window.addEventListener('pointermove', (e) => {
             if (!isDragging) return;
             
-            // 自由跟随指针移动
+            // 自由跟手移动
             posX = e.clientX - startX;
             posY = e.clientY - startY;
-            
-            // 实时更新交互时间
             lastInteractionTime = Date.now();
         });
 
-        const handlePointerEnd = () => {
+        const handlePointerRelease = () => {
             if (!isDragging) return;
             isDragging = false;
-            // 记录松开手的时间点
-            lastInteractionTime = Date.now();
+            lastInteractionTime = Date.now(); // 记录松手时刻
         };
 
-        window.addEventListener('pointerup', handlePointerEnd);
-        window.addEventListener('pointercancel', handlePointerEnd);
+        window.addEventListener('pointerup', handlePointerRelease);
+        window.addEventListener('pointercancel', handlePointerRelease);
 
-        // ================= 渲染与状态机循环 (RAF) =================
-        function updateLoop() {
+        // 高帧率渲染循环 (requestAnimationFrame)
+        function updateHeroBg() {
             const now = Date.now();
             const timeSinceRelease = now - lastInteractionTime;
 
             if (isDragging) {
-                // 拖拽中：完全由指针接管位置，速度为 0
+                // 拖拽中：位置完全由指针控制
                 currentSpeed = 0;
-            } else if (timeSinceRelease < CONFIG.pauseDuration) {
-                // 松手后的指定静止期 (例如3~5秒)：保持速度为 0，停留在拖拽后的任意位置
+            } else if (timeSinceRelease < HERO_CONFIG.pauseDuration) {
+                // 松手后 4 秒内：保持绝对静止
                 currentSpeed = 0;
             } else {
-                // 超过静止期：加速度插值缓动启动，直到达到指定的平移速度
-                if (currentSpeed < CONFIG.targetSpeed) {
-                    currentSpeed += CONFIG.acceleration;
-                    if (currentSpeed > CONFIG.targetSpeed) {
-                        currentSpeed = CONFIG.targetSpeed;
+                // 静止期结束：从 0 缓慢加速恢复到目标速度
+                if (currentSpeed < HERO_CONFIG.targetSpeed) {
+                    currentSpeed += HERO_CONFIG.acceleration;
+                    if (currentSpeed > HERO_CONFIG.targetSpeed) {
+                        currentSpeed = HERO_CONFIG.targetSpeed;
                     }
                 }
-
-                // 沿着设定方向持续平滑流动
+                
+                // 沿着既定方向自动漫游
                 posX += dirX * currentSpeed;
                 posY += dirY * currentSpeed;
             }
 
-            // 限制平移范围，避免过度拖拽露出空白边缘
-            const limitX = window.innerWidth * 0.15;
-            const limitY = window.innerHeight * 0.15;
-            
-            // 使用软限制（允许自由拖动，但在极致边缘处做平滑保护）
-            if (Math.abs(posX) > limitX * 2) posX = Math.sign(posX) * limitX * 2;
-            if (Math.abs(posY) > limitY * 2) posY = Math.sign(posY) * limitY * 2;
+            // 范围限制保护，防止过度拖拽导致图片边缘露白
+            const limitX = window.innerWidth * 0.12;
+            const limitY = window.innerHeight * 0.12;
+            posX = Math.max(Math.min(posX, limitX), -limitX);
+            posY = Math.max(Math.min(posY, limitY), -limitY);
 
             // GPU 硬件加速渲染
-            heroBg.style.transform = `translate3d(${posX}px, ${posY}px, 0) scale(1.2)`;
+            heroBg.style.transform = `translate3d(${posX}px, ${posY}px, 0) scale(1.15)`;
 
-            requestAnimationFrame(updateLoop);
+            requestAnimationFrame(updateHeroBg);
         }
 
-        // 启动高帧率动画渲染
-        requestAnimationFrame(updateLoop);
+        // 启动动画渲染引擎
+        requestAnimationFrame(updateHeroBg);
+
+
+        // ================= 2. 路由与菜单控制 =================
+        const routeMap = {
+            '': 'home',
+            'home': 'home',
+            'products': 'products',
+            'about': 'about',
+            'about-us': 'about',
+            'contact': 'contact'
+        };
+
+        function navigateTo(path, push = true) {
+            let cleanPath = path.replace(/^\//, '').toLowerCase().trim();
+            cleanPath = decodeURIComponent(cleanPath).replace(/\s+/g, '-');
+            
+            const targetId = routeMap[cleanPath] || 'home';
+            
+            if (targetId === 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            if (push) {
+                const displayPath = cleanPath === '' ? '/' : `/${cleanPath}`;
+                history.pushState({ route: cleanPath }, '', displayPath);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+
+            // 移动端菜单切换控制
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // 绑定链接点击事件
+            document.querySelectorAll('[data-target]').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const route = this.getAttribute('data-target');
+                    navigateTo(route);
+
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+
+            // 监听前进/后退
+            window.addEventListener('popstate', () => {
+                const currentPath = window.location.pathname;
+                navigateTo(currentPath, false);
+            });
+
+            // 初始化位置
+            const initialPath = window.location.pathname;
+            if (initialPath !== '/' && initialPath !== '') {
+                navigateTo(initialPath, false);
+            }
+        });
     </script>
 </body>
 </html>
