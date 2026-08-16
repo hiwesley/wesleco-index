@@ -13,19 +13,14 @@ WESLECO | Sustainable Wooden Cutlery & Eco Tableware Manufacturer
 </title>
 
 
-<meta name="description" content="
-WESLECO supplies sustainable wooden cutlery, bamboo tableware,
-ice cream sticks and eco-friendly disposable products for global foodservice brands.
-">
+<meta name="description" content="WESLECO supplies premium wooden cutlery, bamboo tableware and eco-friendly disposable products for global foodservice distributors, restaurants and brands.">
 
 
-<meta name="keywords" content="
-WESLECO, wooden cutlery manufacturer, bamboo tableware supplier,
-eco friendly utensils, wooden fork knife spoon, OEM tableware
-">
+<meta name="keywords" content="wooden cutlery, bamboo tableware, eco friendly utensils, disposable wooden fork knife spoon, WESLECO">
 
 
 <meta name="author" content="WESLECO">
+
 
 <meta name="robots" content="index,follow">
 
@@ -36,9 +31,7 @@ eco friendly utensils, wooden fork knife spoon, OEM tableware
 
 <meta property="og:title" content="WESLECO Sustainable Wooden Cutlery">
 
-<meta property="og:description" content="
-Eco-friendly wooden tableware manufacturer for global partners.
-">
+<meta property="og:description" content="Eco-friendly wooden tableware manufacturer for global partners.">
 
 <meta property="og:type" content="website">
 
@@ -52,16 +45,11 @@ Eco-friendly wooden tableware manufacturer for global partners.
 *{
 
 margin:0;
-
 padding:0;
-
 box-sizing:border-box;
-
-font-family:
-Arial,Helvetica,sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 
 }
-
 
 
 html{
@@ -71,19 +59,17 @@ scroll-behavior:smooth;
 }
 
 
-
 body{
 
 color:#333;
 
-background:white;
+line-height:1.6;
 
-line-height:1.7;
+background:#fff;
 
 overflow-x:hidden;
 
 }
-
 
 
 img{
@@ -102,23 +88,11 @@ display:block;
 
 header{
 
+background:#173b25;
 
-position:fixed;
+color:white;
 
-top:0;
-
-left:0;
-
-width:100%;
-
-z-index:9999;
-
-
-background:rgba(23,59,37,.95);
-
-
-padding:18px 8%;
-
+padding:20px 8%;
 
 display:flex;
 
@@ -126,6 +100,13 @@ justify-content:space-between;
 
 align-items:center;
 
+position:fixed;
+
+top:0;
+
+width:100%;
+
+z-index:9999;
 
 }
 
@@ -133,39 +114,11 @@ align-items:center;
 
 .logo{
 
+font-size:32px;
 
-font-size:34px;
+font-weight:bold;
 
-font-weight:900;
-
-letter-spacing:3px;
-
-color:white;
-
-
-}
-
-
-
-.menu-toggle{
-
-
-display:none;
-
-font-size:30px;
-
-color:white;
-
-cursor:pointer;
-
-}
-
-
-
-nav{
-
-
-display:flex;
+letter-spacing:2px;
 
 }
 
@@ -173,30 +126,27 @@ display:flex;
 
 nav a{
 
-
 color:white;
+
+margin-left:25px;
 
 text-decoration:none;
 
-
-margin-left:30px;
-
-
-transition:.3s;
-
+font-size:16px;
 
 }
 
 
 
-nav a:hover{
+.menu-btn{
 
+display:none;
 
-color:#e5a83d;
+font-size:30px;
 
+cursor:pointer;
 
 }
-
 
 
 
@@ -210,27 +160,19 @@ color:#e5a83d;
 
 height:90vh;
 
-
 min-height:650px;
-
 
 position:relative;
 
-
-overflow:hidden;
-
-
 display:flex;
-
 
 align-items:center;
 
-
 justify-content:center;
 
+text-align:center;
 
-padding:0 8%;
-
+overflow:hidden;
 
 color:white;
 
@@ -244,17 +186,16 @@ color:white;
 
 position:absolute;
 
+top:0;
 
-inset:0;
+left:0;
+
+width:100%;
+
+height:100%;
 
 
-/*
-这里保持你原始代码的大背景图片地址
-不要改成不存在的 images/banner.jpg
-*/
-
-
-background-image:
+background:
 
 
 linear-gradient(
@@ -263,55 +204,35 @@ rgba(0,0,0,.45)
 ),
 
 
-url("YOUR_ORIGINAL_BACKGROUND_IMAGE_URL");
-
+url("https://images.unsplash.com/photo-1547592180-85f173990554");
 
 
 background-size:cover;
 
 
-background-position:center center;
+background-position:center;
 
 
-animation:bgMove 25s ease-in-out infinite;
-
-
-
-pointer-events:none;
+animation:moveBg 30s infinite alternate ease-in-out;
 
 
 }
 
 
 
-@keyframes bgMove{
+@keyframes moveBg{
 
 
-0%{
+from{
 
-
-background-position:center center;
-
+background-position:center;
 
 }
 
 
-
-50%{
-
+to{
 
 background-position:55% center;
-
-
-}
-
-
-
-100%{
-
-
-background-position:center center;
-
 
 }
 
@@ -326,18 +247,11 @@ background-position:center center;
 
 position:relative;
 
-
 z-index:2;
 
+padding:0 20px;
 
-max-width:850px;
-
-
-margin:auto;
-
-
-text-align:center;
-
+max-width:900px;
 
 }
 
@@ -346,20 +260,11 @@ text-align:center;
 .hero h1{
 
 
-font-size:56px;
+font-size:55px;
 
-
-line-height:1.25;
-
-
-margin-left:auto;
-
-
-margin-right:auto;
-
+line-height:1.3;
 
 margin-bottom:25px;
-
 
 }
 
@@ -370,18 +275,11 @@ margin-bottom:25px;
 
 font-size:22px;
 
+margin:auto;
 
 max-width:750px;
 
-
-margin-left:auto;
-
-
-margin-right:auto;
-
-
-margin-bottom:35px;
-
+margin-bottom:30px;
 
 }
 
@@ -392,44 +290,25 @@ margin-bottom:35px;
 
 display:inline-block;
 
+padding:14px 35px;
 
-padding:15px 40px;
-
-
-background:#d99a35;
-
+background:#e5a83d;
 
 color:white;
 
-
 text-decoration:none;
 
-
 border-radius:50px;
-
 
 font-weight:bold;
 
 
-transition:.3s;
-
-
-}
-
-
-
-.btn:hover{
-
-
-transform:translateY(-4px);
-
-
 }
 
 
 
 
-/* SECTION */
+/* COMMON */
 
 
 section{
@@ -441,63 +320,16 @@ padding:80px 8%;
 }
 
 
-
 .title{
 
 
 text-align:center;
 
-
-font-size:40px;
-
+font-size:38px;
 
 color:#173b25;
 
-
-margin-bottom:35px;
-
-
-}
-
-
-
-.subtitle{
-
-
-text-align:center;
-
-
-max-width:850px;
-
-
-margin:0 auto 45px;
-
-
-color:#666;
-
-
-font-size:18px;
-
-
-}
-
-
-
-
-
-/* ABOUT */
-
-
-.about{
-
-
-display:grid;
-
-
-grid-template-columns:repeat(2,1fr);
-
-
-gap:35px;
+margin-bottom:40px;
 
 
 }
@@ -507,29 +339,25 @@ gap:35px;
 .card-box{
 
 
-background:#f7f7f2;
+background:#f7f7f7;
 
+padding:30px;
 
-padding:35px;
-
-
-border-radius:15px;
-
-
-border-left:5px solid #173b25;
-
-
-transition:.3s;
+border-radius:10px;
 
 
 }
 
 
 
-.card-box:hover{
+.about{
 
 
-transform:translateY(-6px);
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:40px;
 
 
 }
@@ -541,12 +369,10 @@ transform:translateY(-6px);
 
 color:#173b25;
 
-
 margin-bottom:15px;
 
-
 }
-<style>
+
 
 
 /* PRODUCTS */
@@ -557,33 +383,15 @@ margin-bottom:15px;
 
 display:flex;
 
-
 gap:30px;
-
 
 overflow-x:auto;
 
-
 scroll-behavior:smooth;
-
 
 scroll-snap-type:x mandatory;
 
-
-padding-bottom:20px;
-
-
-cursor:grab;
-
-
-}
-
-
-
-.products-slider:active{
-
-
-cursor:grabbing;
+padding-bottom:15px;
 
 
 }
@@ -599,11 +407,11 @@ height:8px;
 }
 
 
+
 .products-slider::-webkit-scrollbar-thumb{
 
 
 background:#173b25;
-
 
 border-radius:20px;
 
@@ -615,38 +423,17 @@ border-radius:20px;
 .product{
 
 
-min-width:280px;
-
-
-background:#fff;
-
+min-width:260px;
 
 border:1px solid #ddd;
 
-
-border-radius:15px;
-
+border-radius:12px;
 
 overflow:hidden;
 
-
 scroll-snap-align:start;
 
-
-transition:.3s;
-
-
-}
-
-
-
-.product:hover{
-
-
-transform:translateY(-8px);
-
-
-box-shadow:0 15px 30px rgba(0,0,0,.12);
+background:white;
 
 
 }
@@ -656,13 +443,13 @@ box-shadow:0 15px 30px rgba(0,0,0,.12);
 .product-image{
 
 
-height:220px;
+width:100%;
 
-
-overflow:hidden;
-
+aspect-ratio:1/1;
 
 background:#eee;
+
+overflow:hidden;
 
 
 }
@@ -674,9 +461,7 @@ background:#eee;
 
 width:100%;
 
-
 height:100%;
-
 
 object-fit:cover;
 
@@ -688,39 +473,42 @@ object-fit:cover;
 .product-content{
 
 
-padding:25px;
+padding:20px;
 
 
 }
 
 
 
-.product-content h3{
+.product h3{
 
 
 color:#173b25;
 
+margin-bottom:10px;
 
-font-size:22px;
 
+}
+.product:hover{
 
-margin-bottom:12px;
+transform:translateY(-8px);
 
+transition:.3s;
+
+box-shadow:0 10px 25px rgba(0,0,0,.12);
 
 }
 
 
 
 
-
-/* WHY */
+/* WHY CHOOSE */
 
 
 .features{
 
 
 background:#173b25;
-
 
 color:white;
 
@@ -744,15 +532,11 @@ color:white;
 
 display:flex;
 
-
 gap:25px;
-
 
 overflow-x:auto;
 
-
 scroll-snap-type:x mandatory;
-
 
 }
 
@@ -773,7 +557,6 @@ height:8px;
 
 background:#e5a83d;
 
-
 border-radius:20px;
 
 
@@ -786,15 +569,11 @@ border-radius:20px;
 
 min-width:260px;
 
+padding:30px;
 
 background:rgba(255,255,255,.12);
 
-
-padding:30px;
-
-
-border-radius:15px;
-
+border-radius:12px;
 
 scroll-snap-align:start;
 
@@ -808,42 +587,7 @@ scroll-snap-align:start;
 
 font-size:22px;
 
-
-margin-bottom:10px;
-
-
-}
-
-
-
-
-
-/* OEM */
-
-
-.oem{
-
-
-background:#f5f5f5;
-
-
-}
-
-
-
-.oem-box{
-
-
-max-width:900px;
-
-
-margin:auto;
-
-
-text-align:center;
-
-
-font-size:18px;
+margin-bottom:12px;
 
 
 }
@@ -860,9 +604,7 @@ font-size:18px;
 
 display:grid;
 
-
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
 
 gap:30px;
 
@@ -874,13 +616,13 @@ gap:30px;
 .application-item{
 
 
-border-radius:15px;
-
+border-radius:12px;
 
 overflow:hidden;
 
+background:white;
 
-box-shadow:0 5px 20px rgba(0,0,0,.12);
+box-shadow:0 5px 20px rgba(0,0,0,.1);
 
 
 }
@@ -890,7 +632,9 @@ box-shadow:0 5px 20px rgba(0,0,0,.12);
 .application-image{
 
 
-height:190px;
+aspect-ratio:16/9;
+
+overflow:hidden;
 
 
 }
@@ -900,11 +644,9 @@ height:190px;
 .application-image img{
 
 
-height:100%;
-
-
 width:100%;
 
+height:100%;
 
 object-fit:cover;
 
@@ -951,11 +693,9 @@ background:#f4f4f4;
 form{
 
 
-max-width:650px;
-
+max-width:600px;
 
 margin:auto;
-
 
 text-align:center;
 
@@ -970,18 +710,13 @@ textarea{
 
 width:100%;
 
-
 padding:15px;
-
 
 margin:10px 0;
 
-
 border:1px solid #ccc;
 
-
 border-radius:8px;
-
 
 font-size:16px;
 
@@ -993,40 +728,20 @@ font-size:16px;
 button{
 
 
-padding:15px 45px;
-
+padding:15px 40px;
 
 background:#173b25;
 
-
 color:white;
 
-
-border:none;
-
+border:0;
 
 border-radius:50px;
-
 
 cursor:pointer;
 
 
-display:inline-block;
-
-
 }
-
-
-
-button:hover{
-
-
-background:#285c38;
-
-
-}
-
-
 
 
 
@@ -1035,9 +750,7 @@ background:#285c38;
 
 text-align:center;
 
-
 margin-top:35px;
-
 
 font-size:18px;
 
@@ -1051,15 +764,12 @@ font-size:18px;
 
 color:#173b25;
 
-
 font-weight:bold;
-
 
 text-decoration:none;
 
 
 }
-
 
 
 
@@ -1072,14 +782,11 @@ footer{
 
 background:#111;
 
-
 color:white;
-
 
 text-align:center;
 
-
-padding:45px 10px;
+padding:40px 10%;
 
 
 }
@@ -1091,36 +798,25 @@ padding:45px 10px;
 
 width:150px;
 
-
 height:80px;
-
-
-border-radius:20px;
-
-
-background:white;
-
 
 margin:auto;
 
+margin-bottom:15px;
 
-margin-bottom:20px;
+border-radius:20px;
 
+background:white;
 
 display:flex;
 
-
 align-items:center;
-
 
 justify-content:center;
 
-
 font-size:28px;
 
-
 font-weight:bold;
-
 
 color:#173b25;
 
@@ -1134,9 +830,10 @@ color:#173b25;
 
 font-size:18px;
 
+margin-bottom:15px;
+
 
 }
-
 
 
 
@@ -1149,41 +846,27 @@ font-size:18px;
 
 position:fixed;
 
-
 right:25px;
-
 
 bottom:25px;
 
-
 width:65px;
-
 
 height:65px;
 
-
 background:#25D366;
-
 
 border-radius:50%;
 
-
 display:flex;
-
 
 align-items:center;
 
-
 justify-content:center;
-
 
 z-index:99999;
 
-
 box-shadow:0 5px 20px rgba(0,0,0,.3);
-
-
-animation:pulse 2s infinite;
 
 
 }
@@ -1195,46 +878,10 @@ animation:pulse 2s infinite;
 
 width:38px;
 
-
 height:38px;
 
 
 }
-
-
-
-@keyframes pulse{
-
-
-0%{
-
-
-transform:scale(1);
-
-
-}
-
-
-50%{
-
-
-transform:scale(1.12);
-
-
-}
-
-
-100%{
-
-
-transform:scale(1);
-
-
-}
-
-
-}
-
 
 
 
@@ -1255,7 +902,7 @@ padding:15px 5%;
 
 
 
-.menu-toggle{
+.menu-btn{
 
 
 display:block;
@@ -1270,26 +917,19 @@ nav{
 
 display:none;
 
-
 position:absolute;
-
 
 top:70px;
 
-
 left:0;
-
 
 width:100%;
 
-
 background:#173b25;
-
 
 flex-direction:column;
 
-
-padding:20px;
+padding:20px 0;
 
 
 }
@@ -1310,19 +950,6 @@ nav a{
 
 
 margin:12px auto;
-
-
-}
-
-
-
-.hero{
-
-
-height:90vh;
-
-
-padding:0 5%;
 
 
 }
@@ -1362,7 +989,7 @@ grid-template-columns:1fr;
 .product{
 
 
-min-width:85%;
+min-width:80%;
 
 
 }
@@ -1372,10 +999,31 @@ min-width:85%;
 .feature{
 
 
-min-width:85%;
+min-width:80%;
 
 
 }
+
+
+
+section{
+
+
+padding:70px 5%;
+
+
+}
+
+
+
+.title{
+
+
+font-size:32px;
+
+
+}
+
 
 
 }
@@ -1383,6 +1031,179 @@ min-width:85%;
 
 
 </style>
+
+
+</head>
+
+
+<body>
+
+
+
+<header>
+
+
+<div class="logo">
+
+WESLECO
+
+</div>
+
+
+<div class="menu-btn" onclick="openMenu()">
+
+☰
+
+</div>
+
+
+<nav id="menu">
+
+
+<a href="/about">
+
+About
+
+</a>
+
+
+<a href="/products">
+
+Products
+
+</a>
+
+
+<a href="/application">
+
+Application
+
+</a>
+
+
+<a href="/contact">
+
+Contact
+
+</a>
+
+
+</nav>
+
+
+</header>
+
+
+
+
+<section class="hero">
+
+
+<div class="hero-bg"></div>
+
+
+<div class="hero-content">
+
+
+<h1>
+
+Sustainable Wooden Cutlery For Global Foodservice
+
+</h1>
+
+
+<p>
+
+Premium birch wood and bamboo disposable tableware manufactured for restaurants,
+cafes, distributors and eco-friendly brands worldwide.
+
+</p>
+
+
+<a class="btn" href="/contact">
+
+Get Quote
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section id="about">
+
+
+<h2 class="title">
+
+About WESLECO
+
+</h2>
+
+
+
+<div class="about">
+
+
+
+<div class="card-box">
+
+
+<h2>
+
+Eco-Friendly Manufacturing
+
+</h2>
+
+
+<p>
+
+WESLECO specializes in sustainable wooden cutlery and disposable tableware.
+We help global businesses replace plastic products with natural,
+biodegradable solutions.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="card-box">
+
+
+<h2>
+
+Global Supply Partner
+
+</h2>
+
+
+<p>
+
+From customized packaging to bulk production,
+WESLECO provides reliable OEM solutions for wholesalers,
+restaurant suppliers and international brands.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
 
 
 
@@ -1394,13 +1215,6 @@ min-width:85%;
 Our Products
 
 </h2>
-
-
-<p class="subtitle">
-
-Premium sustainable wooden and bamboo products for global customers.
-
-</p>
 
 
 
@@ -1433,8 +1247,7 @@ Wooden Cutlery Set
 
 <p>
 
-Birch wood forks, knives and spoons with smooth finishing,
-food-grade quality and excellent durability.
+Birch wood forks, knives and spoons with smooth finishing.
 
 </p>
 
@@ -1443,7 +1256,6 @@ food-grade quality and excellent durability.
 
 
 </div>
-
 
 
 
@@ -1473,8 +1285,7 @@ Bamboo Tableware
 
 <p>
 
-Natural bamboo utensils and eco-friendly alternatives
-for restaurants and catering companies.
+Natural bamboo utensils for restaurants and catering.
 
 </p>
 
@@ -1483,7 +1294,6 @@ for restaurants and catering companies.
 
 
 </div>
-
 
 
 
@@ -1513,8 +1323,7 @@ Ice Cream Sticks
 
 <p>
 
-Premium wooden ice cream sticks supplied for
-ice cream manufacturers.
+Premium wooden sticks for ice cream manufacturers.
 
 </p>
 
@@ -1534,7 +1343,7 @@ ice cream manufacturers.
 
 
 <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4"
-alt="OEM Packaging">
+alt="OEM Products">
 
 
 </div>
@@ -1552,7 +1361,7 @@ Custom OEM Products
 
 <p>
 
-Private label packaging and customized solutions.
+Customized sizes, packaging and private labels.
 
 </p>
 
@@ -1564,7 +1373,6 @@ Private label packaging and customized solutions.
 
 
 </div>
-
 
 
 </section>
@@ -1582,7 +1390,6 @@ Why Choose WESLECO
 <div class="feature-slider">
 
 
-
 <div class="feature">
 
 <h3>
@@ -1598,6 +1405,7 @@ Selected renewable wood and bamboo resources.
 </p>
 
 </div>
+
 
 
 
@@ -1619,6 +1427,7 @@ Strict inspection from raw materials to shipment.
 
 
 
+
 <div class="feature">
 
 <h3>
@@ -1634,6 +1443,7 @@ Flexible customization for global customers.
 </p>
 
 </div>
+
 
 
 
@@ -1666,61 +1476,7 @@ Supporting distributors and brands globally.
 
 
 
-<section class="oem" id="oem">
-
-
-<h2 class="title">
-
-OEM & Custom Solutions
-
-</h2>
-
-
-<div class="oem-box">
-
-
-<p>
-
-WESLECO provides customized solutions for international customers,
-including product sizes, packaging design, private labels and bulk production.
-
-</p>
-
-
-<br>
-
-
-<p>
-
-✔ Customized Products
-
-<br>
-
-✔ Custom Packaging
-
-<br>
-
-✔ Private Label Service
-
-<br>
-
-✔ Export Support
-
-</p>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<section>
+<section id="application">
 
 
 <h2 class="title">
@@ -1732,7 +1488,6 @@ Applications
 
 
 <div class="application-grid">
-
 
 
 <div class="application-item">
@@ -1760,7 +1515,7 @@ Restaurants
 
 <p>
 
-Eco-friendly disposable tableware solutions for restaurants and foodservice businesses.
+Eco-friendly tableware solutions for foodservice businesses.
 
 </p>
 
@@ -1831,14 +1586,14 @@ alt="Distributor">
 
 <h3>
 
-Food Distributors
+Distributors
 
 </h3>
 
 
 <p>
 
-Bulk supply solutions for wholesalers and importers.
+Bulk supply solutions for international wholesalers.
 
 </p>
 
@@ -1847,140 +1602,6 @@ Bulk supply solutions for wholesalers and importers.
 
 
 </div>
-
-
-
-
-
-<div class="application-item">
-
-
-<div class="application-image">
-
-
-<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
-alt="Retail">
-
-
-</div>
-
-
-<div class="application-content">
-
-
-<h3>
-
-Retail Brands
-
-</h3>
-
-
-<p>
-
-Private label eco products for supermarkets and online stores.
-
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-
-<h2 class="title">
-
-Frequently Asked Questions
-
-</h2>
-
-
-
-<div class="faq">
-
-
-
-<div class="card-box">
-
-
-<h2>
-
-What materials do you use?
-
-</h2>
-
-
-<p>
-
-WESLECO mainly uses natural birch wood and bamboo materials.
-All products are designed for food contact applications.
-
-</p>
-
-
-</div>
-
-
-
-
-<div class="card-box">
-
-
-<h2>
-
-Can you provide OEM service?
-
-</h2>
-
-
-<p>
-
-Yes. We support customized sizes, packaging,
-private labels and bulk production.
-
-</p>
-
-
-</div>
-
-
-
-
-<div class="card-box">
-
-
-<h2>
-
-How can I get quotation?
-
-</h2>
-
-
-<p>
-
-Send us your requirements and quantity.
-Our team will provide professional support.
-
-</p>
-
-
-</div>
-
 
 
 </div>
@@ -2005,16 +1626,6 @@ Contact WESLECO
 
 
 
-<p class="subtitle">
-
-Looking for a reliable wooden tableware supplier?
-Contact us today.
-
-</p>
-
-
-
-
 <form action="https://formsubmit.co/wesley@wesleco.com"
 method="POST">
 
@@ -2029,12 +1640,10 @@ name="_captcha"
 value="false">
 
 
-
 <input type="text"
 name="name"
 placeholder="Your Name"
 required>
-
 
 
 <input type="email"
@@ -2043,24 +1652,14 @@ placeholder="Your Email"
 required>
 
 
-
 <input type="text"
 name="company"
 placeholder="Company Name">
 
 
-
-<input type="text"
-name="country"
-placeholder="Country">
-
-
-
 <textarea name="message"
 rows="6"
-placeholder="Product Inquiry">
-</textarea>
-
+placeholder="Product Inquiry"></textarea>
 
 
 <button type="submit">
@@ -2068,7 +1667,6 @@ placeholder="Product Inquiry">
 Send Inquiry
 
 </button>
-
 
 
 </form>
@@ -2093,6 +1691,7 @@ wesley@wesleco.com
 </p>
 
 
+
 <p>
 
 Website:
@@ -2104,6 +1703,7 @@ www.wesleco.com
 </a>
 
 </p>
+
 
 
 
@@ -2124,7 +1724,6 @@ WhatsApp:
 </div>
 
 
-
 </section>
 
 
@@ -2134,7 +1733,6 @@ WhatsApp:
 
 
 <footer>
-
 
 
 <div class="footer-logo">
@@ -2152,7 +1750,6 @@ Sustainable Wooden Cutlery & Eco-Friendly Tableware Supplier
 </p>
 
 
-
 <p>
 
 © 2026 WESLECO. All Rights Reserved.
@@ -2168,10 +1765,10 @@ Sustainable Wooden Cutlery & Eco-Friendly Tableware Supplier
 
 
 
+
 <a class="whatsapp"
 href="https://wa.me/8615621351993"
-target="_blank"
-aria-label="WhatsApp">
+target="_blank">
 
 
 <svg viewBox="0 0 448 512"
@@ -2183,35 +1780,7 @@ d="M380.9 97.1C339 55.1 283.2 32 223.9 32
 C100.5 32 0 132.5 0 256c0 45.2 11.8 89.4 34.2 128.2L0 480l99.2-33
 C136.7 467.8 179.6 480 223.9 480
 C347.3 480 447.8 379.5 447.8 256
-C447.8 196.7 424.7 140.9 380.9 97.1z
-M223.9 438c-39.5 0-78.2-10.6-111.9-30.7l-7.9-4.7-58.8 19.5
-19.8-57.3-5.1-8.3
-C40.3 321.8 28 289.7 28 256
-C28 147.9 115.8 60 223.9 60
-C276.1 60 325.2 80.4 362.2 117.5
-C399.3 154.5 419.8 203.7 419.8 256
-C419.8 364.1 332 452 223.9 452z
-M323.8 308.5
-C318 305.6 289.7 291.7 285.2 290
-C280.7 288.3 277.4 287.5 274.1 293.2
-C270.8 299 261.4 310.1 258.5 313.5
-C255.6 316.8 252.7 317.2 247.7 314.7
-C242.7 312.2 226.6 306.9 207.5 287.8
-C192.7 273 182.7 254.5 179.8 249.5
-C176.9 244.5 179.5 241.6 182 239.1
-C184.3 236.8 187.1 233.1 188.5 230.1
-C190 227.1 189.5 224.5 188.2 222
-C186.9 219.5 176.8 191.2 172.6 179.6
-C168.4 168 164.3 169.6 161.1 169.5
-C158 169.4 154.4 169.3 150.9 169.3
-C147.4 169.3 141.7 170.6 137.2 176.1
-C132.7 181.6 120 193.5 120 218.2
-C120 242.9 137.7 266.8 140.2 270.3
-C142.7 273.8 175 323.6 224.5 345
-C236.3 350.1 245.5 353.1 252.7 355.3
-C264.9 359.2 276 358.6 284.8 357.2
-C294.7 355.7 315.3 344.4 319.6 332
-C323.8 319.6 323.8 309.7 323.8 308.5z"/>
+C447.8 196.7 424.7 140.9 380.9 97.1z"/>
 
 
 </svg>
@@ -2222,14 +1791,17 @@ C323.8 319.6 323.8 309.7 323.8 308.5z"/>
 
 
 
+
+
+
 <script>
 
 
-function toggleMenu(){
+function openMenu(){
 
 
 document
-.getElementById("navMenu")
+.getElementById("menu")
 .classList.toggle("active");
 
 
@@ -2240,29 +1812,19 @@ document
 
 
 
-// Keep clean URLs
+// 去掉 # ，保持干净路径
 
 document.querySelectorAll("nav a")
-.forEach(link=>{
+.forEach(function(link){
 
 
-link.addEventListener("click",function(e){
+link.addEventListener("click",function(){
 
 
-let target=this.getAttribute("href");
+let url=this.getAttribute("href");
 
 
-if(target.startsWith("/")){
-
-
-history.pushState(
-null,
-"",
-target
-);
-
-
-}
+history.pushState(null,"",url);
 
 
 });
@@ -2275,16 +1837,12 @@ target
 
 
 
-// Product mouse drag
+// 产品和优势鼠标拖动
 
-
-const sliders=document.querySelectorAll(
+document.querySelectorAll(
 ".products-slider,.feature-slider"
-);
-
-
-
-sliders.forEach(slider=>{
+)
+.forEach(function(slider){
 
 
 let down=false;
@@ -2295,9 +1853,7 @@ let scrollLeft;
 
 
 
-slider.addEventListener(
-"mousedown",
-e=>{
+slider.addEventListener("mousedown",function(e){
 
 
 down=true;
@@ -2311,29 +1867,27 @@ scrollLeft=slider.scrollLeft;
 
 
 
-slider.addEventListener(
-"mouseleave",
-()=>{
+slider.addEventListener("mouseup",function(){
+
 
 down=false;
+
 
 });
 
 
 
-slider.addEventListener(
-"mouseup",
-()=>{
+slider.addEventListener("mouseleave",function(){
+
 
 down=false;
+
 
 });
 
 
 
-slider.addEventListener(
-"mousemove",
-e=>{
+slider.addEventListener("mousemove",function(e){
 
 
 if(!down)return;
@@ -2345,63 +1899,11 @@ e.preventDefault();
 let x=e.pageX-slider.offsetLeft;
 
 
-let walk=(x-startX)*1.5;
-
-
-slider.scrollLeft=scrollLeft-walk;
-
-
-});
+slider.scrollLeft=
+scrollLeft-(x-startX);
 
 
 });
-
-
-
-
-
-// touch vertical scroll protection
-
-let hero=document.querySelector(".hero-bg");
-
-
-let startX=0;
-
-let startY=0;
-
-
-hero.addEventListener(
-"touchstart",
-e=>{
-
-
-startX=e.touches[0].clientX;
-
-startY=e.touches[0].clientY;
-
-
-});
-
-
-
-hero.addEventListener(
-"touchmove",
-e=>{
-
-
-let x=e.touches[0].clientX-startX;
-
-let y=e.touches[0].clientY-startY;
-
-
-if(Math.abs(x)>Math.abs(y)){
-
-
-hero.style.backgroundPosition=
-(50+x/20)+"% center";
-
-
-}
 
 
 });
@@ -2412,6 +1914,7 @@ hero.style.backgroundPosition=
 
 
 
+
 </body>
 
-</html> 
+</html>
