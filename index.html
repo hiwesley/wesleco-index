@@ -1,1876 +1,242 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<title>WESLECO | Sustainable Wooden Cutlery & Eco Tableware Manufacturer</title>
-
-
-<meta name="description" content="WESLECO supplies premium wooden cutlery, bamboo tableware and eco-friendly disposable products for global foodservice distributors, restaurants and brands.">
-
-
-<meta name="keywords" content="wooden cutlery, bamboo tableware, eco friendly utensils, disposable wooden fork knife spoon, WESLECO">
-
-
-<meta name="author" content="WESLECO">
-
-
-<meta property="og:title" content="WESLECO Sustainable Wooden Cutlery">
-
-<meta property="og:description" content="Eco-friendly wooden tableware manufacturer for global partners.">
-
-<meta property="og:type" content="website">
-
-<meta property="og:url" content="https://www.wesleco.com/">
-
-
-
-<style>
-
-
-*{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-font-family:Arial,Helvetica,sans-serif;
-
-}
-
-
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
-
-
-body{
-
-color:#333;
-
-line-height:1.6;
-
-background:#fff;
-
-overflow-x:hidden;
-
-}
-
-
-
-img{
-
-max-width:100%;
-
-display:block;
-
-}
-
-
-
-
-/* HEADER */
-
-
-header{
-
-background:#173b25;
-
-color:white;
-
-padding:20px 8%;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-position:relative;
-
-z-index:1000;
-
-}
-
-
-
-.logo{
-
-cursor:pointer;
-
-}
-
-
-
-.logo img{
-
-height:55px;
-
-width:auto;
-
-border-radius:12px;
-
-}
-
-
-
-
-nav a{
-
-color:white;
-
-margin-left:25px;
-
-text-decoration:none;
-
-transition:.3s;
-
-}
-
-
-
-nav a:hover{
-
-color:#e5a83d;
-
-}
-
-
-
-
-.menu-btn{
-
-display:none;
-
-font-size:30px;
-
-cursor:pointer;
-
-}
-
-
-
-/* HERO */
-
-
-.hero{
-
-
-min-height:90vh;
-
-
-background:
-
-
-linear-gradient(
-rgba(0,0,0,.45),
-rgba(0,0,0,.45)
-),
-
-
-url("https://images.unsplash.com/photo-1547592180-85f173990554")
-
-center/cover;
-
-
-display:flex;
-
-
-align-items:center;
-
-
-justify-content:center;
-
-
-text-align:center;
-
-
-padding:0 8%;
-
-
-color:white;
-
-
-background-attachment:fixed;
-
-
-}
-
-
-
-.hero-content{
-
-
-max-width:850px;
-
-
-}
-
-
-
-.hero h1{
-
-
-font-size:55px;
-
-
-max-width:800px;
-
-
-margin:auto;
-
-
-}
-
-
-
-.hero p{
-
-
-font-size:22px;
-
-
-margin:25px auto;
-
-
-max-width:750px;
-
-
-}
-
-
-
-.btn{
-
-
-display:inline-block;
-
-
-padding:14px 35px;
-
-
-background:#e5a83d;
-
-
-color:white;
-
-
-text-decoration:none;
-
-
-border-radius:5px;
-
-
-transition:.3s;
-
-
-}
-
-
-
-.btn:hover{
-
-
-transform:translateY(-5px);
-
-
-}
-
-
-
-/* SECTION */
-
-
-section{
-
-
-padding:70px 8%;
-
-
-}
-
-
-
-.title{
-
-
-text-align:center;
-
-
-font-size:38px;
-
-
-color:#173b25;
-
-
-margin-bottom:40px;
-
-
-}
-
-
-
-/* ABOUT */
-
-
-.about{
-
-
-display:grid;
-
-
-grid-template-columns:1fr 1fr;
-
-
-gap:40px;
-
-
-}
-
-
-
-.card-box{
-
-
-background:#f7f7f7;
-
-
-padding:30px;
-
-
-border-radius:10px;
-
-
-}
-
-
-
-/* PRODUCTS */
-
-
-.products{
-
-
-display:flex;
-
-
-gap:30px;
-
-
-overflow-x:auto;
-
-
-scroll-snap-type:x mandatory;
-
-
-padding-bottom:15px;
-
-
-}
-
-
-
-.product{
-
-
-min-width:260px;
-
-
-border:1px solid #ddd;
-
-
-padding:25px;
-
-
-border-radius:10px;
-
-
-transition:.3s;
-
-
-scroll-snap-align:start;
-
-
-background:white;
-
-
-}
-
-
-
-.product:hover{
-
-
-transform:translateY(-8px);
-
-
-}
-
-
-
-.product-img{
-
-
-width:100%;
-
-
-aspect-ratio:1/1;
-
-
-overflow:hidden;
-
-
-border-radius:10px;
-
-
-margin-bottom:20px;
-
-
-}
-
-
-
-.product-img img{
-
-
-width:100%;
-
-
-height:100%;
-
-
-object-fit:cover;
-
-
-transition:.5s;
-
-
-}
-
-
-
-.product:hover img{
-
-
-transform:scale(1.08);
-
-
-}
-
-
-
-.product h3{
-
-
-color:#173b25;
-
-
-margin-bottom:15px;
-
-
-}
-
-
-/* FEATURES */
-
-
-.features{
-
-background:#173b25;
-
-color:white;
-
-}
-
-
-
-.feature-slider{
-
-display:flex;
-
-gap:25px;
-
-overflow-x:auto;
-
-scroll-snap-type:x mandatory;
-
-}
-
-
-
-.feature{
-
-min-width:260px;
-
-background:rgba(255,255,255,.1);
-
-padding:25px;
-
-border-radius:10px;
-
-scroll-snap-align:start;
-
-}
-
-
-
-.feature h3{
-
-margin-bottom:10px;
-
-}
-
-
-
-/* APPLICATION */
-
-
-.application-grid{
-
-
-display:grid;
-
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-
-gap:30px;
-
-
-}
-
-
-
-.application-card{
-
-
-border-radius:10px;
-
-
-overflow:hidden;
-
-
-box-shadow:0 5px 20px rgba(0,0,0,.12);
-
-
-background:white;
-
-
-}
-
-
-
-.application-card img{
-
-
-height:220px;
-
-
-width:100%;
-
-
-object-fit:cover;
-
-
-}
-
-
-
-.application-card div{
-
-
-padding:25px;
-
-
-}
-
-
-
-
-/* CONTACT */
-
-
-.contact{
-
-
-background:#f4f4f4;
-
-
-}
-
-
-
-form{
-
-
-max-width:600px;
-
-
-margin:auto;
-
-
-}
-
-
-
-input,textarea{
-
-
-width:100%;
-
-
-padding:15px;
-
-
-margin:10px 0;
-
-
-border:1px solid #ccc;
-
-
-border-radius:5px;
-
-
-font-size:16px;
-
-
-}
-
-
-
-button{
-
-
-padding:15px 40px;
-
-
-background:#173b25;
-
-
-color:white;
-
-
-border:none;
-
-
-cursor:pointer;
-
-
-border-radius:5px;
-
-
-display:block;
-
-
-margin:auto;
-
-
-}
-
-
-
-/* FOOTER */
-
-
-footer{
-
-
-background:#111;
-
-
-color:white;
-
-
-text-align:center;
-
-
-padding:35px 8%;
-
-
-}
-
-
-
-.footer-logo{
-
-
-width:150px;
-
-
-border-radius:20px;
-
-
-margin:0 auto 15px;
-
-
-}
-
-
-
-.footer-slogan{
-
-
-font-size:18px;
-
-
-margin-bottom:10px;
-
-
-}
-
-
-
-/* WHATSAPP */
-
-
-.whatsapp{
-
-
-position:fixed;
-
-
-right:25px;
-
-
-bottom:25px;
-
-
-width:65px;
-
-
-height:65px;
-
-
-background:#25D366;
-
-
-border-radius:50%;
-
-
-display:flex;
-
-
-justify-content:center;
-
-
-align-items:center;
-
-
-z-index:9999;
-
-
-animation:pulse 2s infinite;
-
-
-}
-
-
-
-.whatsapp svg{
-
-
-width:38px;
-
-
-height:38px;
-
-
-}
-
-
-
-@keyframes pulse{
-
-
-0%{
-
-
-transform:scale(1);
-
-
-box-shadow:0 0 0 0 rgba(37,211,102,.7);
-
-
-}
-
-
-
-70%{
-
-
-transform:scale(1.12);
-
-
-box-shadow:0 0 0 18px rgba(37,211,102,0);
-
-
-}
-
-
-
-100%{
-
-
-transform:scale(1);
-
-
-box-shadow:0 0 0 0 rgba(37,211,102,0);
-
-
-}
-
-
-}
-
-
-
-/* MOBILE */
-
-
-@media(max-width:768px){
-
-
-
-header{
-
-
-padding:15px 5%;
-
-
-}
-
-
-
-.menu-btn{
-
-
-display:block;
-
-
-}
-
-
-
-nav{
-
-
-display:none;
-
-
-position:absolute;
-
-
-top:75px;
-
-
-left:0;
-
-
-width:100%;
-
-
-background:#173b25;
-
-
-padding:20px;
-
-
-}
-
-
-
-nav.active{
-
-
-display:flex;
-
-
-flex-direction:column;
-
-
-}
-
-
-
-nav a{
-
-
-margin:12px auto;
-
-
-}
-
-
-
-.hero h1{
-
-
-font-size:38px;
-
-
-}
-
-
-
-.hero p{
-
-
-font-size:18px;
-
-
-}
-
-
-
-.about{
-
-
-grid-template-columns:1fr;
-
-
-}
-
-
-
-.product{
-
-
-min-width:80%;
-
-
-}
-
-
-
-.feature{
-
-
-min-width:80%;
-
-
-}
-
-
-
-}
-
-
-
-</style>
-
-
-</head>
-
-
-
-<body>
-
-
-
-<header>
-
-
-
-<div class="logo" onclick="goHome()">
-
-
-
-<img src="Wesleco-logo.png" alt="WESLECO Logo">
-
-
-
-</div>
-
-
-
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-
-
-<nav id="navMenu">
-
-
-<a href="#about">About</a>
-
-
-<a href="#products">Products</a>
-
-
-<a href="#application">Application</a>
-
-
-<a href="#contact">Contact</a>
-
-
-</nav>
-
-
-</header>
-
-
-
-
-
-<section class="hero">
-
-
-<div class="hero-content">
-
-
-<h1>
-
-Sustainable Wooden Cutlery For Global Foodservice
-
-</h1>
-
-
-
-<p>
-
-Premium birch wood and bamboo disposable tableware manufactured for restaurants,
-cafes, distributors and eco-friendly brands worldwide.
-
-</p>
-
-
-
-<a class="btn" href="#contact">
-
-Get Quote
-
-</a>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<section id="about">
-
-
-<h2 class="title">
-
-About WESLECO
-
-</h2>
-
-
-
-
-<div class="about">
-
-
-
-<div class="card-box">
-
-
-<h2>
-
-Eco-Friendly Manufacturing
-
-</h2>
-
-
-
-<p>
-
-WESLECO specializes in sustainable wooden cutlery and disposable tableware.
-We help global businesses replace plastic products with natural,
-biodegradable solutions.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-<div class="card-box">
-
-
-<h2>
-
-Global Supply Partner
-
-</h2>
-
-
-
-<p>
-
-From customized packaging to bulk production,
-WESLECO provides reliable OEM solutions for wholesalers,
-restaurant suppliers and international brands.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<section id="products">
-
-
-<h2 class="title">
-
-Our Products
-
-</h2>
-
-
-
-
-<div class="products">
-
-
-
-<div class="product">
-
-
-<div class="product-img">
-
-
-<img src="images/wooden-cutlery.jpg" alt="Wooden Cutlery Set">
-
-
-</div>
-
-
-
-<h3>
-
-Wooden Cutlery Set
-
-</h3>
-
-
-
-<p>
-
-Birch wood forks, knives and spoons with smooth finishing,
-food-grade quality and excellent durability.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-<div class="product">
-
-
-<div class="product-img">
-
-
-<img src="images/bamboo-tableware.jpg" alt="Bamboo Tableware">
-
-
-</div>
-
-
-
-<h3>
-
-Bamboo Tableware
-
-</h3>
-
-
-
-<p>
-
-Natural bamboo utensils and eco-friendly alternatives
-for restaurants and catering companies.
-
-</p>
-
-
-
-</div>
-
-
-
-
-<div class="product">
-
-
-<div class="product-img">
-
-
-<img src="images/ice-cream-stick.jpg" alt="Ice Cream Sticks">
-
-
-</div>
-
-
-
-<h3>
-
-Ice Cream Sticks
-
-</h3>
-
-
-
-<p>
-
-Premium wooden ice cream sticks supplied for
-ice cream factories and dessert manufacturers.
-
-</p>
-
-
-
-</div>
-
-
-
-
-<div class="product">
-
-
-<div class="product-img">
-
-
-<img src="images/oem-product.jpg" alt="OEM Products">
-
-
-</div>
-
-
-
-<h3>
-
-Custom OEM Products
-
-</h3>
-
-
-
-<p>
-
-Private label packaging, customized sizes and
-branding solutions available.
-
-</p>
-
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-<section class="features">
-
-
-<h2 class="title" style="color:white">
-
-Why Choose WESLECO
-
-</h2>
-
-
-
-<div class="feature-slider">
-
-
-
-<div class="feature">
-
-<h3>
-
-Natural Materials
-
-</h3>
-
-<p>
-
-Selected renewable wood and bamboo resources.
-
-</p>
-
-</div>
-
-
-
-
-<div class="feature">
-
-<h3>
-
-Quality Control
-
-</h3>
-
-<p>
-
-Strict inspection from raw materials to shipment.
-
-</p>
-
-</div>
-
-
-
-
-<div class="feature">
-
-<h3>
-
-OEM Service
-
-</h3>
-
-<p>
-
-Flexible customization for global customers.
-
-</p>
-
-</div>
-
-
-
-
-<div class="feature">
-
-<h3>
-
-Worldwide Shipping
-
-</h3>
-
-<p>
-
-Supporting distributors and brands globally.
-
-</p>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<section id="application">
-
-
-<h2 class="title">
-
-Applications
-
-</h2>
-
-
-
-
-<div class="application-grid">
-
-
-
-<div class="application-card">
-
-
-<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
-alt="Restaurant">
-
-
-<div>
-
-
-<h3>
-
-Restaurants
-
-</h3>
-
-
-<p>
-
-Eco-friendly tableware solutions for restaurants and foodservice businesses.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-<div class="application-card">
-
-
-<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-alt="Coffee Shop">
-
-
-<div>
-
-
-<h3>
-
-Coffee Shops
-
-</h3>
-
-
-<p>
-
-Wooden utensils and sustainable products for cafes.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-<div class="application-card">
-
-
-<img src="https://images.unsplash.com/photo-1556761175-b413da4baf72"
-alt="Distributor">
-
-
-<div>
-
-
-<h3>
-
-Food Distributors
-
-</h3>
-
-
-<p>
-
-Bulk supply solutions for international wholesalers.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section id="contact" class="contact">
-
-
-<h2 class="title">
-
-Contact WESLECO
-
-</h2>
-
-
-
-
-
-<form action="https://formsubmit.co/wesley@wesleco.com"
-method="POST">
-
-
-<input type="hidden"
-name="_subject"
-value="New WESLECO Website Inquiry">
-
-
-<input type="hidden"
-name="_captcha"
-value="false">
-
-
-
-<input type="text"
-name="name"
-placeholder="Your Name"
-required>
-
-
-
-<input type="email"
-name="email"
-placeholder="Your Email"
-required>
-
-
-
-<input type="text"
-name="company"
-placeholder="Company Name">
-
-
-
-<textarea name="message"
-rows="6"
-placeholder="Product Inquiry"></textarea>
-
-
-
-
-<button type="submit">
-
-Send Inquiry
-
-</button>
-
-
-</form>
-
-
-
-<div style="text-align:center;margin-top:30px;">
-
-
-<p>
-
-Email:
-
-<a href="mailto:wesley@wesleco.com">
-
-wesley@wesleco.com
-
-</a>
-
-</p>
-
-
-
-<p>
-
-Website:
-
-<a href="https://www.wesleco.com">
-
-www.wesleco.com
-
-</a>
-
-</p>
-
-
-
-
-<p>
-
-WhatsApp:
-
-<a href="https://wa.me/8615621351993">
-
-+86 15621351993
-
-</a>
-
-</p>
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-<footer>
-
-
-
-<img class="footer-logo"
-src="Wesleco-logo.png"
-alt="WESLECO Logo">
-
-
-
-<p class="footer-slogan">
-
-Sustainable Wooden Cutlery & Eco-Friendly Tableware Supplier
-
-</p>
-
-
-
-<p>
-
-Email: wesley@wesleco.com |
-
-Website: www.wesleco.com
-
-</p>
-
-
-
-<p>
-
-© 2026 WESLECO. All Rights Reserved.
-
-</p>
-
-
-
-</footer>
-
-
-
-
-
-
-
-<a class="whatsapp"
-href="https://wa.me/8615621351993"
-target="_blank">
-
-
-
-<svg viewBox="0 0 448 512"
-xmlns="http://www.w3.org/2000/svg">
-
-
-<path fill="white"
-d="M380.9 97.1C339 55.1 283.2 32 223.9 32C100.5 32 0 132.5 0 256c0 45.2 11.8 89.4 34.2 128.2L0 480l99.2-33C136.7 467.8 179.6 480 223.9 480C347.3 480 447.8 379.5 447.8 256C447.8 196.7 424.7 140.9 380.9 97.1z"/>
-
-
-</svg>
-
-
-
-</a>
-
-
-
-
-
-
-<script>
-
-
-function goHome(){
-
-window.location.href="https://www.wesleco.com";
-
-}
-
-
-
-
-
-function toggleMenu(){
-
-document
-.getElementById("navMenu")
-.classList.toggle("active");
-
-}
-
-
-
-
-
-// 平滑滚动
-
-document
-.querySelectorAll('a[href^="#"]')
-.forEach(function(link){
-
-
-link.addEventListener("click",function(e){
-
-
-e.preventDefault();
-
-
-let target=document.querySelector(
-this.getAttribute("href")
-);
-
-
-
-if(target){
-
-
-target.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-
-}
-
-
-});
-
-
-});
-
-
-
-
-
-// 横向滑动鼠标支持
-
-document
-.querySelectorAll(".products,.feature-slider")
-.forEach(function(slider){
-
-
-
-let pressed=false;
-
-let startX;
-
-let scroll;
-
-
-
-slider.addEventListener("mousedown",function(e){
-
-
-pressed=true;
-
-startX=e.pageX-slider.offsetLeft;
-
-scroll=slider.scrollLeft;
-
-
-});
-
-
-
-slider.addEventListener("mouseleave",function(){
-
-pressed=false;
-
-});
-
-
-
-slider.addEventListener("mouseup",function(){
-
-pressed=false;
-
-});
-
-
-
-slider.addEventListener("mousemove",function(e){
-
-
-if(!pressed)return;
-
-
-e.preventDefault();
-
-
-let x=e.pageX-slider.offsetLeft;
-
-
-slider.scrollLeft=
-scroll-(x-startX);
-
-
-
-});
-
-
-});
-
-
-
-
-
-</script>
-
-
-
-</body>
-
-</html>
+<!DOCTYPE html>  <html lang="en">
+
+<head>    
+<meta charset="UTF-8">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<title>WESLECO | Sustainable Wooden Cutlery & Eco Tableware Manufacturer</title>    
+<meta name="description" content="WESLECO supplies premium wooden cutlery, bamboo tableware and eco-friendly disposable products for global foodservice distributors, restaurants and brands.">    
+<meta name="keywords" content="wooden cutlery, bamboo tableware, eco friendly utensils, disposable wooden fork knife spoon, WESLECO">    
+<meta name="author" content="WESLECO">  <meta property="og:title" content="WESLECO Sustainable Wooden Cutlery">    
+<meta property="og:description" content="Eco-friendly wooden tableware manufacturer for global partners.">    
+<meta property="og:type" content="website">  <style>    
+*{    
+    margin:0;    
+    padding:0;    
+    box-sizing:border-box;    
+    font-family:Arial,Helvetica,sans-serif;    
+}    
+body{    
+    color:#333;    
+    line-height:1.6;    
+    background:#fff;    
+}    
+header{    
+    background:#173b25;    
+    color:white;    
+    padding:20px 8%;    
+    display:flex;    
+    justify-content:space-between;    
+    align-items:center;    
+}    
+.logo{    
+    font-size:32px;    
+    font-weight:bold;    
+    letter-spacing:2px;    
+}    
+nav a{    
+    color:white;    
+    margin-left:25px;    
+    text-decoration:none;    
+}    
+.hero{    
+    min-height:90vh;    
+    background:    
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),    
+    url("https://images.unsplash.com/photo-1547592180-85f173990554") center/cover;    
+    display:flex;    
+    align-items:center;    
+    padding:0 8%;    
+    color:white;    
+}    
+.hero h1{    
+    font-size:55px;    
+    max-width:800px;    
+}    
+.hero p{    
+    font-size:22px;    
+    margin:25px 0;    
+}    
+.btn{    
+    display:inline-block;    
+    padding:14px 35px;    
+    background:#e5a83d;    
+    color:white;    
+    text-decoration:none;    
+    border-radius:5px;    
+}    
+section{    
+    padding:70px 8%;    
+}    
+.title{    
+    text-align:center;    
+    font-size:38px;    
+    color:#173b25;    
+    margin-bottom:40px;    
+}    
+.about{    
+    display:grid;    
+    grid-template-columns:1fr 1fr;    
+    gap:40px;    
+}    
+.card-box{    
+    background:#f7f7f7;    
+    padding:30px;    
+    border-radius:10px;    
+}    
+.products{    
+    display:grid;    
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));    
+    gap:30px;    
+}    
+.product{    
+    border:1px solid #ddd;    
+    padding:25px;    
+    border-radius:10px;    
+    transition:.3s;    
+}    
+.product:hover{    
+    transform:translateY(-8px);    
+}    
+.product h3{    
+    color:#173b25;    
+    margin-bottom:15px;    
+}    
+.features{    
+    background:#173b25;    
+    color:white;    
+}    
+.feature-grid{    
+    display:grid;    
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));    
+    gap:25px;    
+}    
+.feature{    
+    background:rgba(255,255,255,.1);    
+    padding:25px;    
+    border-radius:10px;    
+}    
+.contact{    
+    background:#f4f4f4;    
+}    
+form{    
+    max-width:600px;    
+    margin:auto;    
+}    
+input,textarea{    
+    width:100%;    
+    padding:15px;    
+    margin:10px 0;    
+    border:1px solid #ccc;    
+}    
+button{    
+    padding:15px 40px;    
+    background:#173b25;    
+    color:white;    
+    border:none;    
+    cursor:pointer;    
+}    
+footer{    
+    background:#111;    
+    color:white;    
+    text-align:center;    
+    padding:30px;    
+}    
+@media(max-width:768px){    
+header{    
+    flex-direction:column;    
+}    
+nav{    
+    margin-top:15px;    
+}    
+.hero h1{    
+    font-size:38px;    
+}    
+.about{    
+    grid-template-columns:1fr;    
+}    
+}    
+</style>  </head>  <body>  <header>    
+<div class="logo">WESLECO</div>    
+<nav>    
+<a href="#about">About</a>    
+<a href="#products">Products</a>    
+<a href="#contact">Contact</a>    
+</nav>    
+</header>  <section class="hero">    
+<div>    
+<h1>Sustainable Wooden Cutlery For Global Foodservice</h1>    
+<p>    
+Premium birch wood and bamboo disposable tableware manufactured for restaurants,    
+cafes, distributors and eco-friendly brands worldwide.    
+</p>    
+<a class="btn" href="#contact">Get Quote</a>    
+</div>    
+</section>  <section id="about">    
+<h2 class="title">About WESLECO</h2>  <div class="about">  <div class="card-box">    
+<h2>Eco-Friendly Manufacturing</h2>    
+<p>    
+WESLECO specializes in sustainable wooden cutlery and disposable tableware.    
+We help global businesses replace plastic products with natural,    
+biodegradable solutions.    
+</p>    
+</div>  <div class="card-box">    
+<h2>Global Supply Partner</h2>    
+<p>    
+From customized packaging to bulk production,    
+WESLECO provides reliable OEM solutions for wholesalers,    
+restaurant suppliers and international brands.    
+</p>    
+</div>  </div>    
+</section>  <section id="products">    
+<h2 class="title">Our Products</h2>  <div class="products">  <div class="product">    
+<h3>Wooden Cutlery Set</h3>    
+<p>    
+Birch wood forks, knives and spoons with smooth finishing,    
+food-grade quality and excellent durability.    
+</p>    
+</div>  <div class="product">    
+<h3>Bamboo Tableware</h3>    
+<p>    
+Natural bamboo utensils and eco-friendly alternatives    
+for restaurants and catering companies.    
+</p>    
+</div>  <div class="product">    
+<h3>Ice Cream Sticks</h3>    
+<p>    
+Premium wooden ice cream sticks supplied for    
+ice cream factories and dessert manufacturers.    
+</p>    
+</div>  <div class="product">    
+<h3>Custom OEM Products</h3>    
+<p>    
+Private label packaging, customized sizes and    
+branding solutions available.    
+</p>    
+</div>  </div>    
+</section>  <section class="features">  <h2 class="title" style="color:white">Why Choose WESLECO</h2>  <div class="feature-grid">  <div class="feature">    
+<h3>Natural Materials</h3>    
+<p>Selected renewable wood and bamboo resources.</p>    
+</div>  <div class="feature">    
+<h3>Quality Control</h3>    
+<p>Strict inspection from raw materials to shipment.</p>    
+</div>  <div class="feature">    
+<h3>OEM Service</h3>    
+<p>Flexible customization for global customers.</p>    
+</div>  <div class="feature">    
+<h3>Worldwide Shipping</h3>    
+<p>Supporting distributors and brands globally.</p>    
+</div>  </div>  </section>  <section id="contact" class="contact">  <h2 class="title">Contact WESLECO</h2>  <form action="mailto:info@wesleco.com" method="post" enctype="text/plain">  <input type="text" name="name" placeholder="Your Name">  <input type="email" name="email" placeholder="Your Email">  <input type="text" name="company" placeholder="Company Name">  <textarea name="message" rows="6" placeholder="Product inquiry"></textarea>  <button type="submit">Send Inquiry</button>  </form>  </section>  <footer>  <p>    
+© 2026 WESLECO. Sustainable Wooden Tableware Supplier.    
+</p>  <p>    
+Email: info@wesleco.com | Website: www.wesleco.com    
+</p>  </footer>  <script>    
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{    
+anchor.addEventListener('click',function(e){    
+e.preventDefault();    
+document.querySelector(this.getAttribute('href')).scrollIntoView({    
+behavior:'smooth'    
+});    
+});    
+});    
+</script>  </body>    
+</html>这个是原文件。我左上角的图片在这里边显示了直接按这个来就行。
