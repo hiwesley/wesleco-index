@@ -1,0 +1,26 @@
+name: Generate Sitemap Automatically
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  sitemap_job:
+    runs-on: ubuntu-latest
+    name: Generate Sitemap
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate Sitemap
+        uses: cicirello/generate-sitemap@v1
+        with:
+          base-url-path: https://wesleco.com/
+          sitemap-format: xml
+          drop-html-extension: false
