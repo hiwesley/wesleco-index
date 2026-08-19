@@ -1,897 +1,2638 @@
-<!DOCTYPE html>  <html lang="en">  
-<head> 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <!-- 用一条标准的响应式预加载替换掉原来的两行 -->
+    <link rel="preload" as="image" href="hero-bg-mobile.webp" imagesrcset="hero-bg-mobile.webp 767w, hero-bg.webp 1200w"
+        imagesizes="100vw" fetchpriority="high">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8L4XQEVNM"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-Q8L4XQEVNM');
-  </script>
-    
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">  
-    <title>WESLECO | Eco-Friendly Bamboo & Wooden Tableware Manufacturer</title>  <!-- 404 跳转路由检测（解决静态部署刷新报 404 问题） -->  
-<script>  
-    (function(){  
-        var redirect = sessionStorage.redirect;  
-        delete sessionStorage.redirect;  
-        if (redirect && redirect !== location.href) {  
-            history.replaceState(null, null, redirect);  
-        }  
-    })();  
-</script>  
-
-<!-- Favicon 浏览器标签图标 -->  
-<link rel="icon" href="Wesleco-LOGO.ico" type="image/x-icon">  
-<!-- Google Fonts & FontAwesome Icons -->  
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">  
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
-  
-<style>  
-    :root {  
-        --primary: #2e7d32;  
-        --primary-dark: #1b5e20;  
-        --accent: #81c784;  
-        --bg-light: #f4f7f4;  
-        --text-dark: #2c3e50;  
-        --text-gray: #666;  
-        --border-color: #e2e8f0;  
-        --nav-height: 74px;  
-    }  
-
-    html {  
-        scroll-behavior: smooth;  
-        scroll-padding-top: var(--nav-height);  
-    }  
-
-    * {   
-        margin: 0;   
-        padding: 0;   
-        box-sizing: border-box;   
-        font-family: 'Poppins', sans-serif;   
-    }  
-
-    body {   
-        color: var(--text-dark);   
-        background-color: #fff;   
-        line-height: 1.7;   
-        overflow-x: hidden; /* 防止手机端横向滚动条 */  
-        width: 100%;  
-    }  
-
-    img {  
-        max-width: 100%;  
-        height: auto;  
-        display: block;  
-    }  
-
-    .container {   
-        width: 100%;  
-        max-width: 1200px;   
-        margin: 0 auto;   
-        padding: 0 1.5rem;  
-    }  
-      
-    /* ================= Header & Mobile Nav ================= */  
-    header {   
-        position: fixed;   
-        top: 0;   
-        left: 0;  
-        width: 100%;   
-        height: var(--nav-height);  
-        background: rgba(255, 255, 255, 0.98);   
-        backdrop-filter: blur(10px);   
-        box-shadow: 0 2px 15px rgba(0,0,0,0.05);   
-        z-index: 1000;   
-    }  
-
-    .nav-container {   
-        max-width: 1200px;   
-        height: 100%;  
-        margin: 0 auto;   
-        display: flex;   
-        justify-content: space-between;   
-        align-items: center;   
-        padding: 0 1.5rem;   
-    }  
-
-    .logo img {   
-        height: 38px;   
-        width: auto;   
-        display: block;   
-    }  
-
-    .nav-links {   
-        display: flex;   
-        gap: 2rem;   
-        list-style: none;   
-        align-items: center;  
-    }  
-
-    .nav-links a {   
-        text-decoration: none;   
-        color: var(--text-dark);   
-        font-weight: 500;   
-        transition: 0.3s;   
-        cursor: pointer;   
-        font-size: 0.95rem;   
-    }  
-
-    .nav-links a:hover { color: var(--primary); }  
-
-    .btn-header {   
-        background: var(--primary);   
-        color: #fff;   
-        padding: 0.55rem 1.3rem;   
-        border-radius: 6px;   
-        text-decoration: none;   
-        font-weight: 600;   
-        transition: 0.3s;   
-        cursor: pointer;   
-        font-size: 0.9rem;   
-        white-space: nowrap;  
-    }  
-
-    .btn-header:hover {   
-        background: var(--primary-dark);   
-        transform: translateY(-1px);   
-    }  
-
-    .mobile-menu-btn {  
-        display: none;  
-        background: none;  
-        border: none;  
-        font-size: 1.5rem;  
-        color: var(--text-dark);  
-        cursor: pointer;  
-        padding: 0.5rem;  
-    }  
-
-    /* ================= Hero Section (优化：GPU 慢速平滑动效) ================= */  
-    .hero {   
-        position: relative;  
-        margin-top: var(--nav-height);   
-        min-height: calc(100vh - var(--nav-height));  
-        min-height: calc(100dvh - var(--nav-height));  
-        display: flex;   
-        align-items: center;   
-        justify-content: center;  
-        text-align: center;   
-        color: #fff;   
-        padding: 4rem 1.25rem;   
-        overflow: hidden; /* 确保放大的背景不溢出 */  
-    }  
-
-    /* 背景平移图层：28s 电影感渐进过渡 */  
-    .hero::before {  
-        content: '';  
-        position: absolute;  
-        top: -5%;  
-        left: -10%;  
-        width: 120%;  
-        height: 110%;  
-        background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('hero-bg.jpg') center/cover no-repeat;  
-        will-change: transform;  
-        animation: heroCinematicPan 28s ease-in-out infinite alternate;  
-        z-index: 0;  
-    }  
-
-    @keyframes heroCinematicPan {  
-        0% {  
-            transform: scale3d(1.05, 1.05, 1) translate3d(-3%, 0, 0);  
-        }  
-        100% {  
-            transform: scale3d(1.05, 1.05, 1) translate3d(3%, 0, 0);  
-        }  
-    }  
-
-    .hero-content {   
-        position: relative;  
-        z-index: 1;  
-        max-width: 850px;   
-        margin: 0 auto;   
-    }  
-
-    .hero-badge {   
-        display: inline-block;   
-        background: rgba(46, 125, 50, 0.9);   
-        color: #fff;   
-        padding: 0.35rem 1rem;   
-        border-radius: 20px;   
-        font-size: clamp(0.75rem, 2vw, 0.85rem);   
-        font-weight: 600;   
-        margin-bottom: 1.2rem;   
-        letter-spacing: 1px;   
-        text-transform: uppercase;   
-        backdrop-filter: blur(4px);  
-    }  
-
-    .hero h1 {   
-        font-size: clamp(1.8rem, 4.5vw, 3.2rem);   
-        font-weight: 700;   
-        margin-bottom: 1.2rem;   
-        line-height: 1.25;   
-        text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6); /* 增强文字在动效下的清晰度 */  
-    }  
-
-    .hero p {   
-        font-size: clamp(0.95rem, 2vw, 1.15rem);   
-        margin-bottom: 2.2rem;   
-        opacity: 0.95;   
-        max-width: 750px;   
-        margin-left: auto;   
-        margin-right: auto;   
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);  
-    }  
-
-    .btn-group {   
-        display: flex;   
-        gap: 1rem;   
-        justify-content: center;   
-        flex-wrap: wrap;   
-    }  
-
-    .btn-primary {   
-        background: var(--primary);   
-        color: #fff;   
-        padding: 0.85rem 1.8rem;   
-        border-radius: 6px;   
-        text-decoration: none;   
-        font-weight: 600;   
-        cursor: pointer;   
-        transition: 0.3s;   
-        box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);   
-        display: inline-flex;  
-        align-items: center;  
-        justify-content: center;  
-        min-height: 48px;  
-    }  
-
-    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }  
-
-    .btn-whatsapp {   
-        background: #25D366;   
-        color: #fff;   
-        padding: 0.85rem 1.8rem;   
-        border-radius: 6px;   
-        text-decoration: none;   
-        font-weight: 600;   
-        display: inline-flex;   
-        align-items: center;   
-        justify-content: center;  
-        gap: 0.6rem;   
-        transition: 0.3s;   
-        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);   
-        min-height: 48px;  
-    }  
-
-    .btn-whatsapp:hover { background: #20ba5a; transform: translateY(-2px); }  
-
-    /* ================= Core Highlights ================= */  
-    .features { background: var(--bg-light); padding: 4.5rem 0; }  
-
-    .section-header { text-align: center; max-width: 700px; margin: 0 auto 3rem auto; }  
-    .section-header span { color: var(--primary); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.4rem; }  
-    .section-header h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--text-dark); font-weight: 700; line-height: 1.3; }  
-
-    .grid-4 {   
-        display: grid;   
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));   
-        gap: 1.8rem;   
-    }  
-
-    .feature-card {   
-        background: #fff;   
-        padding: 2.2rem 1.8rem;   
-        border-radius: 12px;   
-        text-align: left;   
-        box-shadow: 0 5px 20px rgba(0,0,0,0.03);   
-        border: 1px solid var(--border-color);   
-        transition: 0.3s;   
-    }  
-
-    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: var(--accent); }  
-    .feature-card i { font-size: 2rem; color: var(--primary); margin-bottom: 1.2rem; background: var(--bg-light); padding: 14px; border-radius: 10px; display: inline-block; }  
-    .feature-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; font-weight: 600; }  
-    .feature-card p { color: var(--text-gray); font-size: 0.92rem; }  
-
-    /* ================= Customization Section ================= */  
-    .customization { padding: 4.5rem 0; background: #fff; }  
-      
-    .custom-grid {   
-        display: grid;   
-        grid-template-columns: repeat(2, 1fr);   
-        gap: 3rem;   
-        align-items: center;   
-    }  
-
-    .custom-content h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; color: var(--text-dark); }  
-    .custom-content p { color: var(--text-gray); margin-bottom: 1.5rem; font-size: 0.95rem; }  
-    .custom-list { list-style: none; margin-bottom: 2rem; }  
-    .custom-list li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; font-weight: 500; font-size: 0.95rem; }  
-    .custom-list li i { color: var(--primary); }  
-      
-    .custom-img-box {   
-        background: var(--bg-light);   
-        border-radius: 12px;   
-        overflow: hidden;   
-        border: 1px solid var(--border-color);   
-        padding: 1.5rem;   
-        text-align: center;   
-    }  
-
-    .custom-img-box img {   
-        width: 100%;   
-        height: 280px;   
-        object-fit: cover;   
-        border-radius: 8px;   
-    }  
-
-    /* ================= Products Section ================= */  
-    .products { padding: 4.5rem 0; background: var(--bg-light); }  
-
-    .grid-3 {   
-        display: grid;   
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));   
-        gap: 2rem;   
-    }  
-
-    .product-card {   
-        background: #fff;   
-        border: 1px solid var(--border-color);   
-        border-radius: 12px;   
-        overflow: hidden;   
-        transition: 0.3s;   
-        box-shadow: 0 4px 15px rgba(0,0,0,0.02);   
-        display: flex;  
-        flex-direction: column;  
-    }  
-
-    .product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }  
-    .product-card img { width: 100%; height: 220px; object-fit: cover; }  
-    .product-info { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; }  
-    .product-info h3 { margin-bottom: 0.6rem; font-size: 1.25rem; font-weight: 600; }  
-    .product-info p { color: var(--text-gray); font-size: 0.92rem; margin-bottom: 1.5rem; flex-grow: 1; }  
-    .product-link { color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; transition: 0.3s; font-size: 0.95rem; }  
-    .product-link:hover { color: var(--primary-dark); gap: 0.7rem; }  
-
-    /* ================= About Us Section ================= */  
-    .about-section { padding: 5rem 0; background: #fff; }  
-    .about-container { max-width: 900px; margin: 0 auto; text-align: center; }  
-    .about-text { margin: 1.2rem 0; color: var(--text-gray); line-height: 1.8; font-size: clamp(0.95rem, 2vw, 1.05rem); }  
-
-    .about-stats {   
-        display: grid;   
-        grid-template-columns: repeat(3, 1fr);   
-        gap: 2rem;   
-        margin-top: 2.5rem;   
-        padding-top: 2.5rem;   
-        border-top: 1px solid var(--border-color);   
-    }  
-
-    .stat-item h4 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--primary); font-weight: 700; margin-bottom: 0.2rem; }  
-    .stat-item p { color: var(--text-gray); font-size: 0.9rem; font-weight: 500; }  
-
-    /* ================= Contact Section ================= */  
-    .contact { background: var(--bg-light); padding: 5rem 0; }  
-
-    .contact-flex {   
-        display: flex;   
-        flex-wrap: wrap;   
-        gap: 2.5rem;   
-        justify-content: space-between;   
-        align-items: stretch;   
-    }  
-
-    .contact-info { flex: 1; min-width: 300px; }  
-    .contact-info h3 { font-size: 1.6rem; margin-bottom: 0.8rem; }  
-      
-    .contact-detail-box {   
-        background: #fff;   
-        padding: 1.8rem;   
-        border-radius: 12px;   
-        margin-top: 1.8rem;   
-        border: 1px solid var(--border-color);   
-        box-shadow: 0 4px 15px rgba(0,0,0,0.02);   
-    }  
-
-    .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; font-size: 0.95rem; word-break: break-word; }  
-    .contact-item:last-child { margin-bottom: 0; }  
-    .contact-item i { width: 38px; height: 38px; background: var(--bg-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }  
-      
-    .contact-form { flex: 1; min-width: 300px; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }  
-    .contact-form h3 { font-size: 1.4rem; margin-bottom: 1rem; }  
-    .form-group { margin-bottom: 1.2rem; }  
-    .form-group input, .form-group textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.95rem; transition: 0.3s; outline: none; }  
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15); }  
-    .btn-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 0.95rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.95rem; }  
-    .btn-submit:hover { background: var(--primary-dark); }  
-
-    /* ================= Footer ================= */  
-    footer { background: #1a252f; color: #fff; padding: 4rem 0 2rem 0; }  
-    .footer-container { display: flex; flex-direction: column; gap: 2.5rem; }  
-      
-    .footer-top {   
-        display: grid;  
-        grid-template-columns: 2fr 1fr 1fr;  
-        gap: 2.5rem;   
-        border-bottom: 1px solid rgba(255,255,255,0.1);   
-        padding-bottom: 2.5rem;   
-    }  
-
-    .footer-brand img {  
-        height: 42px;  
-        max-width: 100%;  
-        width: auto;  
-        object-fit: contain;  
-        margin-bottom: 0.6rem;  
-        background-color: #ffffff;  
-        border-radius: 8px;  
-        padding: 6px 14px;  
-        display: inline-block;  
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);  
-    }  
-
-    .footer-slogan {  
-        color: var(--accent);  
-        font-size: 1.05rem;  
-        font-weight: 600;  
-        letter-spacing: 0.5px;  
-        margin-bottom: 1.5rem;  
-        font-style: italic;  
-        display: block;  
-    }  
-
-    .footer-socials { display: flex; gap: 0.8rem; }  
-    .footer-socials a { width: 38px; height: 38px; background: rgba(255,255,255,0.08); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; font-size: 1rem; }  
-    .footer-socials a:hover { background: var(--primary); transform: translateY(-3px); }  
-
-    .footer-links-group h4 { font-size: 1.05rem; margin-bottom: 1rem; color: #fff; letter-spacing: 0.5px; }  
-    .footer-links-group ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }  
-    .footer-links-group a { color: #aaa; text-decoration: none; transition: 0.3s; font-size: 0.9rem; cursor: pointer; }  
-    .footer-links-group a:hover { color: #fff; padding-left: 4px; }  
-
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: #777; font-size: 0.85rem; }  
-
-    /* Floating WhatsApp */  
-    .float-whatsapp {  
-        position: fixed;   
-        bottom: 20px;   
-        right: 20px;   
-        background: #25D366;   
-        color: #fff;   
-        width: 55px;   
-        height: 55px;   
-        border-radius: 50%;   
-        display: flex;   
-        align-items: center;   
-        justify-content: center;   
-        font-size: 28px;   
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);   
-        z-index: 999;   
-        text-decoration: none;   
-        transition: all 0.3s ease;   
-        animation: whatsapp-pulse 2s infinite;  
-    }  
-
-    .float-whatsapp:hover { transform: scale(1.1) rotate(8deg); background: #20ba5a; }  
-
-    @keyframes whatsapp-pulse {  
-        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }  
-        70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }  
-        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }  
-    }  
-
-    /* 📱 响应式适配（针对平板竖屏与手机屏优化） */  
-    @media (max-width: 992px) {  
-        .custom-grid { grid-template-columns: 1fr; gap: 2rem; }  
-          
-        /* 平板竖屏：Logo 独占整行，链接组分为 2 列 */  
-        .footer-top {   
-            grid-template-columns: 1fr 1fr;   
-            gap: 2rem;  
-        }  
-        .footer-brand {   
-            grid-column: 1 / -1;   
-        }  
-    }  
-
-    @media (max-width: 768px) {  
-        .mobile-menu-btn { display: block; }  
-          
-        .nav-links {  
-            position: fixed;  
-            top: var(--nav-height);  
-            left: 0;  
-            width: 100%;  
-            background: #fff;  
-            flex-direction: column;  
-            padding: 1.5rem;  
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);  
-            gap: 1.2rem;  
-            display: none;  
-            border-bottom: 1px solid var(--border-color);  
-        }  
-
-        .nav-links.active {  
-            display: flex;  
-        }  
-
-        .btn-header { display: none; }  
-
-        .hero { padding: 3rem 1rem; }  
-        /* 手机端按钮调整为全宽堆叠，大拇指操控更轻松 */  
-        .btn-group { flex-direction: column; width: 100%; gap: 0.8rem; }  
-        .btn-primary, .btn-whatsapp { width: 100%; }  
-
-        .about-stats { grid-template-columns: 1fr; gap: 1.5rem; }  
-          
-        .footer-top {   
-            grid-template-columns: 1fr 1fr;   
-            gap: 1.8rem;   
-        }  
-        .footer-brand {   
-            grid-column: 1 / -1;   
-        }  
-
-        .footer-brand img {  
-            height: 38px;  
-            padding: 5px 12px;  
-        }  
-
-        .footer-bottom {  
-            flex-direction: column;  
-            text-align: center;  
-        }  
-
-        .float-whatsapp {  
-            width: 50px;  
-            height: 50px;  
-            font-size: 25px;  
-            bottom: 15px;  
-            right: 15px;  
-        }  
-    }  
-
-    /* 系统开启减少动态效果时的兼容处理 */  
-    @media (prefers-reduced-motion: reduce) {  
-        .hero::before {  
-            animation: none;  
-            transform: scale(1.05);  
-        }  
-    }  
-</style>
-
-</head>  
-<body>  <!-- Header 导航栏 -->  
-<header>  
-    <div class="nav-container">  
-        <a href="/" class="logo" data-target="">  
-            <img src="Wesleco-LOGO.png" alt="Wesleco Logo">  
-        </a>  
-
-        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Menu">  
-            <i class="fas fa-bars"></i>  
-        </button>  
-
-        <ul class="nav-links" id="nav-menu">  
-            <li><a href="/home" data-target="home">Home</a></li>  
-            <li><a href="/products" data-target="products">Products</a></li>  
-            <li><a href="/about" data-target="about">About Us</a></li>  
-            <li><a href="/contact" data-target="contact">Contact</a></li>  
-        </ul>  
-
-        <a href="/contact" data-target="contact" class="btn-header">Inquire Now</a>  
-    </div>  
-</header>  
-
-<!-- Hero 区块 -->  
-<section class="hero" id="home">  
-    <div class="hero-content">  
-        <span class="hero-badge">Global B2B Direct Manufacturer</span>  
-        <h1>100% Eco-Friendly Bamboo & Wooden Products</h1>  
-        <p>Direct manufacturer for premium bamboo & wooden tableware, coffee stirrers, custom-shaped rods, and sustainable kitchenware. FSC, FDA & LFGB certified for heavy-volume partners.</p>  
-        <div class="btn-group">  
-            <a href="/contact" data-target="contact" class="btn-primary">Get Free Samples</a>  
-            <a href="https://wa.me/8615621351993" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>  
-        </div>  
-    </div>  
-</section>  
-
-<!-- Core Competencies -->  
-<section class="features">  
-    <div class="container">  
-        <div class="section-header">  
-            <span>Why Global Distributors Choose Us</span>  
-            <h2>Excellence in Every Wooden & Bamboo Detail</h2>  
-        </div>  
-        <div class="grid-4">  
-            <div class="feature-card">  
-                <i class="fas fa-layer-group"></i>  
-                <h3>Robust Material Reserves</h3>  
-                <p>Abundant raw material supplies ensuring stable, year-round pricing and uninterrupted large-scale production schedules.</p>  
-            </div>  
-            <div class="feature-card">  
-                <i class="fas fa-gem"></i>  
-                <h3>Splinter-Free Precision</h3>  
-                <p>Advanced multi-stage polishing technology delivers ultra-smooth textures, absolute food safety, and zero splinter risks.</p>  
-            </div>  
-            <div class="feature-card">  
-                <i class="fas fa-certificate"></i>  
-                <h3>Global Certifications</h3>  
-                <p>Fully compliant with international standards, holding FDA, LFGB, and FSC certifications for seamless import clearance.</p>  
-            </div>  
-            <div class="feature-card">  
-                <i class="fas fa-sliders-h"></i>  
-                <h3>Flexible Customization</h3>  
-                <p>Tailored sizing, specialized custom-shaped rods, and double-ended branding to match your exact brand identity.</p>  
-            </div>  
-        </div>  
-    </div>  
-</section>  
-
-<!-- Customization Highlight Section -->  
-<section class="customization">  
-    <div class="container">  
-        <div class="custom-grid">  
-            <div class="custom-content">  
-                <span style="color:var(--primary); font-weight:600; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.4rem; font-size:0.85rem;">OEM / ODM Capability</span>  
-                <h3>Advanced Customization for Global Brands</h3>  
-                <p>We empower food service wholesalers and major retail brands with bespoke manufacturing options that elevate your market presence.</p>  
-                <ul class="custom-list">  
-                    <li><i class="fas fa-check-circle"></i> Custom-shaped rods and specialty geometric designs</li>  
-                    <li><i class="fas fa-check-circle"></i> Precision double-ended hot-stamped branding / logo printing</li>  
-                    <li><i class="fas fa-check-circle"></i> Eco-friendly retail paper box & bulk carton packaging</li>  
-                </ul>  
-                <a href="/contact" data-target="contact" class="btn-primary">Discuss Your Custom Project</a>  
-            </div>  
-            <div class="custom-img-box">  
-                <img src="w-cutlery.jpg" alt="Wesleco Custom Wooden Tableware">  
-                <p style="margin-top: 0.8rem; color: var(--text-gray); font-size: 0.85rem;">Precision crafted and branded for international bulk orders.</p>  
-            </div>  
-        </div>  
-    </div>  
-</section>  
-
-<!-- Products Section -->  
-<section class="products" id="products">  
-    <div class="container">  
-        <div class="section-header">  
-            <span>Our Product Line</span>  
-            <h2>Eco-Friendly Tableware & Supplies</h2>  
-        </div>  
-        <div class="grid-3">  
-            <div class="product-card">  
-                <img src="b-steamer.jpg" alt="Bamboo Steamer Sets">  
-                <div class="product-info">  
-                    <h3>Bamboo Steamer Sets</h3>  
-                    <p>Traditional woven bamboo steamers built for authentic Asian culinary prep, professional kitchens, and retail distribution.</p>  
-                    <a href="/contact" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>  
-                </div>  
-            </div>  
-            <div class="product-card">  
-                <img src="w-cutlery.jpg" alt="Premium Wooden Cutlery">  
-                <div class="product-info">  
-                    <h3>Premium Wooden Cutlery</h3>  
-                    <p>Sleek, heat-resistant knives, forks, and spoons made from premium birchwood. 100% biodegradable and sturdy.</p>  
-                    <a href="/contact" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>  
-                </div>  
-            </div>  
-            <div class="product-card">  
-                <img src="m-whisk.jpg" alt="Bamboo Matcha Whisk">  
-                <div class="product-info">  
-                    <h3>Bamboo Matcha Whisk (Chasen)</h3>  
-                    <p>Handcrafted natural bamboo whisks featuring fine tines designed for specialty cafes and international tea wholesalers.</p>  
-                    <a href="/contact" data-target="contact" class="product-link">Request Bulk Quote &rarr;</a>  
-                </div>  
-            </div>  
-        </div>  
-    </div>  
-</section>  
-
-<!-- About Us Section -->  
-<section class="about-section" id="about">  
-    <div class="container">  
-        <div class="about-container">  
-            <span style="color:var(--primary); font-weight:600; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.4rem; font-size:0.85rem;">Corporate Profile</span>  
-            <h2 style="font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; margin-bottom: 1.2rem;">About WESLECO</h2>  
-            <p class="about-text">  
-                Founded by seasoned supply chain professionals with hands-on manufacturing and sourcing expertise since 2017, Taian Wesleco Trading Center (WESLECO) stands as your reliable direct partner in eco-friendly bamboo and wooden tableware.  
-            </p>  
-            <p class="about-text">  
-                We specialize in high-demand disposable items—including high-volume ice cream sticks, custom wooden cutlery, and coffee stirrers—engineered specifically for global food service distributors and large-scale wholesalers.  
-            </p>  
-              
-            <div class="about-stats">  
-                <div class="stat-item">  
-                    <h4>2017</h4>  
-                    <p>Established Year</p>  
-                </div>  
-                <div class="stat-item">  
-                    <h4>100%</h4>  
-                    <p>Biodegradable & Eco-Friendly</p>  
-                </div>  
-                <div class="stat-item">  
-                    <h4>Global</h4>  
-                    <p>Wholesale & Distribution</p>  
-                </div>  
-            </div>  
-        </div>  
-    </div>  
-</section>  
-
-<!-- Contact Section -->  
-<section class="contact" id="contact">  
-    <div class="container">  
-        <div class="section-header">  
-            <span>Direct Connection</span>  
-            <h2>Contact Our Sourcing Team</h2>  
-        </div>  
-        <div class="contact-flex">  
-            <div class="contact-info">  
-                <h3>Let's Discuss Your Supply Needs</h3>  
-                <p style="color: var(--text-gray); margin-bottom: 1.2rem; font-size: 0.95rem;">Have questions about factory pricing, custom packaging, or free sample arrangements? Reach out to Wesley directly.</p>  
-                  
-                <div class="contact-detail-box">  
-                    <div class="contact-item">  
-                        <i class="fab fa-whatsapp"></i>  
-                        <div><strong>WhatsApp:</strong><br><a href="https://wa.me/8615621351993" target="_blank" style="color:var(--primary); text-decoration:none;">+86 15621351993</a></div>  
-                    </div>  
-                    <div class="contact-item">  
-                        <i class="fas fa-envelope"></i>  
-                        <div><strong>Direct Email:</strong><br><a href="mailto:wesley@wesleco.com" style="color:var(--primary); text-decoration:none;">wesley@wesleco.com</a></div>  
-                    </div>  
-                    <div class="contact-item">  
-                        <i class="fas fa-globe"></i>  
-                        <div><strong>Official Web:</strong><br><span style="color:var(--text-dark);">wesleco.com</span></div>  
-                    </div>  
-                </div>  
-            </div>  
-              
-            <div class="contact-form">  
-                <h3>Send Us an Inquiry</h3>  
-                <div style="background: var(--bg-light); border-left: 4px solid var(--primary); padding: 10px 12px; margin-bottom: 15px; border-radius: 4px; font-size: 0.85rem; color: #555;">  
-                    <i class="fas fa-info-circle" style="color: var(--primary); margin-right: 5px;"></i>  
-                    <strong>Free Sample Policy:</strong> We offer <strong>FREE physical samples</strong>. Buyers cover express shipping or provide a courier account (DHL/FedEx/UPS).  
-                </div>  
-                  
-                <form action="https://formsubmit.co/wesley@wesleco.com" method="POST">  
-                    <div class="form-group"><input type="text" name="Name" placeholder="Your Full Name" required></div>  
-                    <div class="form-group"><input type="email" name="Email" placeholder="Your Business Email (e.g. name@company.com)" required></div>  
-                    <div class="form-group"><textarea name="Message" rows="4" placeholder="Product Requirements / Order Quantity / Customization Details" required></textarea></div>  
-                    <button type="submit" class="btn-submit">Submit Inquiry Now</button>  
-                </form>  
-            </div>  
-        </div>  
-    </div>  
-</section>  
-
-<!-- Footer -->  
-<footer>  
-    <div class="container footer-container">  
-        <div class="footer-top">  
-            <div class="footer-brand">  
-                <img src="Wesleco-LOGO.png" alt="Wesleco Logo">  
-                <span class="footer-slogan">Integrity First, Quality Paramount.</span>  
-                <div class="footer-socials">  
-                    <a href="https://www.facebook.com/profile.php?id=61578540002153" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>  
-                    <a href="https://www.linkedin.com/in/wesley-n-36a8493a1/zh" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>  
-                </div>  
-            </div>  
-              
-            <div class="footer-links-group">  
-                <h4>Quick Links</h4>  
-                <ul>  
-                    <li><a href="/home" data-target="home">Home</a></li>  
-                    <li><a href="/products" data-target="products">Products</a></li>  
-                    <li><a href="/about" data-target="about">About Us</a></li>  
-                    <li><a href="/contact" data-target="contact">Contact Us</a></li>  
-                </ul>  
-            </div>  
-
-            <div class="footer-links-group">  
-                <h4>Product Categories</h4>  
-                <ul>  
-                    <li><a href="/products" data-target="products">Wooden Cutlery</a></li>  
-                    <li><a href="/products" data-target="products">Bamboo Steamers</a></li>  
-                    <li><a href="/products" data-target="products">Matcha Whisks</a></li>  
-                    <li><a href="/products" data-target="products">Custom Shaped Rods</a></li>  
-                </ul>  
-            </div>  
-        </div>  
-
-        <div class="footer-bottom">  
-            <p>&copy; 2026 Taian Wesleco Trading Center. All Rights Reserved. | wesleco.com</p>  
-            <p>Direct B2B Manufacturer & Exporter</p>  
-        </div>  
-    </div>  
-</footer>  
-
-<!-- Floating WhatsApp -->  
-<a href="https://wa.me/8615621351993" class="float-whatsapp" target="_blank" aria-label="Chat on WhatsApp">  
-    <i class="fab fa-whatsapp"></i>  
-</a>  
-
-<!-- JavaScript 响应式菜单 + 单页伪静态路由 -->  
-<script>  
-    const routeMap = {  
-        '': 'home',  
-        'home': 'home',  
-        'products': 'products',  
-        'about': 'about',  
-        'about-us': 'about',  
-        'contact': 'contact'  
-    };  
-
-    function navigateTo(path, push = true) {  
-        let cleanPath = path.replace(/^\//, '').toLowerCase().trim();  
-        cleanPath = decodeURIComponent(cleanPath).replace(/\s+/g, '-');  
-          
-        const targetId = routeMap[cleanPath] || 'home';  
-          
-        if (targetId === 'home') {  
-            window.scrollTo({ top: 0, behavior: 'smooth' });  
-        } else {  
-            const targetElement = document.getElementById(targetId);  
-            if (targetElement) {  
-                targetElement.scrollIntoView({ behavior: 'smooth' });  
-            }  
-        }  
-
-        if (push) {  
-            const displayPath = cleanPath === '' ? '/' : `/${cleanPath}`;  
-            history.pushState({ route: cleanPath }, '', displayPath);  
-        }  
-    }  
-
-    document.addEventListener('DOMContentLoaded', () => {  
-        const navMenu = document.getElementById('nav-menu');  
-        const menuToggle = document.getElementById('mobile-menu-toggle');  
-
-        // 移动端菜单切换控制  
-        menuToggle.addEventListener('click', () => {  
-            navMenu.classList.toggle('active');  
-            const icon = menuToggle.querySelector('i');  
-            if (navMenu.classList.contains('active')) {  
-                icon.classList.remove('fa-bars');  
-                icon.classList.add('fa-times');  
-            } else {  
-                icon.classList.remove('fa-times');  
-                icon.classList.add('fa-bars');  
-            }  
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q8L4XQEVNM');
+    </script>
+
+    <!-- SEO Optimization -->
+    <title>WESLECO | Wooden Cutlery & Bamboo Tableware Supplier China | OEM Partner</title>
+    <meta name="description"
+        content="WESLECO is a professional supplier and OEM partner for eco-friendly wooden cutlery, ice cream sticks, coffee stirrers, and bamboo tableware.">
+    <meta name="keywords"
+        content="wooden cutlery supplier China, wooden ice cream sticks supplier, bamboo tableware supplier">
+
+    <!-- 404 跳转路由检测（解决静态部署刷新报 404 问题） -->
+    <script>
+        (function () {
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        })();  
+    </script>
+
+    <!-- Favicon 浏览器标签图标 -->
+    <link rel="icon" href="Wesleco-LOGO.ico" type="image/x-icon">
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ================= Global Base Styles ================= */
+
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --accent: #81c784;
+            --bg-light: #f4f7f4;
+
+            --text-dark: #2c3e50;
+            --text-gray: #666;
+            --border-color: #e2e8f0;
+
+            --nav-height: 74px;
+
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+
+            --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 12px 35px rgba(0, 0, 0, 0.08);
+
+            --transition: 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
+            -webkit-text-size-adjust: 100%;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-width: 320px;
+            color: var(--text-dark);
+            background-color: #fff;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        /* 保留 header 的完整样式 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        /* ================= Header & Navigation ================= */
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 100%;
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 1.5rem;
+        }
+
+        /* Logo */
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .logo img {
+            display: block;
+            width: auto;
+            height: 38px;
+            max-width: 180px;
+        }
+
+        /* Desktop Navigation */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            margin: 0;
+            padding: 0;
+
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            display: inline-flex;
+            align-items: center;
+
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+
+            white-space: nowrap;
+
+            transition:
+                color var(--transition),
+                transform var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* Header CTA */
+
+        .btn-header {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 40px;
+            padding: 0.55rem 1.3rem;
+
+            background: var(--primary);
+            color: #fff;
+
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1;
+
+            white-space: nowrap;
+
+            cursor: pointer;
+
+            transition:
+                background-color var(--transition),
+                transform var(--transition),
+                box-shadow var(--transition);
+        }
+
+        .btn-header:hover {
+            background: var(--primary-dark);
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+        }
+
+        /* Mobile Menu Button */
+
+        .mobile-menu-btn {
+            display: none;
+
+            width: 44px;
+            height: 44px;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0;
+
+            background: transparent;
+            border: none;
+
+            color: var(--text-dark);
+            font-size: 1.4rem;
+
+            cursor: pointer;
+
+            border-radius: var(--radius-sm);
+
+            transition:
+                background-color var(--transition),
+                color var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--bg-light);
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* ================= Hero Section (优化：GPU 慢速平滑动效) ================= */
+        .hero {
+            position: relative;
+            margin-top: var(--nav-height);
+            min-height: calc(100vh - var(--nav-height));
+            min-height: calc(100dvh - var(--nav-height));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 4rem 1.25rem;
+            overflow: hidden;
+            /* 确保放大的背景不溢出 */
+        }
+
+        /* 背景平移图层：28s 电影感渐进过渡 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -5%;
+            left: -10%;
+            width: 120%;
+            height: 110%;
+            /* 1. 移动端默认加载 49.3kB 的轻量小图 */
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('hero-bg-mobile.webp') center/cover no-repeat;
+            z-index: 0;
+        }
+
+        /* 仅在桌面端开启大图、动画与渲染优化 */
+        @media (min-width: 768px) {
+            .hero::before {
+                /* 2. 桌面端切回高清大图 */
+                background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('hero-bg.webp') center/cover no-repeat;
+                will-change: transform;
+                animation: heroCinematicPan 28s ease-in-out infinite alternate;
+            }
+        }
+
+        @keyframes heroCinematicPan {
+            0% {
+                transform: scale3d(1.05, 1.05, 1) translate3d(-3%, 0, 0);
+            }
+
+            100% {
+                transform: scale3d(1.05, 1.05, 1) translate3d(3%, 0, 0);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(46, 125, 50, 0.9);
+            color: #fff;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            line-height: 1.25;
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+            /* 增强文字在动效下的清晰度 */
+        }
+
+        .hero p {
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            margin-bottom: 2.2rem;
+            opacity: 0.95;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.85rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            padding: 0.85rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            min-height: 48px;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        /* ================= Core Highlights ================= */
+        .features {
+            background: var(--bg-light);
+            padding: 4.5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .section-header span {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 2.2rem 1.8rem;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            background: var(--bg-light);
+            padding: 14px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.92rem;
+        }
+
+        /* ====================== 产品卡片区 - 最终优化版 ====================== */
+        /* 彻底去除黑色渐变层 + 提升专业感 + 3D 浮动 + 材质细节悬停 */
+
+        .products {
+            padding: 60px 0;
+        }
+
+        .products .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .products .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* ====================== 产品卡片 - 最终丝滑版 ====================== */
+
+        .products .product-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.45s ease,
+                border-color 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .products .product-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1),
+                0 0 28px rgba(46, 125, 50, 0.12);
+            border-color: #2e7d32;
+        }
+
+        /* 图片区域 */
+        .products .product-img-wrapper {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background-color: #f3f4f6;
+            position: relative;
+        }
+
+        .products .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .products .product-card:hover .product-img-wrapper img {
+            transform: scale(1.06);
+        }
+
+        /* 材质细节标签 - 淡绿色渐变 + 延迟弹出 */
+        .material-detail {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 0.82rem;
+            color: #1b4332;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.4s ease 0.08s,
+                /* 稍晚 0.08s 开始 */
+                transform 0.4s ease 0.08s;
+            pointer-events: none;
+            z-index: 5;
+
+            /* 淡绿色渐变 */
+            background: linear-gradient(to top,
+                    rgba(232, 245, 233, 0.97) 0%,
+                    rgba(241, 248, 242, 0.95) 55%,
+                    rgba(255, 255, 255, 0.93) 100%);
+
+            border-top: 1px solid rgba(46, 125, 50, 0.12);
+            /* 上方圆角处理，避免和卡片圆角冲突 */
+            border-radius: 0;
+        }
+
+        .products .product-card:hover .material-detail {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 文字区域 */
+        .products .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            background: #ffffff !important;
+            text-align: left;
+            position: relative;
+            color: #111827;
+            /* 给文字区顶部加一点过渡感 */
+            transition: background 0.3s ease;
+        }
+
+        .products .product-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .products .product-info p {
+            font-size: 0.92rem;
+            color: #4b5563;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .products .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2e7d32;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .products .product-link:hover {
+            color: #1b5e20;
+            gap: 0.85rem;
+        }
+
+        /* 移动端自适应（保持不变） */
+        @media (max-width: 992px) {
+            .products .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .products .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* ================= About Us Section ================= */
+        .about-section {
+            padding: 5rem 0;
+            background: #fff;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            margin: 1.2rem 0;
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item h4 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-item p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ================= Contact Section ================= */
+        .contact {
+            background: var(--bg-light);
+            padding: 4rem 0;
+        }
+
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: space-between;
+            align-items: stretch;
+            /* 关键：左右两栏拉伸到相同的高度 */
+        }
+
+        /* 左侧：联系信息区域 */
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            /* 垂直布局，方便将底部内容推到底端 */
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .contact-info p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 移除背景框，并强制自动补齐上边距，将联系方式挤到最底部 */
+        .contact-detail-box {
+            background: transparent !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            margin-top: auto !important;
+            /* 关键：自动贴合最底端 */
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            word-break: break-word;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            /* 图标保持白色小圆底 */
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        /* 右侧：询盘表单区域 */
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: #fff;
+            padding: 1.8rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-form h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* 顶部提示框 */
+        .contact-form .info-box,
+        .sample-policy-box {
+            padding: 0.65rem 0.85rem;
+            font-size: 0.82rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            border-radius: 6px;
+        }
+
+        .form-group {
+            margin-bottom: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem 0.9rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            outline: none;
+            background-color: #fff;
+            color: var(--text-dark);
+        }
+
+        /* Textarea 初始高度 */
+        .form-group textarea {
+            height: 75px;
+            min-height: 65px;
+            resize: vertical;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+        }
+
+        /* 提交按钮 */
+        .btn-submit {
+            width: 100%;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0.8rem;
+            margin-top: 0.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+        }
+
+        /* 栏目通用标题 */
+        .footer-links-group h4 {
+            font-size: 1rem;
+            margin-top: 0 !important;
+            margin-bottom: 0.6rem !important;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        /* 列表容器通用重置 */
+        .footer-links-group ul {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .footer-links-group li {
+            padding: 0 !important;
+            margin: 0 !important;
+            line-height: 1.5 !important;
+        }
+
+        /* 第 2 列：Quick Links (4 行) */
+        .footer-links-group:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-links-group:nth-child(2) ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        /* 第 3 列：Product Categories (3 行双列) */
+        .footer-links-group:nth-child(3) {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-links-group:nth-child(3) h4 {
+            text-align: center !important;
+            width: 100%;
+        }
+
+        .footer-links-group:nth-child(3) ul {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            column-gap: 1.2rem !important;
+            row-gap: 0.65rem !important;
+            flex-grow: 1;
+        }
+
+        .footer-links-group a {
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.88rem;
+            cursor: pointer;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .footer-links-group a:hover {
+            color: #fff;
+            padding-left: 3px;
+        }
+
+        /* 最底端版权栏 (Copyright) */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: #777;
+            font-size: 0.82rem;
+            border-top: none !important;
+        }
+
+        /* 回到顶部按钮样式 */
+        #back-to-top {
+            position: fixed;
+            bottom: 85px;
+            /* 设置为 85px，刚好在 WhatsApp 图标(bottom: 20px)上方，互不遮挡 */
+            right: 20px;
+            width: 55px;
+            height: 55px;
+
+            /* 1. 毛玻璃背景：品牌绿配 75% 半透明 + 高斯模糊 */
+            background-color: rgba(46, 125, 50, 0.75);
+            /* #2e7d32 转 rgba */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            /* 兼容 Safari */
+
+            /* 2. 边框与清晰图标 */
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            /* 浅色边框增强玻璃质感 */
+            border-radius: 50%;
+
+            /* 3. 布局与层级 */
+            display: flex;
+            /* 改为 flex 常驻，显隐由 opacity 和 visibility 控制 */
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+            /* 4. 初始隐藏 + 淡入淡出动画过渡 */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease, background-color 0.3s ease;
+        }
+
+        /* 激活显示状态 */
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #back-to-top:hover {
+            background-color: rgba(27, 94, 32, 0.9);
+            /* #1b5e20 加深色并提升不透明度 */
+            transform: translateY(-3px);
+        }
+
+        /* Floating WhatsApp */
+        .float-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: #fff;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: whatsapp-pulse 2s infinite;
+        }
+
+        .float-whatsapp:hover {
+            transform: scale(1.1) rotate(8deg);
+            background: #20ba5a;
+        }
+
+        @keyframes whatsapp-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* 📱 响应式适配（针对平板竖屏与手机屏优化） */
+        @media (max-width: 992px) {
+            .custom-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            /* 平板竖屏：Logo 独占整行，链接组分为 2 列 */
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+                gap: 1.2rem;
+                display: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .btn-header {
+                display: none;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            /* 手机端按钮调整为全宽堆叠，大拇指操控更轻松 */
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.8rem;
+            }
+
+            .btn-primary,
+            .btn-whatsapp {
+                width: 100%;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.8rem;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .footer-brand img {
+                height: 38px;
+                padding: 5px 12px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .float-whatsapp {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* 系统开启减少动态效果时的兼容处理 */
+        @media (prefers-reduced-motion: reduce) {
+            .hero::before {
+                animation: none;
+                transform: scale(1.05);
+            }
+        }
+
+        /* 移动端与小屏幕横向滑动适配 */
+        @media (max-width: 992px) {
+            .grid-4 {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                gap: 16px;
+                padding: 10px 15px 20px 15px;
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+
+            .feature-card {
+                flex: 0 0 82% !important;
+                max-width: 300px;
+                scroll-snap-align: start;
+                scroll-snap-stop: normal;
+            }
+        }
+
+        .grid-4::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .grid-4::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .grid-4::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        /* 移动端产品卡片横向滑动适配 */
+        @media (max-width: 992px) {
+            .grid-3 {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                gap: 16px;
+                padding: 10px 15px 20px 15px;
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+
+            .product-card {
+                flex: 0 0 82% !important;
+                max-width: 300px;
+                scroll-snap-align: start;
+                scroll-snap-stop: normal;
+            }
+        }
+
+        .grid-3::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .grid-3::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .grid-3::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        /* ==================== 产品模块高级微交互样式 ==================== */
+        .products {
+            padding: 60px 0;
+        }
+
+        /* 3列网格布局 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* 产品卡片容器：固定比例与溢出隐藏 */
+        .product-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* 强制图片 1:1 比例并防止变形 */
+        .product-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* 悬停时图片微微放大（高奢质感） */
+        .product-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* 产品标题：始终固定在底部 */
+        .product-info h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            transition: transform 0.4s ease;
+        }
+
+        /* 描述文字：默认隐藏，悬停时平滑向上展开 */
+        .product-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.88);
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transform: translateY(10px);
+            transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease, margin-top 0.4s ease;
+        }
+
+        /* 悬停触发展开 */
+        .product-card:hover .product-info p {
+            max-height: 80px;
+            /* 容纳 2-3 行描述 */
+            opacity: 1;
+            margin-top: 8px;
+            transform: translateY(0);
+        }
+
+        /* 移动端/小屏横向滑动适配 */
+        @media (max-width: 992px) {
+            .grid-3 {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory;
+                gap: 16px;
+                padding-bottom: 15px;
+            }
+
+            .product-card {
+                flex: 0 0 82% !important;
+                max-width: 300px;
+                scroll-snap-align: start;
+            }
+
+            /* 移动端默认直接显示描述，提升触屏体验 */
+            .product-info p {
+                max-height: 80px;
+                opacity: 1;
+                margin-top: 6px;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==================== 产品模块高级微交互样式 ==================== */
+        .products {
+            padding: 60px 0;
+        }
+
+        /* 3列网格布局，保持不变 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* 产品卡片容器：强制正方形并溢出隐藏 */
+        .product-card {
+            position: relative;
+            border-radius: 16px;
+            /* 保持圆角 */
+            overflow: hidden;
+            /* 溢出隐藏 */
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+
+            /* ==================== 核心修改：强制 1:1 宽高比 ==================== */
+            aspect-ratio: 1 / 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* 产品图片：填充正方形卡片 */
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            /* 既然是1:1，填充即可 */
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+            /* 确保图片不发生矩形裁切。既然图片和卡片都是1:1，cover 会完美显示完整图片。 */
+            object-fit: cover;
+        }
+
+        /* 悬停时图片微微放大（保持高奢质感） */
+        .product-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* 底部文字渐变蒙版：向上滑动核心逻辑保持 */
+        .product-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            /* 蒙版布局需要调整，只在底部留一小块区域显示标题 */
+            padding: 24px 20px 20px 20px;
+            box-sizing: border-box;
+            color: #ffffff;
+
+            /* 渐变背景：调整起始点，保证未悬停时文字也清晰可见。 */
+            /* 蒙版起始点需要调整，让文字在底部更窄，悬停时展开。 */
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.9) 0%,
+                    /* 底部更深，确保标题清晰 */
+                    rgba(0, 0, 0, 0.6) 50%,
+                    /* 调整渐变高度，未悬停时更低 */
+                    transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: background 0.4s ease;
+
+            /* 默认高度更低，只显示标题 */
+            height: auto;
+        }
+
+        /* 产品标题：始终固定在底部，保持不变 */
+        .product-info h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            transition: transform 0.4s ease;
+        }
+
+        /* 描述文字：默认隐藏，悬停时平滑向上展开，逻辑保持 */
+        .product-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.88);
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transform: translateY(10px);
+            transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease, margin-top 0.4s ease;
+        }
+
+        /* 悬停触发展开，描述高度增加以容纳更多内容 */
+        .product-card:hover .product-info p {
+            max-height: 100px;
+            /* 适应正方形卡片，增加容纳空间 */
+            opacity: 1;
+            margin-top: 8px;
+            transform: translateY(0);
+        }
+
+        /* ==================== 移动端适配：多端自适应不变 ==================== */
+        @media (max-width: 992px) {
+            .grid-3 {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory;
+                gap: 16px;
+                padding-bottom: 15px;
+            }
+
+            .product-card {
+                flex: 0 0 82% !important;
+                max-width: 300px;
+                scroll-snap-align: start;
+
+                /* ==================== 核心修改：在移动端也强制 1:1 ==================== */
+                aspect-ratio: 1 / 1;
+            }
+
+            /* 移动端默认直接显示描述，提升触屏体验（逻辑保持） */
+            .product-info p {
+                max-height: 100px;
+                /* 增加描述空间 */
+                opacity: 1;
+                margin-top: 6px;
+                transform: translateY(0);
+            }
+
+            /* 蒙版需要适应移动端默认显示描述 */
+            .product-info {
+                background: linear-gradient(to top,
+                        rgba(0, 0, 0, 0.9) 0%,
+                        rgba(0, 0, 0, 0.7) 70%,
+                        transparent 100%);
+            }
+        }
+
+        /* ================= Footer 整体布局 ================= */
+        footer {
+            background-color: #0f172a;
+            /* 深蓝背景 */
+            color: #94a3b8;
+            padding: 50px 0 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 48px;
+            padding-bottom: 40px;
+            border-bottom: none !important;
+            /* 关键修改：去掉了底部分隔线 */
+        }
+
+        /* ================= 品牌区样式 ================= */
+        .footer-brand {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo-img {
+            height: 38px;
+            width: auto;
+            background-color: #ffffff;
+            padding: 6px 16px;
+            border-radius: 6px;
+            margin-bottom: 14px;
+        }
+
+        /* Slogan：调为高级浅灰色，避免抢焦点 */
+        .footer-slogan {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 18px;
+            letter-spacing: 0.2px;
+        }
+
+        /* 社交图标栏 */
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-socials a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #1e293b;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .footer-socials a:hover {
+            background-color: #16a34a;
+            /* 鼠标悬停激活品牌绿 */
+            transform: translateY(-2px);
+        }
+
+        /* ================= 链接列表通用 ================= */
+        .footer-links-group {
+            flex: 1;
+        }
+
+        .footer-links-group h4 {
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-links-group ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links-group li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-group a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-group a:hover {
+            color: #ffffff;
+        }
+
+        /* ================= 产品分类双列网格 ================= */
+        .footer-products-group {
+            flex: 1.8;
+            /* 赋予产品区更宽的空间以支持双列 */
+        }
+
+        .product-category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* 核心：开启 2 列显示 */
+            column-gap: 28px;
+            row-gap: 12px;
+        }
+
+        .product-category-grid li {
+            margin-bottom: 0;
+            /* 使用 grid row-gap 控制间距 */
+        }
+
+        /* ================= 底部版权区 ================= */
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            /* 顶部微弱分割线 */
+
+            /* 核心居中控制 */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            /* 水平绝对居中 */
+            align-items: center;
+            /* 垂直居中 */
+            text-align: center;
+
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            /* 控制文字与竖线的水平间距 */
+            flex-wrap: wrap;
+            /* 适配窄屏折行 */
+        }
+
+        .footer-bottom .divider {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.75rem;
+        }
+
+        .footer-tagline {
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        /* ================= 移动端适配 ================= */
+        @media (max-width: 768px) {
+            .footer-top {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .product-category-grid {
+                grid-template-columns: 1fr;
+                /* 移动端还原为单列 */
+            }
+
+            .footer-bottom .divider {
+                display: none;
+                /* 手机端隐藏竖线 */
+            }
+
+            .footer-bottom p {
+                flex-direction: column;
+                gap: 6px;
+            }
+        }
+
+        /* ================= 品牌模块居中对齐方案 ================= */
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 核心：让 Logo、Slogan、图标全部居中对齐 */
+            width: fit-content;
+            /* 宽度由内容自然撑开，防止撑破溢出 */
+            gap: 12px;
+            /* 统一控制上下间距 */
+        }
+
+        /* 1. Logo 样式 */
+        .footer-logo-img {
+            height: 38px;
+            width: auto;
+            background-color: #ffffff;
+            padding: 6px 18px;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* 2. Slogan：自然的居中文本，不拉伸字距 */
+        .footer-slogan {
+            color: #cbd5e1;
+            font-size: 0.82rem;
+            font-style: italic;
+            text-align: center;
+            white-space: nowrap;
+            /* 保持单行不换行 */
+            letter-spacing: 0.3px;
+            /* 适当调微小字间距，提升精致感 */
+        }
+
+        /* 3. 社媒图标：居中紧凑排列 */
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            /* 控制两个图标之间的合适间距 */
+            width: 100%;
+        }
+
+        /* 4. 图标基础样式与悬停微动效 */
+        .footer-socials a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #1e293b;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        /* 悬停微动效：轻微上浮 + 放大 + 绿光 */
+        .footer-socials a:hover {
+            transform: translateY(-3px) scale(1.08);
+            background-color: #16a34a;
+            box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
+        }
+
+        /* ================= Customization 模块高级样式 ================= */
+        .customization {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .custom-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            /* 桌面端黄金比例左右划分 */
+            gap: 56px;
+            align-items: center;
+        }
+
+        /* 1. 胶囊标签 (Pill Badge) */
+        .custom-badge {
+            display: inline-block;
+            background-color: rgba(22, 163, 74, 0.08);
+            /* 浅绿色背景 */
+            color: var(--primary, #16a34a);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        /* 2. 主标题与描述排版 */
+        .custom-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .custom-desc {
+            font-size: 1rem;
+            color: var(--text-gray, #475569);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        /* 3. 特性勾选列表 */
+        .custom-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 36px 0;
+        }
+
+        .custom-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 0.98rem;
+            font-weight: 500;
+            color: #1e293b;
+            line-height: 1.4;
+        }
+
+        .custom-list i {
+            color: var(--primary, #16a34a);
+            font-size: 1.15rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        /* 4. CTA 按钮与 hover 动效 */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary, #16a34a);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(22, 163, 74, 0.25);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-primary i {
+            font-size: 0.88rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #15803d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(22, 163, 74, 0.35);
+        }
+
+        .btn-primary:hover i {
+            transform: translateX(4px);
+            /* 悬停时箭头微幅向右推 */
+        }
+
+        /* 5. 右侧卡片与图片轻微缩放微动效 */
+        .custom-img-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .custom-img-box:hover {
+            box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.1);
+        }
+
+        .custom-img-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            /* 保持比例，比固定高度更灵活 */
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f9fafb;
+        }
+
+        .custom-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .custom-img-box:hover .custom-img-wrapper img {
+            transform: scale(1.03);
+            /* 悬停时图片轻微平滑放大 */
+        }
+
+        .custom-caption {
+            text-align: center;
+            color: var(--text-gray, #64748b);
+            font-size: 0.88rem;
+            margin: 16px 0 4px 0;
+            font-weight: 500;
+        }
+
+        /* ================= 多端自适应响应式 (Responsive) ================= */
+        /* 平板端适配 (<= 992px) */
+        @media (max-width: 992px) {
+            .customization {
+                padding: 60px 0;
+            }
+
+            .custom-grid {
+                grid-template-columns: 1fr;
+                /* 转为单列上下布局 */
+                gap: 40px;
+            }
+
+            .custom-title {
+                font-size: 1.85rem;
+            }
+
+            .custom-img-box {
+                max-width: 600px;
+                margin: 0 auto;
+                /* 居中显示 */
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
+        /* 移动端适配 (<= 576px) */
+        @media (max-width: 576px) {
+            .customization {
+                padding: 40px 0;
+            }
+
+            .custom-title {
+                font-size: 1.5rem;
+            }
+
+            .custom-desc {
+                font-size: 0.92rem;
+            }
+
+            .btn-primary {
+                width: 100%;
+                /* 移动端全宽按钮，提升触屏体验 */
+                justify-content: center;
+                box-sizing: border-box;
+            }
+
+            .custom-img-box {
+                padding: 12px;
+            }
+
+            .custom-caption {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* 右侧整体卡片外观 */
+        .custom-img-box {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 主图宽高比锁定（定位左右导航箭头） */
+        .custom-img-wrapper {
+            position: relative;
+            /* 关键：支持左右箭头绝对定位 */
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f9fafb;
+        }
+
+        .custom-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        /* 左右切换箭头按钮样式 */
+        .oem-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.85);
+            color: #374151;
+            border: none;
+            border-radius: 50%;
+            font-size: 18px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(4px);
+        }
+
+        .oem-arrow:hover {
+            background: #2e7d32;
+            color: #ffffff;
+        }
+
+        .prev-btn {
+            left: 8px;
+        }
+
+        .next-btn {
+            right: 8px;
+        }
+
+        /* 5张缩略图容器 */
+        .custom-thumbs {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        /* 缩略图单项（锁定 4:3 比例平分，防变形） */
+        .thumb-item {
+            flex: 1;
+            min-width: 0;
+            /* 关键：防止 Flex 子项内容溢出变大 */
+            width: 0;
+            /* 强制 5 张图完全等宽 */
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            opacity: 0.65;
+            transition: all 0.2s ease;
+        }
+
+        .thumb-item:hover {
+            opacity: 0.9;
+        }
+
+        /* 当前选中激活状态 */
+        .thumb-item.active {
+            opacity: 1;
+            border-color: #2e7d32;
+            /* WESLECO 品牌绿 */
+            transform: translateY(-2px);
+        }
+
+        /* 图注文字 */
+        .custom-caption {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 1.4;
+            min-height: 36px;
+        }
+
+        /* 移动端屏幕自适应 */
+        @media (max-width: 768px) {
+            .custom-img-box {
+                padding: 12px;
+            }
+
+            .oem-arrow {
+                width: 28px;
+                height: 28px;
+                font-size: 16px;
+            }
+
+            .custom-thumbs {
+                gap: 6px;
+            }
+
+            .thumb-item {
+                border-width: 1.5px;
+            }
+        }
+    </style>
+
+</head>
+
+<body> <!-- Header 导航栏 -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo" data-target="">
+                <img src="Wesleco-LOGO.png" alt="Wesleco Logo">
+            </a>
+
+            <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="/home" data-target="home">Home</a></li>
+                <li><a href="/products" data-target="products">Products</a></li>
+                <li><a href="/about" data-target="about">About Us</a></li>
+                <li><a href="/contact" data-target="contact">Contact</a></li>
+            </ul>
+
+            <a href="/contact" data-target="contact" class="btn-header">Inquire Now</a>
+        </div>
+    </header>
+
+    <!-- Hero 区块 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-badge">RELIABLE B2B SUPPLIER & OEM PARTNER</span>
+            <h1>100% Eco-Friendly Bamboo & Wooden Products</h1>
+            <p>Direct supplier for premium bamboo & wooden tableware, coffee stirrers, custom-shaped rods, and
+                sustainable kitchenware. FSC, FDA & LFGB certified for heavy-volume partners.</p>
+            <div class="btn-group">
+                <a href="/contact" data-target="contact" class="btn-primary">Get Free Samples</a>
+                <a href="https://wa.me/8615621351993" class="btn-whatsapp" target="_blank"><i
+                        class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Competencies -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <span>WHY CHOOSE WESLECO</span>
+                <h2>Built for Heavy-Volume Buyers & Distributors</h2>
+            </div>
+            <div class="grid-4">
+                <div class="feature-card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Factory-Direct Pricing</h3>
+                    <p>Sourced directly from certified factories to give global wholesalers maximum profit margin.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>FSC & FDA Certified</h3>
+                    <p>Strictly compliant with EU and US food-contact regulations for safe commercial deployment.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Global OEM/ODM Customization</h3>
+                    <p>Laser engraving, custom shapes, brand logo hot-stamping, and retail-ready packaging.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Strict Quality Inspection</h3>
+                    <p>Rigorous moisture, smoothness, and strength checks before every international dispatch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization Highlight Section -->
+    <section class="customization">
+        <div class="container">
+            <div class="custom-grid">
+                <!-- 左侧内容区 -->
+                <div class="custom-content">
+                    <span class="custom-badge">OEM / ODM Capability</span>
+                    <h2 class="custom-title">Advanced Customization for Global Brands</h2>
+                    <p class="custom-desc">
+                        We empower food service wholesalers and major retail brands with bespoke manufacturing options
+                        that elevate your market presence.
+                    </p>
+
+                    <ul class="custom-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Custom-shaped rods and specialty geometric designs</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Precision double-ended hot-stamped branding / logo printing</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Eco-friendly retail paper box & bulk carton packaging</span>
+                        </li>
+                    </ul>
+
+                    <div class="custom-action">
+                        <a href="/contact" data-target="contact" class="btn-primary">
+                            Discuss Your Custom Project
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 右侧图片展示区 -->
+                <div class="custom-img-box">
+                    <!-- 主图展示区（带左右按钮） -->
+                    <div class="custom-img-wrapper">
+                        <button class="oem-arrow prev-btn" id="oem-prev" aria-label="Previous">&lsaquo;</button>
+                        <img id="oem-main-img" src="OEM5.webp" alt="WESLECO Custom Wooden Tableware">
+                        <button class="oem-arrow next-btn" id="oem-next" aria-label="Next">&rsaquo;</button>
+                    </div>
+
+                    <!-- 5张平分一行的缩略图 -->
+                    <div class="custom-thumbs">
+                        <img src="OEM1.webp" class="thumb-item"
+                            data-caption="Precision hot-stamped logo with pristine smooth wood finish."
+                            alt="Logo Stamping">
+                        <img src="OEM2.webp" class="thumb-item"
+                            data-caption="Technical CAD engineering & custom geometric shapes." alt="CAD Design">
+                        <img src="OEM3.webp" class="thumb-item"
+                            data-caption="Eco-friendly retail boxes and custom packaging options."
+                            alt="Custom Packaging">
+                        <img src="OEM4.webp" class="thumb-item"
+                            data-caption="Full range of custom-shaped ice cream sticks & cutlery array."
+                            alt="Sample Array">
+                        <img src="OEM5.webp" class="thumb-item active"
+                            data-caption="Precision crafted and branded for international bulk orders."
+                            alt="Bulk OEM Capability">
+                    </div>
+
+                    <!-- 动态图注 -->
+                    <p id="oem-caption" class="custom-caption">Precision crafted and branded for international bulk
+                        orders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <span>Product Portfolio</span>
+                <h2>Our Sustainable Bamboo & Wooden Solutions</h2>
+            </div>
+
+            <div class="grid-3">
+                <!-- 1. Wooden Cutlery -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="Wooden-cut.webp" alt="FSC Certified Wooden Cutlery">
+                        <div class="material-detail">
+                            FSC • FDA • LFGB<br>
+                            Heat-resistant up to 200°C<br>
+                            Zero Lead • Zero BPA
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Wooden Cutlery</h3>
+                        <p>FSC Certified Birchwood | Heat-Resistant up to 200°C | FDA & LFGB Approved</p>
+                        <a href="#contact" class="product-link">
+                            Request Bulk Quote <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Wooden Ice Cream Sticks -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="Wooden-ice.webp" alt="Wooden Ice Cream Sticks">
+                        <div class="material-detail">
+                            FSC • FDA • LFGB<br>
+                            Splinter-Free Grade-A Birch<br>
+                            High-Speed Machinery Ready
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Wooden Ice Cream Sticks</h3>
+                        <p>Grade-A Birchwood | Splinter-Free | High-Speed Machinery Compatible | FSC Certified</p>
+                        <a href="#contact" class="product-link">
+                            Request Bulk Quote <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Wooden Coffee Stirrers -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="Wooden-Coffee.webp" alt="Wooden Coffee Stirrers">
+                        <div class="material-detail">
+                            FSC • FDA Approved<br>
+                            Smooth Edges<br>
+                            Multiple Length Options
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Wooden Coffee Stirrers</h3>
+                        <p>Smooth Edges | Various Lengths | Perfect for Cafes & Takeaway | FDA Approved</p>
+                        <a href="#contact" class="product-link">
+                            Request Bulk Quote <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. Bamboo Skewers -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="Bamboo-skewr.webp" alt="Bamboo Skewers">
+                        <div class="material-detail">
+                            High-Tensile Bamboo<br>
+                            Teppo Picks Available<br>
+                            BBQ & Grilling Safe
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Bamboo Skewers</h3>
+                        <p>High-Tensile Bamboo | Teppo Picks | BBQ & Grilling Safe | Eco-Friendly</p>
+                        <a href="#contact" class="product-link">
+                            Request Bulk Quote <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Custom Bamboo Products -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="Custom-Bamboo-Products.webp" alt="Custom Bamboo Products">
+                        <div class="material-detail">
+                            Custom Shapes & Sizes<br>
+                            Hot-Stamped Logo<br>
+                            OEM / ODM Ready
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Custom Bamboo Products</h3>
+                        <p>Custom Shapes | Hot-Stamped Logo Branding | Custom Packaging | OEM/ODM</p>
+                        <a href="#contact" class="product-link">
+                            Request Bulk Quote <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. Bamboo Kitchenware -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="Bamboo-kitchenware.webp" alt="Bamboo Kitchenware">
+                        <div class="material-detail">
+                            FSC Certified Bamboo<br>
+                            Steamers • Spatulas<br>
+                            Sustainable Kitchen Tools
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Bamboo Kitchenware</h3>
+                        <p>Eco-Friendly Steamers | Spatulas | Sustainable Kitchen Utensils | FSC Certified</p>
+                        <a href="#contact" class="product-link">
+                            Request Bulk Quote <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="section-header">
+                    <span>Corporate Profile</span>
+                    <h2>About WESLECO</h2>
+                </div>
+                <p class="about-text">
+                    Founded by seasoned supply chain professionals with hands-on manufacturing and sourcing expertise
+                    since 2017, Taian Wesleco Trading Center (WESLECO) stands as your reliable direct partner in
+                    eco-friendly bamboo and wooden tableware.
+                </p>
+                <p class="about-text">
+                    We specialize in high-demand disposable items—including high-volume ice cream sticks, custom wooden
+                    cutlery, and coffee stirrers—engineered specifically for global food service distributors and
+                    large-scale wholesalers.
+                </p>
+
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h4>2017</h4>
+                        <p>Established Year</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>100%</h4>
+                        <p>Biodegradable & Eco-Friendly</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Global</h4>
+                        <p>Wholesale & Distribution</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span>Direct Connection</span>
+                <h2>Contact Our Sourcing Team</h2>
+            </div>
+            <div class="contact-flex">
+                <div class="contact-info">
+                    <h3>Let's Discuss Your Supply Needs</h3>
+                    <p>Have questions about
+                        factory pricing, custom packaging, or free sample arrangements? Reach out to Wesley directly.
+                    </p>
+
+                    <div class="contact-detail-box">
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div><strong>WhatsApp:</strong><br><a href="https://wa.me/8615621351993" target="_blank"
+                                    style="color:var(--primary); text-decoration:none;">+86 15621351993</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div><strong>Direct Email:</strong><br><a href="mailto:wesley@wesleco.com"
+                                    style="color:var(--primary); text-decoration:none;">wesley@wesleco.com</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <div><strong>Official Web:</strong><br><span
+                                    style="color:var(--text-dark);">wesleco.com</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send Us an Inquiry</h3>
+                    <div
+                        style="background: var(--bg-light); border-left: 4px solid var(--primary); padding: 10px 12px; margin-bottom: 15px; border-radius: 4px; font-size: 0.85rem; color: #555;">
+                        <i class="fas fa-info-circle" style="color: var(--primary); margin-right: 5px;"></i>
+                        <strong>Free Sample Policy:</strong> We offer <strong>FREE physical samples</strong>. Buyers
+                        cover express shipping or provide a courier account (DHL/FedEx/UPS).
+                    </div>
+
+                    <form action="https://formsubmit.co/wesley@wesleco.com" method="POST">
+                        <div class="form-group"><input type="text" name="Name" placeholder="Your Full Name" required>
+                        </div>
+                        <div class="form-group"><input type="email" name="Email"
+                                placeholder="Your Business Email (e.g. name@company.com)" required></div>
+                        <div class="form-group"><textarea name="Message" rows="4"
+                                placeholder="Product Requirements / Order Quantity / Customization Details"
+                                required></textarea></div>
+                        <button type="submit" class="btn-submit">Submit Inquiry Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-top">
+                <!-- 1. 品牌信息区 -->
+                <div class="footer-brand">
+                    <img src="Wesleco-LOGO.png" alt="Wesleco Logo" class="footer-logo-img">
+                    <span class="footer-slogan">Integrity First, Quality Paramount.</span>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/profile.php?id=61578540002153" target="_blank"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/wesley-n-36a8493a1/zh" target="_blank"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- 2. 快捷链接 -->
+                <div class="footer-links-group">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/home" data-target="home">Home</a></li>
+                        <li><a href="/products" data-target="products">Products</a></li>
+                        <li><a href="/about" data-target="about">About Us</a></li>
+                        <li><a href="/contact" data-target="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- 3. 产品分类区 (支持扩充双列显示) -->
+                <div class="footer-links-group footer-products-group">
+                    <h4>Product Categories</h4>
+                    <ul class="product-category-grid">
+                        <li><a href="/products" data-target="products">Wooden Cutlery</a></li>
+                        <li><a href="/products" data-target="products">Wooden Ice Cream Sticks</a></li>
+                        <li><a href="/products" data-target="products">Wooden Coffee Stirrers</a></li>
+                        <li><a href="/products" data-target="products">Bamboo Skewers</a></li>
+                        <li><a href="/products" data-target="products">Custom Bamboo Products</a></li>
+                        <li><a href="/products" data-target="products">Bamboo Kitchenware</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. 底部版权声明 -->
+            <div class="footer-bottom">
+                <p>
+                    <span>&copy; 2026 Wesleco. All Rights Reserved.</span>
+                    <span class="divider">|</span>
+                    <span class="footer-tagline">Direct B2B Bamboo & Woodenware Supplier</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/8615621351993" class="float-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript 响应式菜单 + 单页伪静态路由 -->
+    <script>
+        const routeMap = {
+            '': 'home',
+            'home': 'home',
+            'products': 'products',
+            'about': 'about',
+            'about-us': 'about',
+            'contact': 'contact'
+        };
+
+        function navigateTo(path, push = true) {
+            let cleanPath = path.replace(/^\//, '').toLowerCase().trim();
+            cleanPath = decodeURIComponent(cleanPath).replace(/\s+/g, '-');
+
+            const targetId = routeMap[cleanPath] || 'home';
+
+            if (targetId === 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            if (push) {
+                const displayPath = cleanPath === '' ? '/' : `/${cleanPath}`;
+                history.pushState({ route: cleanPath }, '', displayPath);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+
+            // 移动端菜单切换控制  
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // 绑定链接点击事件  
+            document.querySelectorAll('[data-target]').forEach(element => {
+                element.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const route = this.getAttribute('data-target');
+                    navigateTo(route);
+
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+
+            // 监听前进/后退  
+            window.addEventListener('popstate', () => {
+                const currentPath = window.location.pathname;
+                navigateTo(currentPath, false);
+            });
+
+            // 初始化位置  
+            const initialPath = window.location.pathname;
+            if (initialPath !== '/' && initialPath !== '') {
+                navigateTo(initialPath, false);
+            }
         });  
+    </script>
+    <!-- 回到顶部按钮 HTML 元素 -->
+    <button id="back-to-top" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mainImg = document.getElementById('oem-main-img');
+            const caption = document.getElementById('oem-caption');
+            const thumbs = Array.from(document.querySelectorAll('.thumb-item'));
+            const prevBtn = document.getElementById('oem-prev');
+            const nextBtn = document.getElementById('oem-next');
+            const imgBox = document.querySelector('.custom-img-box');
 
-        // 绑定链接点击事件  
-        document.querySelectorAll('[data-target]').forEach(element => {  
-            element.addEventListener('click', function(e) {  
-                e.preventDefault();  
-                const route = this.getAttribute('data-target');  
-                navigateTo(route);  
+            let currentIndex = thumbs.findIndex(t => t.classList.contains('active'));
+            if (currentIndex === -1) currentIndex = 0;
+            let autoPlayTimer = null;
 
-                if (navMenu.classList.contains('active')) {  
-                    navMenu.classList.remove('active');  
-                    const icon = menuToggle.querySelector('i');  
-                    icon.classList.remove('fa-times');  
-                    icon.classList.add('fa-bars');  
-                }  
-            });  
-        });  
+            // 核心切换逻辑（更平缓）
+            function showSlide(index) {
+                if (index < 0) index = thumbs.length - 1;
+                if (index >= thumbs.length) index = 0;
+                currentIndex = index;
 
-        // 监听前进/后退  
-        window.addEventListener('popstate', () => {  
-            const currentPath = window.location.pathname;  
-            navigateTo(currentPath, false);  
-        });  
+                const targetThumb = thumbs[currentIndex];
 
-        // 初始化位置  
-        const initialPath = window.location.pathname;  
-        if (initialPath !== '/' && initialPath !== '') {  
-            navigateTo(initialPath, false);  
-        }  
-    });  
-</script>
+                if (mainImg && targetThumb) {
+                    // 先淡出
+                    mainImg.style.transition = 'opacity 0.6s ease';
+                    mainImg.style.opacity = '0';
 
-</body>  
-</html>
+                    setTimeout(() => {
+                        mainImg.src = targetThumb.src;
+                        const newCaption = targetThumb.getAttribute('data-caption');
+                        if (caption && newCaption) caption.textContent = newCaption;
+
+                        // 再淡入
+                        mainImg.style.opacity = '1';
+                    }, 300);   // 等淡出完成后再换图
+                }
+
+                thumbs.forEach(t => t.classList.remove('active'));
+                targetThumb.classList.add('active');
+            }
+
+            // 为左右箭头绑定点击事件
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    showSlide(currentIndex - 1);
+                    startAutoPlay();
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    showSlide(currentIndex + 1);
+                    startAutoPlay();
+                });
+            }
+
+            // 为 5 张缩略图绑定点击事件
+            thumbs.forEach((thumb, index) => {
+                thumb.addEventListener('click', () => {
+                    showSlide(index);
+                    startAutoPlay();
+                });
+            });
+
+            // 自动轮播间隔改为 3.5 秒
+            function startAutoPlay() {
+                stopAutoPlay();
+                autoPlayTimer = setInterval(() => {
+                    showSlide(currentIndex + 1);
+                }, 3500);
+            }
+
+            function stopAutoPlay() {
+                if (autoPlayTimer) clearInterval(autoPlayTimer);
+            }
+
+            // 鼠标划入卡片暂停自动轮播，划出恢复
+            if (imgBox) {
+                imgBox.addEventListener('mouseenter', stopAutoPlay);
+                imgBox.addEventListener('mouseleave', startAutoPlay);
+            }
+
+            // 初始化启动轮播
+            startAutoPlay();
+
+            // 回到顶部（放在 DOMContentLoaded 内部，统一执行环境）
+            const backToTop = document.getElementById('back-to-top');
+            if (backToTop) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        backToTop.classList.add('show');
+                    } else {
+                        backToTop.classList.remove('show');
+                    }
+                });
+
+                backToTop.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
