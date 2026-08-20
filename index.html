@@ -1826,57 +1826,42 @@
             text-align: center !important;
         }
 
-        /* ==================== 强制全屏突破 Footer 样式 ==================== */
+       /* ==================== 安全且完美的 Footer 样式 ==================== */
 
-        /* 1. 彻底清空全局 body 边距，防止右侧/两侧出白 */
-        html,
-        body {
-            margin: 0 !important;
-            padding: 0 !important;
-            width: 100% !important;
-            overflow-x: hidden !important;
-            /* 防止强制撑满时出现底部横向滚动条 */
-        }
-
-        /* 2. 强行突破父级容器限制，将黑底拉满整个屏幕 (100vw) */
+        /* 1. 确保整个外层黑底通栏撑满，同时让内部元素垂直居中排布 */
         footer,
         .footer-container {
             background-color: #1a1a1a !important;
             color: #fff;
-            width: 100vw !important;
-            position: relative !important;
-            left: 50% !important;
-            right: 50% !important;
-            margin-left: -50vw !important;
-            /* 核心：向左强行拉伸至屏幕边缘 */
-            margin-right: -50vw !important;
-            /* 核心：向右强行拉伸至屏幕边缘 */
+            width: 100% !important;
+            margin: 0 !important;
             padding: 50px 0 20px !important;
             box-sizing: border-box !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 核心：让内部区块在通栏正中央排布 */
         }
 
-        /* 3. 内部内容居中，并保持优雅的宽度比例 */
+        /* 2. 内部内容区（限制最大宽度并自动水平居中） */
         .footer-top {
             display: flex;
             justify-content: space-between;
-            align-items: stretch;
+            align-items: flex-start;
             gap: 40px;
             width: 90% !important;
-            max-width: 1400px !important;
-            /* 控制内部文字内容的最大宽度，避免大屏拉得太散 */
-            margin: 0 auto !important;
+            max-width: 1300px !important;
+            margin: 0 auto !important; /* 绝对水平居中 */
             padding-bottom: 30px;
             box-sizing: border-box;
         }
 
-        /* 第 1 列：品牌区（居中） */
+        /* 第 1 列：品牌区 */
         .footer-brand {
-            flex: 1.2;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
             text-align: center;
+            max-width: 280px;
         }
 
         .footer-brand img,
@@ -1907,7 +1892,6 @@
             gap: 12px;
             align-items: center;
             justify-content: center;
-            margin-top: auto;
         }
 
         .footer-socials a {
@@ -1927,15 +1911,11 @@
             transform: translateY(-2px);
         }
 
-        .footer-socials a[href*="facebook"],
-        .footer-socials a.facebook,
         .footer-socials a:nth-child(1) {
             background-color: #1877F2;
             border-radius: 50%;
         }
 
-        .footer-socials a[href*="linkedin"],
-        .footer-socials a.linkedin,
         .footer-socials a:nth-child(2) {
             background-color: #0A66C2;
             border-radius: 5px;
@@ -1950,7 +1930,7 @@
         .footer-links-group h4 {
             font-size: 1rem;
             margin-top: 0;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
             color: #fff;
             letter-spacing: 0.5px;
         }
@@ -1963,8 +1943,7 @@
 
         .footer-links-group li {
             padding: 0;
-            margin: 0;
-            line-height: 1.5;
+            margin-bottom: 0.6rem;
         }
 
         .footer-links-group a {
@@ -1982,23 +1961,7 @@
             padding-left: 3px;
         }
 
-        /* 第 2 列：Quick Links */
-        .footer-links-group:nth-child(2) {
-            justify-content: space-between;
-        }
-
-        .footer-links-group:nth-child(2) ul {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        /* 第 3 列：Product Categories */
-        .footer-links-group:nth-child(3) h4 {
-            text-align: center;
-        }
-
+        /* 第 3 列：Product Categories 网格排版 */
         .footer-links-group:nth-child(3) ul {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -2016,10 +1979,10 @@
             color: #777;
             font-size: 0.82rem;
             width: 90% !important;
-            max-width: 1400px !important;
+            max-width: 1300px !important;
             margin: 0 auto !important;
-            padding-top: 10px;
-            border-top: none;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
         }
 
@@ -2047,7 +2010,7 @@
             color: #fff;
         }
 
-        /* 5. 移动端响应式 (<= 768px) */
+        /* 5. 移动端响应式 (<= 768px)保持不变 */
         @media (max-width: 768px) {
             .footer-top {
                 flex-direction: column;
@@ -2060,19 +2023,13 @@
                 align-items: center;
                 text-align: center;
                 width: 100%;
-            }
-
-            .footer-brand img,
-            .footer-logo img {
-                margin-left: auto;
-                margin-right: auto;
+                max-width: 100%;
             }
 
             .footer-links-group {
                 width: 100%;
                 align-items: center;
                 text-align: center;
-                justify-content: flex-start;
             }
 
             .footer-links-group h4 {
