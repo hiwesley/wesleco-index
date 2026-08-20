@@ -848,87 +848,6 @@
             background: var(--primary-dark);
         }
 
-        /* 栏目通用标题 */
-        .footer-links-group h4 {
-            font-size: 1rem;
-            margin-top: 0 !important;
-            margin-bottom: 0.6rem !important;
-            color: #fff;
-            letter-spacing: 0.5px;
-        }
-
-        /* 列表容器通用重置 */
-        .footer-links-group ul {
-            list-style: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-
-        .footer-links-group li {
-            padding: 0 !important;
-            margin: 0 !important;
-            line-height: 1.5 !important;
-        }
-
-        /* 第 2 列：Quick Links (4 行) */
-        .footer-links-group:nth-child(2) {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer-links-group:nth-child(2) ul {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex-grow: 1;
-        }
-
-        /* 第 3 列：Product Categories (3 行双列) */
-        .footer-links-group:nth-child(3) {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer-links-group:nth-child(3) h4 {
-            text-align: center !important;
-            width: 100%;
-        }
-
-        .footer-links-group:nth-child(3) ul {
-            display: grid !important;
-            grid-template-columns: repeat(2, 1fr) !important;
-            column-gap: 1.2rem !important;
-            row-gap: 0.65rem !important;
-            flex-grow: 1;
-        }
-
-        .footer-links-group a {
-            color: #aaa;
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 0.88rem;
-            cursor: pointer;
-            white-space: nowrap;
-            display: inline-block;
-        }
-
-        .footer-links-group a:hover {
-            color: #fff;
-            padding-left: 3px;
-        }
-
-        /* 最底端版权栏 (Copyright) */
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            color: #777;
-            font-size: 0.82rem;
-            border-top: none !important;
-        }
-
         /* 回到顶部按钮样式 */
         #back-to-top {
             position: fixed;
@@ -1028,15 +947,7 @@
                 gap: 2rem;
             }
 
-            /* 平板竖屏：Logo 独占整行，链接组分为 2 列 */
-            .footer-top {
-                grid-template-columns: 1fr 1fr;
-                gap: 2rem;
-            }
-
-            .footer-brand {
-                grid-column: 1 / -1;
-            }
+        
         }
 
         @media (max-width: 768px) {
@@ -1087,24 +998,7 @@
                 gap: 1.5rem;
             }
 
-            .footer-top {
-                grid-template-columns: 1fr 1fr;
-                gap: 1.8rem;
-            }
-
-            .footer-brand {
-                grid-column: 1 / -1;
-            }
-
-            .footer-brand img {
-                height: 38px;
-                padding: 5px 12px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
+           
 
             .float-whatsapp {
                 width: 50px;
@@ -1345,267 +1239,6 @@
             }
         }
 
-        /* ================= Footer 整体布局 ================= */
-        footer {
-            background-color: #0f172a;
-            /* 深蓝背景 */
-            color: #94a3b8;
-            padding: 50px 0 20px;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 48px;
-            padding-bottom: 40px;
-            border-bottom: none !important;
-            /* 关键修改：去掉了底部分隔线 */
-        }
-
-        /* ================= 品牌区样式 ================= */
-        .footer-brand {
-            flex: 1.2;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .footer-logo-img {
-            height: 38px;
-            width: auto;
-            background-color: #ffffff;
-            padding: 6px 16px;
-            border-radius: 6px;
-            margin-bottom: 14px;
-        }
-
-        /* Slogan：调为高级浅灰色，避免抢焦点 */
-        .footer-slogan {
-            color: #cbd5e1;
-            font-size: 0.9rem;
-            font-weight: 400;
-            margin-bottom: 18px;
-            letter-spacing: 0.2px;
-        }
-
-        /* 社交图标栏 */
-        .footer-socials {
-            display: flex;
-            gap: 12px;
-        }
-
-        .footer-socials a {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: #1e293b;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-
-        .footer-socials a:hover {
-            background-color: #16a34a;
-            /* 鼠标悬停激活品牌绿 */
-            transform: translateY(-2px);
-        }
-
-        /* ================= 链接列表通用 ================= */
-        .footer-links-group {
-            flex: 1;
-        }
-
-        .footer-links-group h4 {
-            color: #ffffff;
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 0.3px;
-        }
-
-        .footer-links-group ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links-group li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links-group a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-        }
-
-        .footer-links-group a:hover {
-            color: #ffffff;
-        }
-
-        /* ================= 产品分类双列网格 ================= */
-        .footer-products-group {
-            flex: 1.8;
-            /* 赋予产品区更宽的空间以支持双列 */
-        }
-
-        .product-category-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            /* 核心：开启 2 列显示 */
-            column-gap: 28px;
-            row-gap: 12px;
-        }
-
-        .product-category-grid li {
-            margin-bottom: 0;
-            /* 使用 grid row-gap 控制间距 */
-        }
-
-        /* ================= 底部版权区 ================= */
-        .footer-bottom {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            /* 顶部微弱分割线 */
-
-            /* 核心居中控制 */
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            /* 水平绝对居中 */
-            align-items: center;
-            /* 垂直居中 */
-            text-align: center;
-
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-
-        .footer-bottom p {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            /* 控制文字与竖线的水平间距 */
-            flex-wrap: wrap;
-            /* 适配窄屏折行 */
-        }
-
-        .footer-bottom .divider {
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 0.75rem;
-        }
-
-        .footer-tagline {
-            color: #94a3b8;
-            font-weight: 500;
-        }
-
-        /* ================= 移动端适配 ================= */
-        @media (max-width: 768px) {
-            .footer-top {
-                flex-direction: column;
-                gap: 32px;
-            }
-
-            .product-category-grid {
-                grid-template-columns: 1fr;
-                /* 移动端还原为单列 */
-            }
-
-            .footer-bottom .divider {
-                display: none;
-                /* 手机端隐藏竖线 */
-            }
-
-            .footer-bottom p {
-                flex-direction: column;
-                gap: 6px;
-            }
-        }
-
-        /* ================= 品牌模块居中对齐方案 ================= */
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* 核心：让 Logo、Slogan、图标全部居中对齐 */
-            width: fit-content;
-            /* 宽度由内容自然撑开，防止撑破溢出 */
-            gap: 12px;
-            /* 统一控制上下间距 */
-        }
-
-        /* 1. Logo 样式 */
-        .footer-logo-img {
-            height: 38px;
-            width: auto;
-            background-color: #ffffff;
-            padding: 6px 18px;
-            border-radius: 8px;
-            display: block;
-        }
-
-        /* 2. Slogan：自然的居中文本，不拉伸字距 */
-        .footer-slogan {
-            color: #cbd5e1;
-            font-size: 0.82rem;
-            font-style: italic;
-            text-align: center;
-            white-space: nowrap;
-            /* 保持单行不换行 */
-            letter-spacing: 0.3px;
-            /* 适当调微小字间距，提升精致感 */
-        }
-
-        /* 3. 社媒图标：居中紧凑排列 */
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            /* 控制两个图标之间的合适间距 */
-            width: 100%;
-        }
-
-        /* 4. 图标基础样式与悬停微动效 */
-        .footer-socials a {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: #1e293b;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background-color 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        /* 悬停微动效：轻微上浮 + 放大 + 绿光 */
-        .footer-socials a:hover {
-            transform: translateY(-3px) scale(1.08);
-            background-color: #16a34a;
-            box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
-        }
-
         /* ================= Customization 模块高级样式 ================= */
         .customization {
             padding: 80px 0;
@@ -1767,7 +1400,7 @@
 
             /* 强制文字内容与标题水平居中 */
             .custom-content,
-            .custom-grid > div:first-child {
+            .custom-grid>div:first-child {
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
@@ -1817,6 +1450,7 @@
                 box-sizing: border-box;
             }
         }
+
         /* 移动端适配 (<= 576px) */
         @media (max-width: 576px) {
             .customization {
@@ -2057,52 +1691,410 @@
                 margin-top: 6px !important;
             }
         }
+
         /* ================= 移动端真实体验精细化修饰 (<= 768px) ================= */
+        @media (max-width: 768px) {
+
+            /* 1. 优化横向滑动卡片：增加右侧呼吸感与滑动停靠体验 */
+            .features-grid,
+            .products-grid,
+            .solutions-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding: 10px 20px 25px 20px !important;
+                /* 左右留出 20px 安全边距 */
+                gap: 15px !important;
+            }
+
+            .features-grid>*,
+            .products-grid>*,
+            .solutions-grid>* {
+                scroll-snap-align: center;
+                flex: 0 0 82% !important;
+                /* 让卡片刚好露出下一张的边缘，提示用户可以横滑 */
+                min-width: 82% !important;
+            }
+
+            /* 2. 联系我们模块（Contact）居中优化 */
+            .contact-info,
+            .contact-details {
+                text-align: center !important;
+                margin-bottom: 25px;
+            }
+
+            .contact-item,
+            .contact-info-item {
+                justify-content: center !important;
+                text-align: center !important;
+            }
+
+            /* 3. 右下角双悬浮按钮拉开间距，防误触 */
+            .back-to-top,
+            #backToTop {
+                bottom: 85px !important;
+                /* 向上微调，拉开与 WhatsApp 的距离 */
+                right: 18px !important;
+            }
+
+            .whatsapp-float,
+            #whatsappFloat {
+                bottom: 25px !important;
+                right: 18px !important;
+            }
+        }
+
+        /* ================= 产品卡片内容全端居中 ================= */
+        .product-card,
+        .product-info,
+        .product-details,
+        .product-content {
+            text-align: center !important;
+        }
+
+        /* 顶部浅绿色参数/标签区域居中 */
+        .product-card [class*="spec"],
+        .product-card [class*="tag"],
+        .product-card [class*="badge"],
+        .product-info>div:first-child {
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+        }
+
+        /* 卡片内标题与描述文本居中 */
+        .product-card h3,
+        .product-card h4,
+        .product-card p,
+        .product-info h3,
+        .product-info p {
+            text-align: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            width: 100% !important;
+        }
+
+        /* 底部 Request Bulk Quote 按钮链接居中 */
+        .product-card a,
+        .product-info a,
+        .product-card .btn-link {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            text-align: center !important;
+            width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        /* ================= 询盘表单标题及提示全端居中 ================= */
+        form h3,
+        form h4,
+        .contact-form h3,
+        .inquiry-form h3,
+        .form-title,
+        .form-header {
+            text-align: center !important;
+            width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        /* 样品政策提示框文本全端居中 */
+        .form-notice,
+        .sample-policy,
+        form>div:first-child,
+        form .alert-info {
+            text-align: center !important;
+        }
+      /* ==================== 强制全屏突破 Footer 样式 ==================== */
+
+/* 1. 彻底清空全局 body 边距，防止右侧/两侧出白 */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    overflow-x: hidden !important; /* 防止强制撑满时出现底部横向滚动条 */
+}
+
+/* 2. 强行突破父级容器限制，将黑底拉满整个屏幕 (100vw) */
+footer,
+.footer-container {
+    background-color: #1a1a1a !important;
+    color: #fff;
+    width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important; /* 核心：向左强行拉伸至屏幕边缘 */
+    margin-right: -50vw !important; /* 核心：向右强行拉伸至屏幕边缘 */
+    padding: 50px 0 20px !important;
+    box-sizing: border-box !important;
+}
+
+/* 3. 内部内容居中，并保持优雅的宽度比例 */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 40px;
+    width: 90% !important;
+    max-width: 1400px !important; /* 控制内部文字内容的最大宽度，避免大屏拉得太散 */
+    margin: 0 auto !important;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+}
+
+/* 第 1 列：品牌区（居中） */
+.footer-brand {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-brand img,
+.footer-logo img {
+    height: 38px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    background-color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    display: inline-block;
+}
+
+.footer-slogan {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 18px;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+/* 社交图标 */
+.footer-socials {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-socials a:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+.footer-socials a[href*="facebook"],
+.footer-socials a.facebook,
+.footer-socials a:nth-child(1) {
+    background-color: #1877F2;
+    border-radius: 50%;
+}
+
+.footer-socials a[href*="linkedin"],
+.footer-socials a.linkedin,
+.footer-socials a:nth-child(2) {
+    background-color: #0A66C2;
+    border-radius: 5px;
+}
+
+/* 栏目通用结构 */
+.footer-links-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-links-group h4 {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.footer-links-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links-group li {
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.footer-links-group a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s, padding-left 0.3s;
+    font-size: 0.88rem;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.footer-links-group a:hover {
+    color: #fff;
+    padding-left: 3px;
+}
+
+/* 第 2 列：Quick Links */
+.footer-links-group:nth-child(2) {
+    justify-content: space-between;
+}
+
+.footer-links-group:nth-child(2) ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* 第 3 列：Product Categories */
+.footer-links-group:nth-child(3) h4 {
+    text-align: center;
+}
+
+.footer-links-group:nth-child(3) ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 0.65rem;
+}
+
+/* 4. 底端版权栏 */
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    color: #777;
+    font-size: 0.82rem;
+    width: 90% !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding-top: 10px;
+    border-top: none;
+    text-align: center;
+}
+
+.footer-bottom p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0;
+}
+
+.footer-bottom .divider {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.75rem;
+}
+
+.footer-tagline {
+    color: #777;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.footer-tagline:hover {
+    color: #fff;
+}
+
+/* 5. 移动端响应式 (<= 768px) */
 @media (max-width: 768px) {
-    /* 1. 优化横向滑动卡片：增加右侧呼吸感与滑动停靠体验 */
-    .features-grid,
-    .products-grid,
-    .solutions-grid {
-        display: flex !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding: 10px 20px 25px 20px !important; /* 左右留出 20px 安全边距 */
-        gap: 15px !important;
+    .footer-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 32px;
     }
 
-    .features-grid > *,
-    .products-grid > *,
-    .solutions-grid > * {
-        scroll-snap-align: center;
-        flex: 0 0 82% !important; /* 让卡片刚好露出下一张的边缘，提示用户可以横滑 */
-        min-width: 82% !important;
+    .footer-brand {
+        align-items: center;
+        text-align: center;
+        width: 100%;
     }
 
-    /* 2. 联系我们模块（Contact）居中优化 */
-    .contact-info,
-    .contact-details {
-        text-align: center !important;
-        margin-bottom: 25px;
+    .footer-brand img,
+    .footer-logo img {
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .contact-item,
-    .contact-info-item {
-        justify-content: center !important;
-        text-align: center !important;
+    .footer-links-group {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        justify-content: flex-start;
     }
 
-    /* 3. 右下角双悬浮按钮拉开间距，防误触 */
-    .back-to-top, 
-    #backToTop {
-        bottom: 85px !important; /* 向上微调，拉开与 WhatsApp 的距离 */
-        right: 18px !important;
+    .footer-links-group h4 {
+        text-align: center;
+        width: 100%;
     }
 
-    .whatsapp-float,
-    #whatsappFloat {
-        bottom: 25px !important;
-        right: 18px !important;
+    .product-category-grid,
+    .footer-links-group ul,
+    .footer-links-group:nth-child(3) ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 0.65rem;
+    }
+
+    .footer-links-group li {
+        text-align: center;
+        width: 100%;
+    }
+
+    .footer-socials {
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-bottom .divider {
+        display: none;
+    }
+
+    .footer-bottom p {
+        flex-direction: column;
+        gap: 6px;
     }
 }
     </style>
@@ -2434,13 +2426,12 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <div><strong>Direct Email:</strong><br><a href="mailto:wesley@wesleco.com"
+                            <div><strong>Email:</strong><br><a href="mailto:wesley@wesleco.com"
                                     style="color:var(--primary); text-decoration:none;">wesley@wesleco.com</a></div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-globe"></i>
-                            <div><strong>Official Web:</strong><br><span
-                                    style="color:var(--text-dark);">wesleco.com</span></div>
+                            <div><strong>Web:</strong><br><span style="color:var(--text-dark);">wesleco.com</span></div>
                         </div>
                     </div>
                 </div>
