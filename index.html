@@ -1243,7 +1243,7 @@
             transform: scale(1.06);
         }
 
-        /* 材质悬浮标签 */
+        /* 材质悬浮标签（基础样式） */
         .products .material-detail {
             position: absolute;
             bottom: 0;
@@ -1260,6 +1260,21 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
             pointer-events: none;
             z-index: 5;
+        }
+
+        /* 1. PC端（有鼠标设备）：移入自动展开，移出自动收起 */
+        @media (hover: hover) {
+            .products .product-card:hover .material-detail {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 2. 移动端/触摸设备：点击加 active 类触发展开 */
+        .products .product-card.active .material-detail {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            pointer-events: auto !important;
         }
 
         .products .product-card:hover .material-detail {
@@ -2630,9 +2645,10 @@
                     }
                 });
             });
-
-            // 点击页面其他空白区域时，关闭所有已展开的卡片
+            // 点击页面任意空白处，自动收起已展开的卡片
             document.addEventListener('click', () => {
                 productCards.forEach(c => c.classList.remove('active'));
             });
+
+        }); // 关闭 DOMContentLoaded
     </script>
