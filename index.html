@@ -1961,12 +1961,17 @@
             padding-left: 3px;
         }
 
-        /* 第 3 列：Product Categories 网格排版 */
+        /* ==================== 仅让 Product Categories 标题居中，网格保持原样 ==================== */
+        .footer-links-group:nth-child(3) h4 {
+            text-align: center; /* 标题居中 */
+            width: 100%;       /* 占满整列宽度以确保居中准确定位 */
+        }
+
         .footer-links-group:nth-child(3) ul {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr); /* 保持原有的双列平分网格不变 */
             column-gap: 2rem;
-            row-gap: 0.45rem; /* 同步减小网格行间距 */
+            row-gap: 0.45rem; 
         }
 
         /* 4. 底端版权栏（已移除上方 border-top 分界线） */
